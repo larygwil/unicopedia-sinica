@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+@font-face
+{
+    font-family: "ASCII";
+    src: local("Segoe UI Mono"), local(Monaco), local(Menlo), local("DejaVu Sans Mono"), local("Liberation Mono"), local("Noto Mono"), local("Ubuntu Mono");
+    /* src: local("Segoe UI"), local(Arial), local(Geneva), local(Verdana), local(Tahoma), local("DejaVu Sans"), local("Liberation Sans"), local("Noto Sans"), local("Ubuntu"); */
+    font-weight: bold;
+    unicode-range: U+00-7F;
+}
+
+:root
+{
+    --color:           hsl(0, 0%, 22%);
+    --color-subtle:    hsl(0, 0%, 44%);
+    --color-strong:    hsl(0, 0%, 11%);
+    --color-strongest: hsl(0, 0%, 0%);
+    --color-dimmed:    hsl(0, 0%, 56%);
+    --color-border:    hsl(31, 5%, 88%);
+    --color-bg:        hsl(31, 5%, 96%);
+    --color-accent:    hsl(196, 66%, 37%);
+    --color-hover:     hsl(270, 100%, 50%);
+    --color-error:     hsl(0, 100%, 40%);
+    --color-highlight: hsl(56, 100%, 50%);
+    --color-selection: hsl(255, 75%, 60%);
+    --color-focus:     hsl(210, 100%, 67%);
+    --sidebar-duration: calc(1s/10);
+    --sidebar-width: 240px;
+    --monospace-family: "Segoe UI Mono", Monaco, Menlo, "DejaVu Sans Mono", "Liberation Mono", "Noto Mono", "Ubuntu Mono", monospace;
+    --system-ui-family: "Segoe UI", system-ui, sans-serif;
+    --sans-serif-family: "Segoe UI", Arial, Geneva, Verdana, Tahoma, "DejaVu Sans", "Liberation Sans", "Noto Sans", Ubuntu, sans-serif;
+    --ids-family: "BabelStone Han PUA", "BabelStone Han", "TH-Tshyn-P0", "TH-Tshyn-P1", "TH-Tshyn-P2", "TH-Tshyn-P16", "Hanazono Mincho A", "Hanazono Mincho B", "Hanazono Mincho C", serif;
+}

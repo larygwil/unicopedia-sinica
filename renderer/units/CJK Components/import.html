@@ -1,0 +1,343 @@
+<section id="cjk-components-unit">
+    <div class="plain-panel">
+        <div class="tab-bar">
+            <span class="tab-group">
+                <label class="tab-label"><input class="tab-radio" type="radio"><span>Look Up IDS</span></label>
+                <label class="tab-label"><input class="tab-radio" type="radio"><span>Parse IDS</span></label>
+                <label class="tab-label"><input class="tab-radio" type="radio"><span>Match IDS</span></label>
+            </span>
+            <span class="tab-group">
+                <label class="tab-label"><input class="tab-radio" type="radio"><span>Find by Components</span></label>
+            </span>
+        </div>
+        <div class="tab-panes">
+            <div class="tab-pane look-up-ids">
+                <div class="interface">
+                    <button class="pull-down-menu history-button" type="button" title="Lookup History"><svg class="history"><use href="/images/actions.svg#history"></use></svg></button>
+                    <input class="unihan-input" type="search" maxlength="64" title="Unihan character or code point" placeholder="Unihan...">
+                    <button class="look-up-button" type="button">Look Up</button>
+                </div>
+                <div class="ids-container"></div>
+            </div>
+            <div class="tab-pane parse-ids">
+                <div class="actions">
+                    <span class="action-group">
+                        <span class="action">
+                            <button class="clear-button" type="button">Clear</button>
+                        </span>
+                        <span class="action">
+                            <button class="pull-down-menu samples-button" type="button">Samples</button>
+                        </span>
+                    </span>
+                    <span class="action-group">
+                        <span class="count-info">Count:&nbsp;<span class="count-number">0</span></span>
+                    </span>
+                    <span class="action-group">
+                        <span class="action">
+                            <button class="load-button" type="button">Load...</button>
+                        </span>
+                        <span class="action">
+                            <button class="save-button" type="button">Save...</button>
+                        </span>
+                    </span>
+                </div>
+                <div class="ids-group">
+                    <span class="entry-wrapper">
+                        <label title="Optional entry (reference character)">Entry:<br><input type="text" class="character-input" maxlength="128"></label>
+                    </span>
+                    <span class="ids-wrapper">
+                        <label>IDS:<br><input type="text" class="characters-input" maxlength="128"></label>
+                    </span>
+                </div>
+                <div class="interface">
+                    <label>Display Mode:
+                        <select class="display-mode-select">
+                            <option value="LR">Horizontal</option>
+                            <option value="TB">Vertical</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="graph-rendering">
+                    <div class="graph-container"></div>
+                </div>
+            </div>
+            <div class="tab-pane match-ids">
+                <div class="actions">
+                    <span class="action-group search-group">
+                        <span class="action search-wrap">
+                            <input class="search-string" type="search" maxlength="256" placeholder="Character sequence...">
+                            <span class="search-message"></span>
+                        </span>
+                        <span class="action">
+                            <label title="Nested Match"><input class="nested-match icon-checkbox" type="checkbox"><svg><use href="/images/search.svg#nested-match-icon"></use></svg></label>
+                        </span>
+                        <span class="action">|</span>
+                        <span class="action">
+                            <label title="Case Sensitive (disabled)"><input class="case-sensitive icon-checkbox" type="checkbox" disabled><svg><use href="/images/search.svg#case-sensitive-icon"></use></svg></label>
+                        </span>
+                        <span class="action">
+                            <label title="Whole Word (disabled)"><input class="whole-word icon-checkbox" type="checkbox" disabled><svg><use href="/images/search.svg#whole-word-icon"></use></svg></label>
+                        </span>
+                        <span class="action">
+                            <label title="Regular Expression"><input class="use-regex icon-checkbox" type="checkbox"><svg><use href="/images/search.svg#use-regex-icon"></use></svg></label>
+                        </span>
+                        <span class="action">
+                            <button class="search-button" type="button">Search</button>
+                        </span>
+                    </span>
+                </div>
+                <div class="results">
+                    <button class="pull-down-menu results-button" type="button" title="Results"><svg class="gear"><use href="/images/actions.svg#gear"></use></svg></button><span class="results-string">Unihan characters:&nbsp;<span class="hit-count"></span>&nbsp;/&nbsp;<span class="total-count"></span></span>
+                </div>
+                <div class="search-data"></div>
+            </div>
+            <div class="tab-pane find-by-components">
+                <div class="actions">
+                    <span class="action-group search-group">
+                        <span class="action search-wrap">
+                            <input class="search-string" type="search" maxlength="256" placeholder="Components...">
+                            <span class="search-message"></span>
+                        </span>
+                        <span class="action">
+                            <button class="search-button" type="button">Search</button>
+                        </span>
+                    </span>
+                </div>
+                <div class="results">
+                    <button class="pull-down-menu results-button" type="button" title="Results"><svg class="gear"><use href="/images/actions.svg#gear"></use></svg></button><span class="results-string">Unihan characters:&nbsp;<span class="hit-count"></span>&nbsp;/&nbsp;<span class="total-count"></span></span>
+                </div>
+                <div class="search-data"></div>
+                <!-- Temporary -->
+                <div style="text-align: center;">
+                    <svg style="width: 128px; height: 128px;"><use href="/images/symbols.svg#under-construction"></use></svg>
+                    <br>
+                    <span style="font-weight: bold;">Under Construction</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-infos">
+        <div class="tab-info look-up-ids">
+            <div class="accent-panel">
+                <details class="instructions">
+                    <summary>Instructions</summary>
+                    <ul>
+                        <li>The <strong>Look Up IDS</strong> feature of the <strong>CJK Components</strong> utility displays all the IDS (Ideographic Description Sequences) of a given Unihan character, as compiled in the freely available <a title="https://babelstone.co.uk/CJK/IDS.TXT" href="https://babelstone.co.uk/CJK/IDS.TXT">IDS.TXT</a> data file, maintained by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                        <li>Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display the IDS.</li>
+                        <li>Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.</li>
+                        <li>IDS are provided for the set of 92,865 Unihan characters (excluding CJK <em>compatibility</em> ideographs) defined in <strong>Unicode 14.0</strong>.</li>
+                        <li>Notes:
+                            <ul>
+                                <li>Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font <a title="https://www.babelstone.co.uk/Fonts/PUA.html" href="https://www.babelstone.co.uk/Fonts/PUA.html">BabelStone Han PUA</a>, created by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                                <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
+                                    <ul>
+                                        <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
+                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
+                                    </ul>
+                                </li>
+                                <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
+                                    <ul>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U4E00.pdf" title="https://www.unicode.org/charts/PDF/U4E00.pdf">CJK Unified Ideographs - U4E00.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U3400.pdf" title="https://www.unicode.org/charts/PDF/U3400.pdf">CJK Unified Ideographs Extension A - U3400.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U20000.pdf" title="https://www.unicode.org/charts/PDF/U20000.pdf">CJK Unified Ideographs Extension B - U20000.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2A700.pdf" title="https://www.unicode.org/charts/PDF/U2A700.pdf">CJK Unified Ideographs Extension C - U2A700.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B740.pdf" title="https://www.unicode.org/charts/PDF/U2B740.pdf">CJK Unified Ideographs Extension D - U2B740.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B820.pdf" title="https://www.unicode.org/charts/PDF/U2B820.pdf">CJK Unified Ideographs Extension E - U2B820.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2CEB0.pdf" title="https://www.unicode.org/charts/PDF/U2CEB0.pdf">CJK Unified Ideographs Extension F - U2CEB0.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U30000.pdf" title="https://www.unicode.org/charts/PDF/U30000.pdf">CJK Unified Ideographs Extension G - U30000.pdf</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </details>
+                <details class="unencoded">
+                    <summary>Unencoded Glyphs</summary>
+                    <div class="glyph-list"></div>
+                </details>
+                <details class="references">
+                    <summary>Reference Links</summary>
+                    <div class="links"></div>
+                </details>
+            </div>
+        </div>
+        <div class="tab-info parse-ids">
+            <div class="accent-panel">
+                <details class="instructions">
+                    <summary>Instructions</summary>
+                    <ul>
+                        <li>The <strong>Parse IDS</strong> feature of the <strong>CJK Components</strong> utility displays the parsing graph of any well-formed IDS (Ideographic Description Sequence), in accordance with the freely available <a title="https://babelstone.co.uk/CJK/IDS.TXT" href="https://babelstone.co.uk/CJK/IDS.TXT">IDS.TXT</a> data file, maintained by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                        <li>The IDS string can by directly typed, or pasted from the clipboard into the <kbd>IDS</kbd> input field.</li>
+                        <li>Optionally, a Unihan character can be used as reference in the <kbd>Entry</kbd> input field.</li>
+                        <li>It is possible to input predefined sets of Entry and IDS strings selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.</li>
+                        <li>As a convenience, the input fields can be emptied using the <kbd>Clear</kbd> button.</li>
+                        <li>The IDS graph can be displayed either vertically or horizontally. Use the <kbd>Display Mode</kbd> drop-down menu to toggle between the two modes.</li>
+                        <li>Notes:
+                            <ul>
+                                <li>Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font <a title="https://www.babelstone.co.uk/Fonts/PUA.html" href="https://www.babelstone.co.uk/Fonts/PUA.html">BabelStone Han PUA</a>, created by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                                <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
+                                    <ul>
+                                        <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
+                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
+                                    </ul>
+                                </li>
+                                <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
+                                    <ul>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U4E00.pdf" title="https://www.unicode.org/charts/PDF/U4E00.pdf">CJK Unified Ideographs - U4E00.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U3400.pdf" title="https://www.unicode.org/charts/PDF/U3400.pdf">CJK Unified Ideographs Extension A - U3400.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U20000.pdf" title="https://www.unicode.org/charts/PDF/U20000.pdf">CJK Unified Ideographs Extension B - U20000.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2A700.pdf" title="https://www.unicode.org/charts/PDF/U2A700.pdf">CJK Unified Ideographs Extension C - U2A700.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B740.pdf" title="https://www.unicode.org/charts/PDF/U2B740.pdf">CJK Unified Ideographs Extension D - U2B740.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B820.pdf" title="https://www.unicode.org/charts/PDF/U2B820.pdf">CJK Unified Ideographs Extension E - U2B820.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2CEB0.pdf" title="https://www.unicode.org/charts/PDF/U2CEB0.pdf">CJK Unified Ideographs Extension F - U2CEB0.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U30000.pdf" title="https://www.unicode.org/charts/PDF/U30000.pdf">CJK Unified Ideographs Extension G - U30000.pdf</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </details>
+                <details class="unencoded">
+                    <summary>Unencoded Glyphs</summary>
+                    <div class="glyph-list"></div>
+                </details>
+                <details class="references">
+                    <summary>Reference Links</summary>
+                    <div class="links"></div>
+                </details>
+            </div>
+        </div>
+        <div class="tab-info match-ids">
+            <div class="accent-panel">
+                <details class="instructions">
+                    <summary>Instructions</summary>
+                    <ul>
+                        <li>The <strong>Match IDS</strong> feature of the <strong>CJK Components</strong> utility displays a list of IDS-matching Unihan characters, including through regular expressions. It makes use of the IDS (Ideographic Description Sequences) defined in the <a title="https://babelstone.co.uk/CJK/IDS.TXT" href="https://babelstone.co.uk/CJK/IDS.TXT">IDS.TXT</a> data file, maintained by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                        <li>After entering a query, click on the <kbd>Search</kbd> button to display a list of all relevant matches, if any, ordered by code point value.</li>
+                        <li>Click on the <kbd><svg style="width: 15px; height: 15px; vertical-align: text-bottom; stroke: var(--color);"><use href="/images/search.svg#nested-match-icon"></use></svg></kbd> (<em>Nested Match</em>) toggle button to extend the search to IDS-nested characters whose <em>IDS</em> match the query string.</li>
+                        <li>Click on the <kbd>Code Points</kbd> checkbox to display the code point under each matching Unihan character.</li>
+                        <li>It is possible to choose how many characters are shown one page at a time.</li>
+                        <li>The search is performed on the set of 92,865 Unihan characters (excluding CJK <em>compatibility</em> ideographs) defined in <strong>Unicode 14.0</strong>.</li>
+                        <li>The results may include the searched component itself when it happens to be a proper Unihan character too.</li>
+                        <li>Use the <kbd>Results&nbsp;▾</kbd> pop-up menu to perform an action among:
+                            <ul>
+                                <li><code>Copy Results</code> [copy the results as string to the clipboard]</li>
+                                <li><code>Save Results..</code> [save the results as string to a text file]</li>
+                                <li><code>Clear Results</code> [clear the current list of results]</li>
+                            </ul>
+                        </li>
+                        <li>Various examples of regular expressions are provided for quick copy-and-paste.</li>
+                        <li>Notes:
+                            <ul>
+                                <li>Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font <a title="https://www.babelstone.co.uk/Fonts/PUA.html" href="https://www.babelstone.co.uk/Fonts/PUA.html">BabelStone Han PUA</a>, created by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                                <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
+                                    <ul>
+                                        <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
+                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
+                                    </ul>
+                                </li>
+                                <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
+                                    <ul>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U4E00.pdf" title="https://www.unicode.org/charts/PDF/U4E00.pdf">CJK Unified Ideographs - U4E00.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U3400.pdf" title="https://www.unicode.org/charts/PDF/U3400.pdf">CJK Unified Ideographs Extension A - U3400.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U20000.pdf" title="https://www.unicode.org/charts/PDF/U20000.pdf">CJK Unified Ideographs Extension B - U20000.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2A700.pdf" title="https://www.unicode.org/charts/PDF/U2A700.pdf">CJK Unified Ideographs Extension C - U2A700.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B740.pdf" title="https://www.unicode.org/charts/PDF/U2B740.pdf">CJK Unified Ideographs Extension D - U2B740.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B820.pdf" title="https://www.unicode.org/charts/PDF/U2B820.pdf">CJK Unified Ideographs Extension E - U2B820.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2CEB0.pdf" title="https://www.unicode.org/charts/PDF/U2CEB0.pdf">CJK Unified Ideographs Extension F - U2CEB0.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U30000.pdf" title="https://www.unicode.org/charts/PDF/U30000.pdf">CJK Unified Ideographs Extension G - U30000.pdf</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </details>
+                <details class="regex-examples">
+                    <summary>Regex Examples</summary>
+                    <ul>
+                        <li>Unihan characters whose IDS contains one component belonging to the four seasons set:<br><code class="select-all">[春夏秋冬]</code></li>
+                        <li>Unihan characters whose IDS contains either the 爲 component or its variant 為:<br><code class="select-all">爲|為</code></li>
+                        <li>Unihan characters whose IDS contains the 或 component twice:<br><code class="select-all">或.*或</code></li>
+                        <li>Unihan characters whose IDS contains two 幺 components surrounding another component:<br><code class="select-all">幺.幺</code></li>
+                        <li>Unihan characters whose IDS contains the 疒 component in first position:<br><code class="select-all">^⿸疒</code></li>
+                        <li>Unihan characters whose IDS contains the 疒 component, but not in first position:<br><code class="select-all">.⿸疒</code></li>
+                        <li>Unihan characters whose IDS contains the 至 component surrounded by another component from upper left:<br><code class="select-all">⿸.至</code></li>
+                        <li>Unihan characters whose IDS contains three components in a row, each component being either 女 or 男:<br><code class="select-all">⿲[女男]{3}</code></li>
+                        <li>Unihan characters whose IDS is exactly the same for two of them (duplicates):<br><code class="select-all">^⿺走斗$</code></li>
+                        <li>Unihan characters whose IDS contains a CJK radical, i.e, a character whose code point belongs to the <code>CJK Radicals Supplement</code> block:<br><code class="select-all">[\u2E80-\u2EF3]</code> or <code class="select-all">[⺀-⻳]</code></li>
+                        <li>Unihan characters whose IDS contains a CJK stroke, i.e, a character whose code point belongs to the <code>CJK Strokes</code> block:<br><code class="select-all">[\u31C0-\u31E3]</code> or <code class="select-all">[㇀-㇣]</code></li>
+                        <li>Unihan characters whose IDS contains an unencoded component, i.e, a character whose code point belongs to the <code>Private User Area</code> (PUA) block:<br><code class="select-all">[\uE000-\uF8FF]</code></li>
+                        <li>Unihan characters whose IDS is made of 17 or more characters:<br><code class="select-all">^.{17}</code> or <code class="select-all">^.{17,}$</code></li>
+                        <li>Unihan characters whose IDS contains four IDC operators in a row:<br><code class="select-all">[⿰⿱⿲⿳⿴⿵⿶⿷⿸⿹⿺⿻]{4}</code> or <code class="select-all">[⿰-⿻]{4}</code></li>
+                        <li>Unihan characters whose IDS is made of two identical ideographic components in a row:<br><code class="select-all">^⿰(\p{Unified_Ideograph})\1$</code> or <code class="select-all">^⿰(\p{Ideo})\1$</code></li>
+                        <li>Unihan characters whose IDS contains one trinary operator followed by two binary operators:<br><code class="select-all">\p{IDS_Trinary_Operator}\p{IDS_Binary_Operator}{2}</code> or <code class="select-all">\p{IDST}\p{IDSB}{2}</code></li>
+                    </ul>
+                </details>
+                <details class="unencoded">
+                    <summary>Unencoded Glyphs</summary>
+                    <div class="glyph-list"></div>
+                </details>
+                <details class="references">
+                    <summary>Reference Links</summary>
+                    <div class="links"></div>
+                </details>
+            </div>
+        </div>
+        <div class="tab-info find-by-components">
+            <div class="accent-panel">
+                <details class="instructions">
+                    <summary>Instructions</summary>
+                    <ul>
+                        <li>The <strong>Find by Components</strong> feature of the <strong>CJK Components</strong> utility displays a list of Unihan characters matching a set of individual components. It makes use of the IDS (Ideographic Description Sequences) defined in the <a title="https://babelstone.co.uk/CJK/IDS.TXT" href="https://babelstone.co.uk/CJK/IDS.TXT">IDS.TXT</a> data file, maintained by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                        <li>After entering a query, click on the <kbd>Search</kbd> button to display a list of all relevant matches, if any, ordered by code point value.</li>
+                        <li>Click on the <kbd>Code Points</kbd> checkbox to display the code point under each matching Unihan character.</li>
+                        <li>It is possible to choose how many characters are shown one page at a time.</li>
+                        <li>The search is performed on the set of 92,865 Unihan characters (excluding CJK <em>compatibility</em> ideographs) defined in <strong>Unicode 14.0</strong>.</li>
+                        <li>Use the <kbd>Results&nbsp;▾</kbd> pop-up menu to perform an action among:
+                            <ul>
+                                <li><code>Copy Results</code> [copy the results as string to the clipboard]</li>
+                                <li><code>Save Results..</code> [save the results as string to a text file]</li>
+                                <li><code>Clear Results</code> [clear the current list of results]</li>
+                            </ul>
+                        </li>
+                        <li>Notes:
+                            <ul>
+                                <li>Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font <a title="https://www.babelstone.co.uk/Fonts/PUA.html" href="https://www.babelstone.co.uk/Fonts/PUA.html">BabelStone Han PUA</a>, created by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
+                                <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
+                                    <ul>
+                                        <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
+                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
+                                    </ul>
+                                </li>
+                                <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
+                                    <ul>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U4E00.pdf" title="https://www.unicode.org/charts/PDF/U4E00.pdf">CJK Unified Ideographs - U4E00.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U3400.pdf" title="https://www.unicode.org/charts/PDF/U3400.pdf">CJK Unified Ideographs Extension A - U3400.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U20000.pdf" title="https://www.unicode.org/charts/PDF/U20000.pdf">CJK Unified Ideographs Extension B - U20000.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2A700.pdf" title="https://www.unicode.org/charts/PDF/U2A700.pdf">CJK Unified Ideographs Extension C - U2A700.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B740.pdf" title="https://www.unicode.org/charts/PDF/U2B740.pdf">CJK Unified Ideographs Extension D - U2B740.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2B820.pdf" title="https://www.unicode.org/charts/PDF/U2B820.pdf">CJK Unified Ideographs Extension E - U2B820.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U2CEB0.pdf" title="https://www.unicode.org/charts/PDF/U2CEB0.pdf">CJK Unified Ideographs Extension F - U2CEB0.pdf</a></li>
+                                        <li><a href="https://www.unicode.org/charts/PDF/U30000.pdf" title="https://www.unicode.org/charts/PDF/U30000.pdf">CJK Unified Ideographs Extension G - U30000.pdf</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </details>
+                <details class="unencoded">
+                    <summary>Unencoded Glyphs</summary>
+                    <div class="glyph-list"></div>
+                </details>
+                <details class="references">
+                    <summary>Reference Links</summary>
+                    <div class="links"></div>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>

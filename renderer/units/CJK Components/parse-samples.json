@@ -1,0 +1,186 @@
+[
+    {
+        "label": "Alternative Sequences",
+        "items":
+        [
+            {
+                "label": "Frog 1",
+                "string": "蛙\t⿰虫圭"
+            },
+            {
+                "label": "Frog 2",
+                "string": "蛙\t⿰虫⿱土土"
+            },
+            null,
+            {
+                "label": "Surprised 1",
+                "string": "愕\t⿰忄咢"
+            },
+            {
+                "label": "Surprised 2",
+                "string": "愕\t⿰忄⿱吅亏"
+            },
+            {
+                "label": "Surprised 3",
+                "string": "愕\t⿰忄⿳吅一丂"
+            },
+            {
+                "label": "Surprised 4",
+                "string": "愕\t⿰忄⿱⿰口口亏"
+            },
+            {
+                "label": "Surprised 5",
+                "string": "愕\t⿰忄⿳⿰口口一丂"
+            },
+            {
+                "label": "Surprised 6",
+                "string": "愕\t⿰忄⿱⿰口口⿱一丂"
+            },
+            null,
+            {
+                "label": "Taito (kanji) 1",
+                "string": "𱁬\t⿳雲⿲雲龍雲龖"
+            },
+            {
+                "label": "Taito (kanji) 2",
+                "string": "𱁬\t⿳雲⿲雲龍雲⿰龍龍"
+            }
+        ]
+    },
+    {
+        "label": "Complex Sequences",
+        "items":
+        [
+            {
+                "label": "Biangbiang (Simp.)",
+                "string": "𰻝\t⿺辶⿳穴⿲月⿱⿲幺言幺⿲长马长刂心"
+            },
+            {
+                "label": "Biangbiang (Trad.)",
+                "string": "𰻞\t⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心"
+            }
+        ]
+    },
+    {
+        "label": "IDC Examples",
+        "items":
+        [
+            {
+                "label": "⿰  <U+2FF0>",
+                "string": "仁\t⿰亻二"
+            },
+            {
+                "label": "⿱  <U+2FF1>",
+                "string": "吉\t⿱士口"
+            },
+            {
+                "label": "⿲  <U+2FF2>",
+                "string": "街\t⿲彳圭亍"
+            },
+            {
+                "label": "⿳  <U+2FF3>",
+                "string": "壹\t⿳士冖豆"
+            },
+            {
+                "label": "⿴  <U+2FF4>",
+                "string": "回\t⿴囗口"
+            },
+            {
+                "label": "⿵  <U+2FF5>",
+                "string": "凰\t⿵𠘨皇"
+            },
+            {
+                "label": "⿶  <U+2FF6>",
+                "string": "凶\t⿶凵㐅"
+            },
+            {
+                "label": "⿷  <U+2FF7>",
+                "string": "匡\t⿷匚王"
+            },
+            {
+                "label": "⿸  <U+2FF8>",
+                "string": "仄\t⿸厂人"
+            },
+            {
+                "label": "⿹  <U+2FF9>",
+                "string": "式\t⿹弋工"
+            },
+            {
+                "label": "⿺  <U+2FFA>",
+                "string": "超\t⿺走召"
+            },
+            {
+                "label": "⿻  <U+2FFB>",
+                "string": "巫\t⿻工从"
+            }
+        ]
+    },
+    {
+        "label": "Invalid Sequences",
+        "items":
+        [
+            {
+                "label": "Extra Components",
+                "string": "蛙\t⿰虫圭⿱土土"
+            },
+            {
+                "label": "Invalid Components",
+                "string": "偉\t⿰イ韋"
+            },
+            {
+                "label": "Missing Components",
+                "string": "𫤆\t⿰⿳⿱⿵𠆢一米口𠬶"
+            }
+        ]
+    },
+    {
+        "label": "Mirrored Components",
+        "items":
+        [
+            {
+                "label": "Strange 1",
+                "string": "𣥄\t↔正"
+            },
+            {
+                "label": "Strange 2",
+                "string": "𣥗\t⿱止↔止"
+            },
+            {
+                "label": "Strange 3",
+                "string": "𣥠\t⿰↔止止"
+            }
+        ]
+    },
+    {
+        "label": "Rotated Components",
+        "items":
+        [
+            {
+                "label": "Strange 1",
+                "string": "𠄔\t↷予"
+            },
+            {
+                "label": "Strange 2",
+                "string": "𢨋\t⿱或↷或"
+            },
+            {
+                "label": "Strange 3",
+                "string": "𧹂\t⿱⿰虎↷虎貝"
+            }
+        ]
+    },
+    {
+        "label": "Unencoded Components",
+        "items":
+        [
+            {
+                "label": "Dragon",
+                "string": "龍\t⿰𦚏"
+            },
+            {
+                "label": "Licorn",
+                "string": "廌\t⿸"
+            }
+        ]
+    }
+]

@@ -1,0 +1,97 @@
+[
+    {
+        "label": "New in 14.0",
+        "items":
+        [
+            {
+                "label": "Additions",
+                "string": "鿽鿾鿿𪛞𪛟𫜵𫜶𫜷𫜸"
+            },
+            null,
+            {
+                "label": "Changes (Documented)",
+                "string": "㝷㬿巕攬櫀𢫜𣃲𥬧𦼨"
+            },
+            {
+                "label": "Changes (Undocumented)",
+                "string": "𦍉"
+            }
+        ]
+    },
+    null,
+    {
+        "label": "Miscellaneous",
+        "items":
+        [
+            {
+                "label": "Asia (亜)",
+                "string": "亜䛩唖悪𡏍𢳩𣊰𣱌𤉁𤩖𪰥𫰫𬂲𰤐"
+            },
+            {
+                "label": "Asia (亚)",
+                "string": "亚㫫䅉哑垩垭壸娅恶挜晋桠氩痖铔霊𠼁𣌽𤖥𩂳𩤼𩬾𪨂𪿊𫒣𫥼𫳃𬁺𭭈𭯋𭻍𮇔𰌦𰗻𰡉𰦴𰲸𱉨"
+            },
+            {
+                "label": "Asia (亞)",
+                "string": "亞㝞㰳䃁䛩䢝俹啞埡堊壼婭孲惡掗斵椏氬琧瘂稏蝁錏閸鵶𠁏𠁐𠁕𠆊𠜲𠨣𠼞𡈀𡱻𡹄𡹅𢑹𢛟𢩔𣂪𣇩𣉩𣛽𣤼𣵾𤊗𤦩𤲢𤲾𥏝𥦳𥮳𥺼𦜖𦩒𦲕𧓥𧢗𨁶𩓩𩗽𩜄𩤃𩩤𩭯𩸇𩸋𩸖𫡷𬘃𬪿𰖐𰡓"
+            },
+            {
+                "label": "Doors",
+                "string": "戶户戸扇扉"
+            },
+            {
+                "label": "Dragon",
+                "string": "龙竜龍龍"
+            },
+            {
+                "label": "Electricity",
+                "string": "电電"
+            },
+            {
+                "label": "Elephant",
+                "string": "象𧰼𮙝𮙞"
+            },
+            {
+                "label": "Frog",
+                "string": "蛙䖯䵷鼃𱌃"
+            },
+            {
+                "label": "Leaf",
+                "string": "枼𭩠"
+            },
+            {
+                "label": "Love",
+                "string": "爱愛恋戀"
+            },
+            {
+                "label": "Rabbit",
+                "string": "兎兔兔"
+            },
+            {
+                "label": "Turtle",
+                "string": "龟亀龜龜龜龜"
+            },
+            null,
+            {
+                "label": "Misc. 1",
+                "string": "㲋𭯍𣬋"
+            },
+            {
+                "label": "Misc. 2",
+                "string": "鬼卑䰦"
+            },
+            {
+                "label": "Misc. 3",
+                "string": "醜𨢄𥠎𥞷"
+            },
+            {
+                "label": "Misc. 4",
+                "string": "事亊𠄙争爭箏𥬁𤔇"
+            },
+            {
+                "label": "Misc. 5",
+                "string": "𪮫𪯩𫃜𫃯𫃵𫊛𫊫𫋾"
+            }
+        ]
+    }
+]

@@ -1,0 +1,24 @@
+digraph ""
+{
+    graph
+    [
+        layout = dot
+        rankdir = {{rankdir}}
+    ]
+    node
+    [
+        shape = square
+        style = filled
+        fillcolor = white
+        fixedsize = true
+        width = 0.56
+        fontcolor = black
+        fontsize = 27
+        fontname = {{fontname}}
+    ]
+    edge
+    [
+        arrowhead = normal
+        arrowsize = 0.7
+    ]
+{{data}}}

@@ -1,0 +1,300 @@
+@charset "utf-8";
+
+#cjk-sources-unit
+{
+    --color-frame: hsl(0, 0%, 75%);
+    --color-background: hsl(0, 0%, 92.5%);
+}
+
+#cjk-sources-unit .actions
+{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5em 0;
+}
+
+#cjk-sources-unit .actions.interface
+{
+    margin: 1em 0 0 0;
+}
+
+#cjk-sources-unit .action-group
+{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#cjk-sources-unit .action-group + .action-group,
+#cjk-sources-unit .action + .action
+{
+    margin-left: 0.75em;
+}
+
+#cjk-sources-unit .count-info
+{
+    line-height: 1em;
+    width: 72px;
+}
+
+#cjk-sources-unit .count-number
+{
+    font-weight: bold;
+}
+
+#cjk-sources-unit .input-group
+{
+    margin-bottom: 0.5em;
+}
+
+#cjk-sources-unit .characters-input,
+#cjk-sources-unit .code-points-input
+{
+    line-height: 1.333em;
+    width: 100%;
+    margin: 0.2em 0;
+}
+
+#cjk-sources-unit .characters-input
+{
+    font-family: var(--ids-family);
+    font-size: 18px;
+    padding: 2px 6px;
+}
+
+#cjk-sources-unit .code-points-input
+{
+    font-family: var(--monospace-family);
+    font-size: 13px;
+    padding: 4px 6px;
+}
+
+#cjk-sources-unit .sheet 
+{
+    display: block;
+    padding: 0;
+}
+
+#cjk-sources-unit .sheet table,
+#cjk-sources-unit .sheet tr,
+#cjk-sources-unit .sheet th,
+#cjk-sources-unit .sheet td
+{
+    border-collapse: collapse;
+    border: none;
+    background-color: white;
+}
+
+#cjk-sources-unit .sheet .table
+{
+    margin: 1em 0 0.5em 0;
+    width: unset;
+    background-color: transparent;
+}
+
+#cjk-sources-unit .sheet .table th
+{
+    background-color: var(--color-background);
+    border: 1px solid var(--color-frame);
+    color: var(--color);
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12.5px;
+    width: 88px;
+    min-width: 88px;
+    padding: 0.4em 0.2em;
+    overflow: hidden;
+}
+
+#cjk-sources-unit .sheet .table td
+{
+    border: 1px solid var(--color-frame);
+    color: var(--color);
+    width: 88px;
+    min-width: 88px;
+    padding: 6px 0;
+}
+
+#cjk-sources-unit .sheet .table .data-row
+{
+    vertical-align: middle;
+}
+
+#cjk-sources-unit .sheet .table .data
+{
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-sources-unit .sheet .table .empty-gap
+{
+    width: 20px;
+    min-width: 20px;
+    border: none;
+    background: none;
+    visibility: hidden;
+    user-select: none;
+    cursor: default;
+}
+
+#cjk-sources-unit .sheet .table .data.empty
+{
+    user-select: none;
+    cursor: default;
+    background-image: url("crosshatch-1-1.svg");
+    background-size: 8px;
+    background-position: center;
+    color: var(--color-dimmed);
+}
+
+#cjk-sources-unit .sheet .table .glyph
+{
+    font-family: var(--ids-family);
+    font-size: 72px;
+    line-height: 1em;
+}
+
+#cjk-sources-unit .sheet .table .pdf-info
+{
+    font-family: var(--system-ui-family);
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.333em;
+    margin: 2em 0;
+}
+
+#cjk-sources-unit .sheet .table .font-glyph
+{
+    margin: 2px 0 -2px 0;
+}
+
+#cjk-sources-unit .sheet .table .code-point
+{
+    display: inline-block;
+    font-family: var(--monospace-family);
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1em;
+    padding: 3px 3px 2px 3px;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    background-color: var(--color-bg);
+    margin-top: 8px;
+}
+
+#cjk-sources-unit .sheet .table .compatibility .code-point
+{
+    font-style: italic;
+}
+
+#cjk-sources-unit .sheet .table .svg-glyph
+{
+    /* vertical-align: top; */
+    width: 72px;
+    height: 72px;
+    user-select: none;
+    cursor: default;
+}
+
+#cjk-sources-unit .sheet .table .code
+{
+    color: var(--color);
+    font-family: var(--sans-serif-family);
+    font-size: 12px;
+    line-height: 1.2em;
+    /* margin: -8px 0 6px 0; */
+}
+
+#cjk-sources-unit .sheet .table .compatibility .code
+{
+    font-style: italic;
+}
+
+#cjk-sources-unit .instructions ul
+{
+    margin: -0.5em 0 1em 0;
+}
+
+#cjk-sources-unit .instructions li
+{
+    margin: 0.25em 0;
+}
+
+#cjk-sources-unit .instructions li > ul
+{
+    margin: 0 0 0.25em 0;
+}
+
+#cjk-sources-unit .instructions kbd
+{
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0 0.333em 1px;
+    border: 1px solid gray;
+    border-radius: 0.2em;
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
+}
+
+#cjk-sources-unit .instructions code
+{
+    color: inherit;
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
+}
+
+#cjk-sources-unit .instructions code.select-all
+{
+    user-select: all;
+    cursor: text;
+}
+
+#cjk-sources-unit .sources-table
+{
+    margin: 0.75em 0;
+    width: unset;
+}
+
+#cjk-sources-unit .sources-table tr th,
+#cjk-sources-unit .sources-table tr td
+{
+    text-align: left;
+    padding: 0.25em 0.75em;
+    /* white-space: nowrap; */
+}
+
+#cjk-sources-unit .sources-table tr th
+{
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8))
+}
+
+#cjk-sources-unit .sources-table tr td
+{
+    vertical-align: middle;
+}
+
+#cjk-sources-unit .sources-table tr th.code,
+#cjk-sources-unit .sources-table tr td.code
+{
+    text-align: center;
+}
+
+#cjk-sources-unit .sources-table tr:nth-child(even)
+{
+    background-color: white;
+}
+
+#cjk-sources-unit .sources-table tr:nth-child(odd)
+{
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
+}
+
+#cjk-sources-unit summary
+{
+    font-weight: bold;
+    margin: 1.2em 0 1em 0;
+}

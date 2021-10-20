@@ -1,0 +1,89 @@
+{
+    "name": "unicopedia-sinica",
+    "productName": "Unicopedia Sinica",
+    "version": "1.0.0",
+    "description": "Developer-oriented set of Unicode utilities related to ideographs.",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "build:macos": "electron-builder --macos",
+        "build:linux": "electron-builder --linux",
+        "build:win": "electron-builder --win",
+        "build-darwin": "electron-packager . --asar --out=build --platform=darwin --ignore=/~.* --ignore=^/screenshots --icon=icons/icon.icns --overwrite",
+        "build-linux": "electron-packager . --asar --out=build --platform=linux --ignore=/~.* --ignore=^/screenshots --icon=icons/icon.png --overwrite",
+        "build-win32": "electron-packager . --asar --out=build --platform=win32 --ignore=/~.* --ignore=^/screenshots --icon=icons/icon.ico --overwrite"
+    },
+    "build": {
+        "appId": "com.tonton-pixel.unicopedia-sinica",
+        "copyright": "Copyright © 2021 ${author}.",
+        "artifactName": "${name}-${os}-${version}.${ext}",
+        "directories": {
+            "output": "build",
+            "buildResources": "build-res"
+        },
+        "files": [
+            "!**/~*",
+            "!screenshots/*"
+        ],
+        "mac": {
+            "category": "public.app-category.utilities",
+            "icon": "icons/icon.icns",
+            "target": [
+                "zip",
+                "dmg",
+                "pkg"
+            ]
+        },
+        "pkg": {
+            "license": "license-index.html",
+            "installLocation": "/Applications",
+            "allowAnywhere": true,
+            "isRelocatable": false,
+            "isVersionChecked": false
+        },
+        "linux": {
+            "category": "Development",
+            "icon": "icons/icon.png",
+            "target": "AppImage"
+        },
+        "win": {
+            "icon": "icons/icon.ico",
+            "target": "portable"
+        }
+    },
+    "keywords": [
+        "application",
+        "code-points",
+        "characters",
+        "chinese",
+        "cjk",
+        "components",
+        "electron",
+        "glyphs",
+        "ideographs",
+        "ids",
+        "japanese",
+        "javascript",
+        "korean",
+        "tangut",
+        "unicode",
+        "unihan"
+    ],
+    "author": {
+        "name": "Michel Mariani",
+        "url": "https://github.com/tonton-pixel"
+    },
+    "homepage": "https://github.com/tonton-pixel/unicopedia-sinica",
+    "license": "MIT",
+    "private": false,
+    "dependencies": {
+        "@electron/remote": "^2.0.1",
+        "regexpu-core": "^4.8.0",
+        "viz.js": "^2.1.2"
+    },
+    "devDependencies": {
+        "electron": "^15.2.0",
+        "electron-builder": "22.10.5",
+        "electron-packager": "^15.4.0"
+    }
+}

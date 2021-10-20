@@ -1,0 +1,45 @@
+{
+    "accelerated": true,
+    "hotKey": "CommandOrControl+Alt+Shift+G",
+    "escapeExitsFullScreen": true,
+    "unitsMenu": true,
+    "developerFeatures": true,
+    "smartZoom": true,
+    "minZoomLevel": -2,
+    "maxZoomLevel": 4,
+    "window":
+    {
+        "largerDefaultWidth": 1280,
+        "largerDefaultHeight": 800,
+        "defaultWidth": 1080,
+        "defaultHeight": 675,
+        "minWidth": 840,
+        "minHeight": 525,
+        "backgroundColor": "#F5F5F5",
+        "titleTemplate": "{{unit}} | {{app}}",
+        "zoomSuffixTemplate": " ({{zoom}}%)",
+        "deferredShow": true
+    },
+    "shortAppName": "App",
+    "unitsName": "Utilities",
+    "noCategoryName": "Other",
+    "description": "Developer-oriented set of Unicode utilities related to ideographs.",
+    "copyright": "© 2021 Michel Mariani.",
+    "electronApp":
+    {
+        "label": "Unicopedia Sinica | Apps | Electron",
+        "URL": "https://www.electronjs.org/apps/unicopedia-sinica"
+    },
+    "repository":
+    {
+        "label": "Repository",
+        "URL": "https://github.com/tonton-pixel/unicopedia-sinica"
+    },
+    "releases":
+    {
+        "label": "Latest Releases",
+        "URL": "https://github.com/tonton-pixel/unicopedia-sinica/releases"
+    },
+    "defaultFolder": "documents",
+    "confirmQuit": true
+}

@@ -1,0 +1,81 @@
+<section id="cjk-sources-unit">
+    <div class="plain-panel">
+        <div class="actions">
+            <span class="action-group">
+                <span class="action">
+                    <button class="clear-button" type="button">Clear</button>
+                </span>
+                <span class="action">
+                    <button class="pull-down-menu characters-samples" type="button">Samples</button>
+                </span>
+            </span>
+            <span class="action-group">
+                <span class="count-info">Count:&nbsp;<span class="count-number">0</span>&nbsp;/&nbsp;<span class="total-count-number">0</span></span>
+            </span>
+            <span class="action-group">
+                <span class="action">
+                    <button class="load-button" type="button">Load...</button>
+                </span>
+                <span class="action">
+                    <button class="save-button" type="button">Save...</button>
+                </span>
+            </span>
+        </div>
+        <div class="input-group">
+            <input class="characters-input" type="text" maxlength="512" placeholder="Characters...">
+            <input class="code-points-input" type="text" maxlength="4096" placeholder="Code points...">
+        </div>
+        <div class="sheet"></div>
+    </div>
+    <div class="accent-panel">
+        <details class="instructions">
+            <summary>Instructions</summary>
+            <ul>
+                <li>
+                    The <strong>CJK Sources</strong> utility displays in a grid fashion the various sources of a given set of CJK (Chinese/Japanese/Korean) characters, as referenced in their respective <strong>Unicode 14.0</strong> code charts:
+                    <ul>
+                        <li><a href="https://www.unicode.org/charts/PDF/U4E00.pdf" title="https://www.unicode.org/charts/PDF/U4E00.pdf">CJK Unified Ideographs - U4E00.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U3400.pdf" title="https://www.unicode.org/charts/PDF/U3400.pdf">CJK Unified Ideographs Extension A - U3400.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U20000.pdf" title="https://www.unicode.org/charts/PDF/U20000.pdf">CJK Unified Ideographs Extension B - U20000.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U2A700.pdf" title="https://www.unicode.org/charts/PDF/U2A700.pdf">CJK Unified Ideographs Extension C - U2A700.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U2B740.pdf" title="https://www.unicode.org/charts/PDF/U2B740.pdf">CJK Unified Ideographs Extension D - U2B740.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U2B820.pdf" title="https://www.unicode.org/charts/PDF/U2B820.pdf">CJK Unified Ideographs Extension E - U2B820.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U2CEB0.pdf" title="https://www.unicode.org/charts/PDF/U2CEB0.pdf">CJK Unified Ideographs Extension F - U2CEB0.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U30000.pdf" title="https://www.unicode.org/charts/PDF/U30000.pdf">CJK Unified Ideographs Extension G - U30000.pdf</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="https://www.unicode.org/charts/PDF/UF900.pdf" title="https://www.unicode.org/charts/PDF/UF900.pdf">CJK Compatibility Ideographs - UF900.pdf</a></li>
+                        <li><a href="https://www.unicode.org/charts/PDF/U2F800.pdf" title="https://www.unicode.org/charts/PDF/U2F800.pdf">CJK Compatibility Ideographs Supplement - U2F800.pdf</a></li>
+                    </ul>
+                </li>
+                <li>This is especially useful for comparison purposes between related character glyphs.</li>
+                <li>CJK characters can be entered either directly in the "Characters" input field, or using a series of code points in hexadecimal format in the "Code points" input field.</li>
+                <li>It is also possible to input predefined strings of CJK characters selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.</li>
+                <li>As a convenience, the input fields can be emptied using the <kbd>Clear</kbd> button.</li>
+                <li>In output, the standard Unicode code point format <code class="select-all">U+9999</code> is used, i.e. "U+" directly followed by 4 or 5 hex digits.</li>
+                <li>In input, more hexadecimal formats are allowed, including Unicode escape sequences, such as <code class="select-all">\u6E7E</code> or <code class="select-all">\u{21FE7}</code>. Moving out of the field or typing the Enter key converts all valid codes to standard Unicode code point format.</li>
+                <li>Code point and alphanumeric source references of CJK <em>compatibility</em> characters are systematically displayed in <em>italics</em>.</li>
+                <li>Whereas the original code charts are making use of mutually incompatible, block-specific source orderings, this utility displays the relevant sources always sorted in the same order, discarding any empty column for the sake of clarity:
+                    <table class="sources-table">
+                        <tr><th>Prefix</th><th>Source</th><th>Unihan Property</th></tr>
+                        <tr><td>G</td><td>China</td><td>kIRG_GSource</td></tr>
+                        <tr><td>H</td><td>Hong Kong</td><td>kIRG_HSource</td></tr>
+                        <tr><td>M</td><td>Macao</td><td>kIRG_MSource</td></tr>
+                        <tr><td>T</td><td>Taiwan</td><td>kIRG_TSource</td></tr>
+                        <tr><td>J</td><td>Japan</td><td>kIRG_JSource</td></tr>
+                        <tr><td>K</td><td>South Korea</td><td>kIRG_KSource</td></tr>
+                        <tr><td>KP</td><td>North Korea</td><td>kIRG_KPSource</td></tr>
+                        <tr><td>V</td><td>Vietnam</td><td>kIRG_VSource</td></tr>
+                        <tr><td>SAT</td><td>SAT</td><td>kIRG_SSource</td></tr>
+                        <tr><td>UK</td><td>U.K.</td><td>kIRG_UKSource</td></tr>
+                        <tr><td>UTC</td><td>UTC</td><td>kIRG_USource</td></tr>
+                    </table>
+                </li>
+            </ul>
+        </details>
+        <details class="references">
+            <summary>Reference Links</summary>
+            <div class="links"></div>
+        </details>
+    </div>
+</section>
