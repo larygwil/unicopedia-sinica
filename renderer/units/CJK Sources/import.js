@@ -420,7 +420,7 @@ module.exports.start = function (context)
                 {
                     let sourceHeader = document.createElement ('th');
                     sourceHeader.className = 'source';
-                    sourceHeader.textContent = (prefix === "UCS") ? source.source : `${prefix}-Source`;
+                    sourceHeader.textContent = `${prefix}-Source`;
                     sourceHeader.title = source.source;
                     headerRow.appendChild (sourceHeader);
                 }

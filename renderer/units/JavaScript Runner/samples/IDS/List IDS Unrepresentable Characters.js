@@ -1,5 +1,5 @@
 // List IDS Unrepresentable Characters
-const { characters } = require ('./units/CJK Components/parsed-ids-data.js');
+const { characters } = require ('./lib/unicode/parsed-ids-data.js');
 const { characterToCodePoint } = require ('./lib/unicode/unicode.js');
 const { coreSet, core2020Set } = require ('./lib/unicode/parsed-unihan-data.js');
 let unrepresentableCharacters = [ ];

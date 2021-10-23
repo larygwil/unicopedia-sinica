@@ -145,6 +145,10 @@ The following utilities are currently available:
     - [CJK Compatibility Ideographs - UF900.pdf](https://www.unicode.org/charts/PDF/UF900.pdf)
     - [CJK Compatibility Ideographs Supplement - U2F800.pdf](https://www.unicode.org/charts/PDF/U2F800.pdf)
 - This is especially useful for comparison purposes between related character glyphs.
+- For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
+    - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
+    - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
+    <!-- - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`) -->
 - CJK characters can be entered either directly in the "Characters" input field, or using a series of code points in hexadecimal format in the "Code points" input field.
 - It is also possible to input predefined strings of CJK characters selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.</li>
 - As a convenience, the input fields can be emptied using the <kbd>Clear</kbd> button.

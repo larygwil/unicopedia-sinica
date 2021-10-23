@@ -1,12 +1,5 @@
 @charset "utf-8";
 
-@font-face
-{
-    font-family: "BabelStone Han PUA";
-    src: url("ids-fonts/BabelStoneHanPUA.woff2"),
-         url("ids-fonts/BabelStoneHanPUA.woff");
-}
-
 #cjk-components-unit .tab-bar
 {
     display: flex;

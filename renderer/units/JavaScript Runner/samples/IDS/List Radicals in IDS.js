@@ -1,5 +1,5 @@
 // List Radicals in IDS
-const { characters } = require ('./units/CJK Components/parsed-ids-data.js');
+const { characters } = require ('./lib/unicode/parsed-ids-data.js');
 const { characterToCodePoint } = require ('./lib/unicode/unicode.js');
 let radicalList = [ ];
 for (let character in characters)

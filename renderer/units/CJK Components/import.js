@@ -96,9 +96,8 @@ module.exports.start = function (context)
     const unihanData = require ('../../lib/unicode/parsed-unihan-data.js');
     const kangxiRadicals = require ('../../lib/unicode/kangxi-radicals.json');
     const { fromRadical, fromRadicalStrokes } = require ('../../lib/unicode/get-rs-strings.js');
-    //
-    const { characters, unencodedCharacters } = require ('./parsed-ids-data.js');
-    const ids = require ('./ids.js');
+    const { characters, unencodedCharacters } = require ('../../lib/unicode/parsed-ids-data.js');
+    const ids = require ('../../lib/unicode/ids.js');
     //
     const idsRefLinks = require ('./ids-ref-links.json');
     //

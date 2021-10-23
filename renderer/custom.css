@@ -9,6 +9,13 @@
     unicode-range: U+00-7F;
 }
 
+@font-face
+{
+    font-family: "BabelStone Han PUA";
+    src: url("ids-fonts/BabelStoneHanPUA.woff2"),
+         url("ids-fonts/BabelStoneHanPUA.woff");
+}
+
 :root
 {
     --color:           hsl(0, 0%, 22%);
@@ -30,4 +37,9 @@
     --system-ui-family: "Segoe UI", system-ui, sans-serif;
     --sans-serif-family: "Segoe UI", Arial, Geneva, Verdana, Tahoma, "DejaVu Sans", "Liberation Sans", "Noto Sans", Ubuntu, sans-serif;
     --ids-family: "BabelStone Han PUA", "BabelStone Han", "TH-Tshyn-P0", "TH-Tshyn-P1", "TH-Tshyn-P2", "TH-Tshyn-P16", "Hanazono Mincho A", "Hanazono Mincho B", "Hanazono Mincho C", serif;
+}
+
+div.unicode-version
+{
+    display: none;
 }
