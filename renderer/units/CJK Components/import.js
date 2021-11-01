@@ -8,6 +8,7 @@ const tabInfos = unit.querySelectorAll ('.tab-infos .tab-info');
 const lookUpHistoryButton = unit.querySelector ('.look-up-ids .history-button');
 const lookUpUnihanInput = unit.querySelector ('.look-up-ids .unihan-input');
 const lookUpLookUpButton = unit.querySelector ('.look-up-ids .look-up-button');
+const lookUpShowGraphsCheckbox = unit.querySelector ('.look-up-ids .show-graphs-checkbox');
 const lookUpIdsContainer = unit.querySelector ('.look-up-ids .ids-container');
 const lookUpInstructions = unit.querySelector ('.look-up-ids .instructions');
 const lookUpUnencoded = unit.querySelector ('.look-up-ids .unencoded');
@@ -109,6 +110,7 @@ module.exports.start = function (context)
         //
         lookupUnihanHistory: [ ],
         lookupUnihanCharacter: "",
+        lookUpShowGraphsCheckbox: false,
         lookupInstructions: true,
         lookupUnencoded: false,
         lookupReferences: false,
@@ -778,6 +780,8 @@ module.exports.start = function (context)
     //
     currentLookUpUnihanCharacter = prefs.lookupUnihanCharacter;
     updateLookUpUnihanData (currentLookUpUnihanCharacter);
+    //
+    lookUpShowGraphsCheckbox.checked = prefs.lookUpShowGraphsCheckbox;
     //
     lookUpInstructions.open = prefs.lookupInstructions;
     //
@@ -1766,6 +1770,7 @@ module.exports.stop = function (context)
         //
         lookupUnihanHistory: lookUpUnihanHistory,
         lookupUnihanCharacter: currentLookUpUnihanCharacter,
+        lookUpShowGraphsCheckbox: lookUpShowGraphsCheckbox.checked,
         lookupInstructions: lookUpInstructions.open,
         lookupUnencoded: lookUpUnencoded.open,
         lookupReferences: lookUpReferences.open,

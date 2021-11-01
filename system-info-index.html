@@ -49,7 +49,7 @@
     </head>
     <body>
         <textarea class="system-info" rows="36" readonly></textarea>
-        <button class="close-button">Close</button>
+        <button class="close-button" type="button">Close</button>
         <script>
             document.body.querySelector ('.close-button').addEventListener ('click', (event) => { event.preventDefault (); window.close (); });
             window.addEventListener ('keydown', (event) => { if (event.key === 'Escape') { event.preventDefault (); window.close (); } });

@@ -1,12 +1,62 @@
 [
     [
         {
+            "name": "Han unification - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Han_unification"
+        }
+    ],
+    [
+        {
+            "name": "The Unicode Standard, Version 14.0 - Chapter 18: East Asia - ch18.pdf",
+            "href": "https://www.unicode.org/versions/Unicode14.0.0/ch18.pdf"
+        },
+        {
             "name": "The Unicode Standard, Version 14.0 - About the Code Charts - ch24.pdf",
             "href": "https://www.unicode.org/versions/Unicode14.0.0/ch24.pdf#G3563"
         },
         {
+            "name": "The Unicode Standard, Version 14.0 - Han Unification History - appE.pdf",
+            "href": "https://www.unicode.org/versions/Unicode14.0.0/appE.pdf"
+        }
+    ],
+    [
+        {
             "name": "Unicode 14.0 Versioned Charts Index",
             "href": "https://www.unicode.org/charts/PDF/Unicode-14.0/"
+        }
+    ],
+    [
+        {
+            "name": "CJK Unified Ideographs (Diff) - U140-4E00.pdf",
+            "href": "https://www.unicode.org/charts/PDF/Unicode-14.0/U140-4E00.pdf"
+        },
+        {
+            "name": "CJK Unified Ideographs Extension A (Diff) - U140-3400.pdf",
+            "href": "https://www.unicode.org/charts/PDF/Unicode-14.0/U140-3400.pdf"
+        },
+        {
+            "name": "CJK Unified Ideographs Extension B (Diff) - U140-20000.pdf",
+            "href": "https://www.unicode.org/charts/PDF/Unicode-14.0/U140-20000.pdf"
+        },
+        {
+            "name": "CJK Unified Ideographs Extension C (Diff) - U140-2A700.pdf",
+            "href": "https://www.unicode.org/charts/PDF/Unicode-14.0/U140-2A700.pdf"
+        }
+    ],
+    [
+        {
+            "name": "UAX #38: Unicode Han Database (Unihan)",
+            "href": "https://www.unicode.org/reports/tr38/"
+        }
+    ],
+    [
+        {
+            "name": "The SAT Daizōkyō Text Database",
+            "href": "https://21dzk.l.u-tokyo.ac.jp/SAT/index_en.html"
+        },
+        {
+            "name": "GitHub - unicode-org/uk-source-ideographs: UK-Source Ideographs",
+            "href": "https://github.com/unicode-org/uk-source-ideographs"
         }
     ],
     [

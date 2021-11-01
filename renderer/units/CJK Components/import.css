@@ -63,7 +63,21 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     margin: 1em 0 -0.5em 0;
+}
+
+#cjk-components-unit .look-up-ids .interface .action-group + .action-group
+{
+    margin-left: 0.75em;
+}
+
+#cjk-components-unit .look-up-ids .interface .action-group
+{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 #cjk-components-unit .look-up-ids .history-button
@@ -84,6 +98,11 @@
     height: 21px;
     vertical-align: text-bottom;
     margin-right: -0.25em;
+}
+
+#cjk-components-unit .look-up-ids .checkbox
+{
+    display: none;
 }
 
 #cjk-components-unit .look-up-ids .unihan-input

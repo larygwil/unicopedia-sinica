@@ -13,6 +13,8 @@ const saveButton = unit.querySelector ('.save-button');
 const charactersInput = unit.querySelector ('.characters-input');
 const codePointsInput = unit.querySelector ('.code-points-input');
 const sheet = unit.querySelector ('.sheet');
+const statistics = unit.querySelector ('.statistics');
+const statisticsTable = unit.querySelector ('.statistics-table');
 const references = unit.querySelector ('.references');
 const links = unit.querySelector ('.links');
 //
@@ -44,6 +46,7 @@ module.exports.start = function (context)
     {
         charactersInput: "",
         instructions: true,
+        statistics: false,
         references: false,
         defaultFolderPath: context.defaultFolderPath
     };
@@ -108,7 +111,7 @@ module.exports.start = function (context)
     const compatibilityBlockNames =
     {
         "CJK Compatibility": "UF900",
-        "CJK Compatibility Supplement": "U2F800"
+        "CJK Compat. Supplement": "U2F800"
     };
     //
     let compatibilityRangeSamples = [ ];
@@ -167,6 +170,10 @@ module.exports.start = function (context)
                     let maxLength = charactersInput.maxLength;
                     if (text.length > maxLength)
                     {
+                        if (/[\uD800-\uDBFF]/.test (text[maxLength - 1]))   // Unpaired high surrogate
+                        {
+                            maxLength = maxLength - 1;
+                        }
                         text = text.substring (0, maxLength);
                     }
                     charactersInput.value = text;
@@ -213,7 +220,7 @@ module.exports.start = function (context)
         "U+2CEB0..U+2EBEF": "CJK Unified Extension F",
         "U+30000..U+3134F": "CJK Unified Extension G",
         "U+F900..U+FAFF": "CJK Compatibility",
-        "U+2F800..U+2FA1F": "CJK Compatibility Supplement"
+        "U+2F800..U+2FA1F": "CJK Compat. Supplement"
     };
     //
     function getTooltip (character)
@@ -489,7 +496,7 @@ module.exports.start = function (context)
                         {
                             let { block, range, page } = getBlockRange (character);
                             let id = `${character}_${toDesignation (sourceReference)}`;
-                            let svgFilePath = path.join (userDataPath, 'svg-glyphs-14.0', `${block}/${range}.svg`);
+                            let svgFilePath = path.join (userDataPath, 'svg-glyphs-14.0', block, `${range}.svg`);
                             if (fs.existsSync (svgFilePath))
                             {
                                 const xmlns = "http://www.w3.org/2000/svg";
@@ -499,6 +506,7 @@ module.exports.start = function (context)
                                 use.setAttributeNS (null, 'href', svgFilePath + `#${id}`);
                                 svg.appendChild (use);
                                 glyph.appendChild (svg);
+                                glyph.title = `${block}.pdf\n#page=${page}`;
                             }
                             else
                             {
@@ -620,6 +628,47 @@ module.exports.start = function (context)
    //
     instructions.open = prefs.instructions;
     //
+    statistics.open = prefs.statistics;
+    //
+    let statisticsHeader = [ "Block Name", ...Object.keys (sources).map ((prefix) => `${prefix}-Source`) ];
+    let statisticsData = [ ];
+    for (let range in simpleBlockNames)
+    {
+        let counts = [ ];
+        let bounds = range.split ("..");
+        let first = parseInt (bounds[0].substring (1), 16);
+        let last = parseInt (bounds[1].substring (1), 16);
+        for (let prefix in sources)
+        {
+            let count = 0;
+            let property = sources[prefix].property;
+            for (let value = first; value <= last; value++)
+            {
+                let character = String.fromCodePoint (value);
+                let codePoint = unicode.characterToCodePoint (character);
+                if (codePoints[codePoint] && (property in codePoints[codePoint]))
+                {
+                    if (property === "kIRG_KPSource")
+                    {
+                        // KP Glyphs only available in Compat., Ext. C, Compat. Sup.
+                        if (/[\u{F900}-\u{FAFF}\u{2A700}-\u{2B73F}\u{2F800}-\u{2FA1F}]/u.test (character))
+                        {
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        count++;
+                    }
+                }
+            }
+            counts.push (count);
+        }
+        statisticsData.push ([ simpleBlockNames[range], ...counts ]);
+    }
+    let glyphsStatisticsTable = require ('./glyphs-statistics-table.js');
+    statisticsTable.appendChild (glyphsStatisticsTable.create (statisticsHeader, statisticsData));
+    //
     references.open = prefs.references;
     //
     linksList (links, refLinks);
@@ -631,6 +680,7 @@ module.exports.stop = function (context)
     {
         charactersInput: charactersInput.value,
         instructions: instructions.open,
+        statistics: statistics.open,
         references: references.open,
         defaultFolderPath: defaultFolderPath
     };

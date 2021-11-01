@@ -167,8 +167,8 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
     <tr><td>V</td><td>Vietnam</td><td>kIRG_VSource</td></tr>
     <tr><td>SAT</td><td>SAT</td><td>kIRG_SSource</td></tr>
     <tr><td>UK</td><td>U.K.</td><td>kIRG_UKSource</td></tr>
-    <tr><td>UTC</td><td>UTC</td><td>kIRG_USource</td></tr>
-</table>
+    <tr><td>UTC</td><td>UTC</td><td>kIRG_USource</td></tr></table>
+- A table of glyphs statistics is available for quick reference.
 
 <img src="screenshots/cjk-sources.png" width="1080px" alt="CJK Sources screenshot">
 

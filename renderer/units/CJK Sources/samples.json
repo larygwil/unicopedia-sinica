@@ -68,28 +68,40 @@
                 "string": "兎兔兔"
             },
             {
+                "label": "True",
+                "string": "真眞真真"
+            },
+            {
                 "label": "Turtle",
                 "string": "龟亀龜龜龜龜"
             },
             null,
             {
                 "label": "Misc. 1",
-                "string": "㲋𭯍𣬋"
+                "string": "言訁語"
             },
             {
                 "label": "Misc. 2",
-                "string": "鬼卑䰦"
+                "string": "㲋𭯍𣬋"
             },
             {
                 "label": "Misc. 3",
-                "string": "醜𨢄𥠎𥞷"
+                "string": "鬼卑䰦"
             },
             {
                 "label": "Misc. 4",
-                "string": "事亊𠄙争爭箏𥬁𤔇"
+                "string": "醜𨢄𥠎𥞷"
             },
             {
                 "label": "Misc. 5",
+                "string": "𠥓𠥧𠥩𠥪𠥫𠥬"
+            },
+            {
+                "label": "Misc. 6",
+                "string": "事亊𠄙争爭箏𥬁𤔇"
+            },
+            {
+                "label": "Misc. 7",
                 "string": "𪮫𪯩𫃜𫃯𫃵𫊛𫊫𫋾"
             }
         ]

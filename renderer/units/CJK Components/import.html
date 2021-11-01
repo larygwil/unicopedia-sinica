@@ -13,9 +13,14 @@
         <div class="tab-panes">
             <div class="tab-pane look-up-ids">
                 <div class="interface">
-                    <button class="pull-down-menu history-button" type="button" title="Lookup History"><svg class="history"><use href="/images/actions.svg#history"></use></svg></button>
-                    <input class="unihan-input" type="search" maxlength="64" title="Unihan character or code point" placeholder="Unihan...">
-                    <button class="look-up-button" type="button">Look Up</button>
+                    <span class="action-group">
+                        <button class="pull-down-menu history-button" type="button" title="Lookup History"><svg class="history"><use href="/images/actions.svg#history"></use></svg></button>
+                        <input class="unihan-input" type="search" maxlength="64" title="Unihan character or code point" placeholder="Unihan...">
+                        <button class="look-up-button" type="button">Look Up</button>
+                    </span>
+                    <span class="action-group">
+                        <label class="checkbox"><input class="show-graphs-checkbox" type="checkbox">&nbsp;Show Graphs</label>
+                    </span>
                 </div>
                 <div class="ids-container"></div>
             </div>

@@ -293,6 +293,67 @@
     background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
 }
 
+#cjk-sources-unit .statistics-table
+{
+    margin-top: 0.25em;
+    margin-bottom: 1.5em;
+    width: unset;
+    user-select: text;
+    cursor: text;
+    font-size: 12.5px;
+}
+
+#cjk-sources-unit .statistics-table tr:nth-child(even)
+{
+    background-color: white;
+}
+
+#cjk-sources-unit .statistics-table tr:nth-child(odd)
+{
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
+}
+
+#cjk-sources-unit .statistics-table th,
+#cjk-sources-unit .statistics-table td
+{
+    vertical-align: middle;
+    padding: 0.25em;
+}
+
+#cjk-sources-unit .statistics-table th
+{
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
+}
+
+#cjk-sources-unit .statistics-table th.block-header,
+#cjk-sources-unit .statistics-table td.block-data,
+#cjk-sources-unit .statistics-table td.total-label
+{
+    text-align: left;
+    padding: 0.25em 0.5em;
+    width: 0;
+}
+
+#cjk-sources-unit .statistics-table th.count-header
+{
+    text-align: center;
+    padding: 0.5em 0.25em;
+}
+
+#cjk-sources-unit .statistics-table td.count-data,
+#cjk-sources-unit .statistics-table td.total-data
+{
+    text-align: right;
+    padding: 0.5em;
+    font-family: var(--monospace-family);
+}
+
+#cjk-sources-unit .statistics-table td.total-label,
+#cjk-sources-unit .statistics-table td.total-data
+{
+    font-weight: bold;
+}
+
 #cjk-sources-unit summary
 {
     font-weight: bold;
