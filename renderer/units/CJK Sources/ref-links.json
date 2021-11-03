@@ -61,6 +61,20 @@
     ],
     [
         {
+            "name": "BabelStone Blog : Vanished in the Twinkling of an Eye",
+            "href": "https://www.babelstone.co.uk/Blog/2007/01/lost-in-blink-of-eye.html"
+        },
+        {
+            "name": "BabelStone Blog : A Brief History of CJK-C",
+            "href": "https://www.babelstone.co.uk/Blog/2007/06/brief-history-of-cjk-c.html"
+        },
+        {
+            "name": "BabelStone Blog : CJK-B Case Study #1 : U+272F0",
+            "href": "https://www.babelstone.co.uk/Blog/2007/12/cjk-b-case-study-1-u272f0.html"
+        }
+    ],
+    [
+        {
             "name": "zi.tools",
             "href": "https://zi.tools/"
         }

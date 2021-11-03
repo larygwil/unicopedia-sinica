@@ -311,6 +311,13 @@ module.exports.start = function (context)
             designation: "V",
             modifier: "🄥"
         },
+        "UTC":
+        {
+            property: "kIRG_USource",
+            source: "UTC",
+            designation: "U",
+            modifier: "🄤"
+        },
         "SAT":
         {
             property: "kIRG_SSource",
@@ -324,13 +331,6 @@ module.exports.start = function (context)
             source: "U.K.",
             designation: "B",
             modifier: "🄑"
-        },
-        "UTC":
-        {
-            property: "kIRG_USource",
-            source: "UTC",
-            designation: "U",
-            modifier: "🄤"
         }
     };
     //

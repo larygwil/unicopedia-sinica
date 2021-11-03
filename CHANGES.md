@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.2.1
+
+- Reordered `UTC-Source` in the **CJK Sources** utility.
+- Updated samples.
+- Updated reference links.
+
 ## 1.2.0
 
 - Added Glyphs Statistics table to the **CJK Sources** utility.

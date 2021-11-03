@@ -144,7 +144,7 @@ The following utilities are currently available:
     - [CJK Unified Ideographs Extension G - U30000.pdf](https://www.unicode.org/charts/PDF/U30000.pdf)
     - [CJK Compatibility Ideographs - UF900.pdf](https://www.unicode.org/charts/PDF/UF900.pdf)
     - [CJK Compatibility Ideographs Supplement - U2F800.pdf](https://www.unicode.org/charts/PDF/U2F800.pdf)
-- This is especially useful for comparison purposes between related character glyphs.
+- This is especially useful for comparison purposes between relatable character glyphs.
 - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
     - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
     - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
@@ -165,9 +165,9 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
     <tr><td>K</td><td>South Korea</td><td>kIRG_KSource</td></tr>
     <tr><td>KP</td><td>North Korea</td><td>kIRG_KPSource</td></tr>
     <tr><td>V</td><td>Vietnam</td><td>kIRG_VSource</td></tr>
+    <tr><td>UTC</td><td>UTC</td><td>kIRG_USource</td></tr></table>
     <tr><td>SAT</td><td>SAT</td><td>kIRG_SSource</td></tr>
     <tr><td>UK</td><td>U.K.</td><td>kIRG_UKSource</td></tr>
-    <tr><td>UTC</td><td>UTC</td><td>kIRG_USource</td></tr></table>
 - A table of glyphs statistics is available for quick reference.
 
 <img src="screenshots/cjk-sources.png" width="1080px" alt="CJK Sources screenshot">
