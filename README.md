@@ -155,19 +155,20 @@ The following utilities are currently available:
 In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" directly followed by 4 or 5 hex digits.
 - In input, more hexadecimal formats are allowed, including Unicode escape sequences, such as `\u6E7E` or `\u{21FE7}`. Moving out of the field or typing the Enter key converts all valid codes to standard Unicode code point format.
 - Code point and alphanumeric source references of CJK *compatibility* characters are systematically displayed in *italics*.</li>
-- Whereas the original code charts are making use of mutually incompatible, block-specific source orderings, this utility displays the relevant sources always sorted in the same order, discarding any empty column for the sake of clarity: <table>
-    <tr><th>Prefix</th><th>Source</th><th>Unihan Property</th></tr>
-    <tr><td>G</td><td>China</td><td>kIRG_GSource</td></tr>
-    <tr><td>H</td><td>Hong Kong</td><td>kIRG_HSource</td></tr>
-    <tr><td>M</td><td>Macao</td><td>kIRG_MSource</td></tr>
-    <tr><td>T</td><td>Taiwan</td><td>kIRG_TSource</td></tr>
-    <tr><td>J</td><td>Japan</td><td>kIRG_JSource</td></tr>
-    <tr><td>K</td><td>South Korea</td><td>kIRG_KSource</td></tr>
-    <tr><td>KP</td><td>North Korea</td><td>kIRG_KPSource</td></tr>
-    <tr><td>V</td><td>Vietnam</td><td>kIRG_VSource</td></tr>
-    <tr><td>UTC</td><td>UTC</td><td>kIRG_USource</td></tr>
-    <tr><td>SAT</td><td>SAT</td><td>kIRG_SSource</td></tr>
-    <tr><td>UK</td><td>U.K.</td><td>kIRG_UKSource</td></tr></table>
+- Whereas the original code charts are making use of mutually incompatible, block-specific source orderings, this utility displays the relevant sources always sorted in the same order, discarding any empty column for the sake of clarity:
+    | Prefix | Source      | Unihan Property |
+    | ------ | ----------- | --------------- |
+    | G      | China       | kIRG_GSource    |
+    | H      | Hong Kong   | kIRG_HSource    |
+    | M      | Macao       | kIRG_MSource    |
+    | T      | Taiwan      | kIRG_TSource    |
+    | J      | Japan       | kIRG_JSource    |
+    | K      | South Korea | kIRG_KSource    |
+    | KP     | North Korea | kIRG_KPSource   |
+    | V      | Vietnam     | kIRG_VSource    |
+    | UTC    | UTC         | kIRG_USource    |
+    | SAT    | SAT         | kIRG_SSource    |
+    | UK     | U.K.        | kIRG_UKSource   |
 - A table of glyphs statistics is available for quick reference.
 
 <img src="screenshots/cjk-sources.png" width="1080px" alt="CJK Sources screenshot">
