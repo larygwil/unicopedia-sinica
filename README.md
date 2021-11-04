@@ -156,7 +156,6 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
 - In input, more hexadecimal formats are allowed, including Unicode escape sequences, such as `\u6E7E` or `\u{21FE7}`. Moving out of the field or typing the Enter key converts all valid codes to standard Unicode code point format.
 - Code point and alphanumeric source references of CJK *compatibility* characters are systematically displayed in *italics*.</li>
 - Whereas the original code charts are making use of mutually incompatible, block-specific source orderings, this utility displays the relevant sources always sorted in the same order, discarding any empty column for the sake of clarity:
-
     | Prefix | Source      | Unihan Property |
     | ------ | ----------- | --------------- |
     | G      | China       | kIRG_GSource    |
