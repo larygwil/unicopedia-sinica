@@ -175,7 +175,7 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
 
 ## JavaScript Runner
 
-- The **JavaScript Runner** utility lets you execute JavaScript code, and comes with several sample scripts related to IDS; it is useful for quick testing/prototyping or data processing.
+- The **JavaScript Runner** utility lets you execute JavaScript code, and comes with several sample scripts related to CJK and IDS; it is useful for quick testing/prototyping or data processing.
 
 <img src="screenshots/javascript-runner.png" width="1080px" alt="JavaScript Runner screenshot">
 

@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.3.0
+
+- Added CJK sample script to the **JavaScript Runner** utility.
+- Added new built-in function `$.getpath ()` to the **JavaScript Runner** utility.
+
 ## 1.2.1
 
 - Reordered `UTC-Source` in the **CJK Sources** utility.

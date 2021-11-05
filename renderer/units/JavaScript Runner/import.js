@@ -246,6 +246,8 @@ module.exports.start = function (context)
                             {
                                 clear: () => { outputString.value = ""; },
                                 //
+                                getpath: app.getPath,
+                                //
                                 write: (...args) => { outputString.value += args.join (" "); },
                                 //
                                 writeln: (...args) => { outputString.value += args.join (" ") + "\n"; },
