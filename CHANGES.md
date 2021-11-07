@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.4.0
+
+- Added a `Show Graphs` checkbox to the **Look Up IDS** feature of the **CJK Components** utility.
+
 ## 1.3.0
 
 - Added CJK sample script to the **JavaScript Runner** utility.

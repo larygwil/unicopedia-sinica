@@ -100,11 +100,6 @@
     margin-right: -0.25em;
 }
 
-#cjk-components-unit .look-up-ids .checkbox
-{
-    display: none;
-}
-
 #cjk-components-unit .look-up-ids .unihan-input
 {
     font-family: var(--sans-serif-family);
@@ -175,8 +170,26 @@
 #cjk-components-unit .look-up-ids .ids-container .source-gap,
 #cjk-components-unit .look-up-ids .ids-container .source-data
 {
+    /* text-align: left; */
     border: none;
     background: none;
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph
+{
+    table-layout: fixed;
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph .source-label
+{
+    width: 64px;
+    min-width: 64px;
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph .source-gap
+{
+    width: 12px;
+    min-width: 12px;
 }
 
 #cjk-components-unit .look-up-ids .ids-container .source-data
@@ -253,6 +266,34 @@
     height: 6px;
     border: none;
     background: none;
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph-row
+{
+    line-height: 0;
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph-data
+{
+    border: 2px solid var(--color-border);
+    background-color: white;
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph-data .graph-container
+{
+    text-align: left;
+    padding: 8px;
+    overflow-x: auto;
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph-data .graph-container svg
+{
+    /* max-width: 100%; */
+}
+
+#cjk-components-unit .look-up-ids .ids-container .graph-data .graph-container svg g a
+{
+    cursor: default;
 }
 
 #cjk-components-unit .parse-ids .actions
@@ -352,7 +393,7 @@
     font-family: inherit;
     font-size: 1.2em;
     padding: 0.5em 0 0.25em 0;
-    min-height: calc(12 * 1.2em);
+    min-height: calc(6 * 1.2em);
     background-color: white;
     border: 1px solid var(--color-border);
     overflow-x: scroll;

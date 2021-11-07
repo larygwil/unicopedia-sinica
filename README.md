@@ -25,6 +25,7 @@ The following utilities are currently available:
 - The **Look Up IDS** feature of the **CJK Components** utility displays all the IDS (Ideographic Description Sequences) of a given Unihan character, as compiled in the freely available [IDS.TXT](https://babelstone.co.uk/CJK/IDS.TXT) data file, maintained by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
 - Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display the IDS.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
+- Click on the <kbd>Show Graphs</kbd> checkbox to display the IDS as graphs instead of text strings.
 - IDS are provided for the set of 92,865 Unihan characters (excluding CJK *compatibility* ideographs) defined in **Unicode 14.0**.
 - Notes:
     - Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
@@ -43,6 +44,8 @@ The following utilities are currently available:
         - [CJK Unified Ideographs Extension G - U30000.pdf](https://www.unicode.org/charts/PDF/U30000.pdf)
 
 <img src="screenshots/cjk-components-lookup-ids.png" width="1080px" alt="CJK Components - Look Up IDS screenshot">
+
+<img src="screenshots/cjk-components-lookup-ids-show-graphs.png" width="1080px" alt="CJK Components - Look Up IDS - Show Graphs screenshot">
 
 ### Parse IDS
 

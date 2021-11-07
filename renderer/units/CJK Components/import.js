@@ -462,15 +462,199 @@ module.exports.start = function (context)
         "Z": "(Unifiable)"
     };
     //
-    function createIDSTable (unihanCharacter, IDSCharacters, IDSSource)
+    // https://github.com/mdaines/viz.js/wiki/Usage
+    // https://github.com/mdaines/viz.js/wiki/Caveats
+    //
+    const Viz = require ('viz.js');
+    const { Module, render } = require ('viz.js/full.render.js');
+    //
+    let viz = new Viz ({ Module, render });
+    //
+    const dotTemplate = fs.readFileSync (path.join (__dirname, 'template.dot'), { encoding: 'utf8' });
+    //
+    function getFontFamily (fontFamily)
+    {
+        return getComputedStyle (document.body).getPropertyValue (fontFamily).replaceAll ("\"", "").trim ();
+    }
+    function getFontFamilyString (fontFamily)
+    {
+        return JSON.stringify (getFontFamily (fontFamily));
+    }
+    const idsFamilyString = getFontFamilyString ('--ids-family');
+    //
+    function postProcessSVG (svg)
+    {
+        let doc = parser.parseFromString (svg, 'text/xml');
+        // Fix incorrect centering of text in ellipses (circles)
+        let ellipses = doc.documentElement.querySelectorAll ('.node ellipse');
+        for (let ellipse of ellipses)
+        {
+            let cx = ellipse.getAttribute ('cx');
+            let texts = ellipse.parentNode.querySelectorAll ('text');
+            for (let text of texts)
+            {
+                let textAnchor = text.getAttribute ('text-anchor');
+                if (textAnchor !== "middle")
+                {
+                    text.setAttribute ('text-anchor', "middle");
+                    text.setAttribute ('x', cx);
+                }
+            }
+            if (texts.length === 1)
+            {
+                let text = texts[0];
+                let y = parseFloat (text.getAttribute ('y'));
+                text.setAttribute ('y', y + 2); // Empirical adjustment
+            }
+        }
+        // Fix incorrect centering of text in polygons (squares)
+        let polygons = doc.documentElement.querySelectorAll ('.node polygon');
+        for (let polygon of polygons)
+        {
+            let texts = polygon.parentNode.querySelectorAll ('text');
+            if (texts.length === 1)
+            {
+                let text = texts[0];
+                let y = parseFloat (text.getAttribute ('y'));
+                text.setAttribute ('y', y + 2); // Empirical adjustment
+           }
+        }
+        // Remove unwanted tooltips
+        let tooltips = doc.documentElement.querySelectorAll ('.edge title, .node title');
+        for (let tooltip of tooltips)
+        {
+            let lineBreak = tooltip.nextSibling;
+            if (lineBreak && (lineBreak.nodeType === 3) && (lineBreak.nodeValue.match (/\r?\n/)))
+            {
+                lineBreak.remove ();
+            }
+            tooltip.remove ();
+        }
+        return serializer.serializeToString (doc);
+    }
+    //
+    let parser = new DOMParser ();
+    let serializer = new XMLSerializer ();
+    //
+    function treeToGraphData (entry, tree, excessCharacters, displayMode)
+    {
+        let defaultFontColor = '#000000';
+        let dummy = document.createElement ('span');
+        dummy.style.setProperty ('color', getComputedStyle(document.body).getPropertyValue ('--color-accent'));
+        let rgbColor = dummy.style.getPropertyValue ('color');
+        dummy.remove ();
+        let unencodedFontColor = '#' + rgbColor.match (/\b\d+\b/gui).map (component => parseInt (component).toString (16).padStart (2, "0")).join ('');
+        // console.log (require ('../../lib/json2.js').stringify (tree, null, 4));
+        let data = "";
+        let nodeIndex = 0;
+        if (entry)
+        {
+            data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.6, fillcolor = "#F7F7F7", style = "filled, bold", tooltip = ${JSON.stringify (getTooltip (entry))} ]\n`;
+        }
+        else
+        {
+            nodeIndex++;
+        }
+        if (excessCharacters && (displayMode === 'LR'))
+        {
+            data += `    subgraph\n`;
+            data += `    {\n`;
+            let excessNodes = [ ];
+            excessNodes.push (`n${nodeIndex + excessCharacters.length}`);
+            data += `        n${nodeIndex + excessCharacters.length} -> n${nodeIndex} [ style = "invis" ]\n`;
+            for (let index = nodeIndex; index <= excessCharacters.length ; index++)
+            {
+                excessNodes.push (`n${index}`);
+            }
+            data += `        { rank = same; ${excessNodes.join ('; ')} }\n`;
+            for (let excessCharacter of excessCharacters)
+            {
+                let currentNodeIndex = nodeIndex;
+                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
+                if (nodeIndex <= excessCharacters.length)
+                {
+                    data += `        n${currentNodeIndex} -> n${nodeIndex} [ style = "invis" ]\n`;
+                }
+            }
+            data += `    }\n`;
+        }
+        function walkTree (tree)
+        {
+            if ((typeof tree === 'string') && (Array.from (tree).length === 1))
+            {
+                if (ids.isValidOperand (tree))
+                {
+                    let fontColor = (tree in unencodedCharacters) ? unencodedFontColor : defaultFontColor;
+                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, fillcolor = "#F7F7F7", fontcolor = "${fontColor}", tooltip = ${JSON.stringify (getTooltip (tree))} ]\n`;
+                }
+                else
+                {
+                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, color = "#CC0000", fontcolor = "#CC0000", style = dashed, tooltip = ${JSON.stringify (getTooltip (tree, true))} ]\n`;
+                }
+            }
+            else if (typeof tree === 'object')
+            {
+                if (tree === null)
+                {
+                    data += `    n${nodeIndex++} [ style = invis ]\n`;
+                }
+                else
+                {
+                    if ('operator' in tree)
+                    {
+                        let currentNodeIndex = nodeIndex;
+                        data += `    n${nodeIndex++} [ label = "${tree.operator}", tooltip = ${JSON.stringify (getTooltip (tree.operator))} ]\n`;
+                        for (let index = 0; index < tree.operands.length; index++)
+                        {
+                            if (tree.operands[index])
+                            {
+                                data += `    n${currentNodeIndex} -> n${nodeIndex}\n`;
+                            }
+                            else
+                            {
+                                data += `    n${currentNodeIndex} -> n${nodeIndex} [ color = "#CC0000" ]\n`;
+                            }
+                            walkTree (tree.operands[index]);
+                        }
+                    }
+                }
+            }
+        }
+        if (entry)
+        {
+            data += `    n${0} -> n${nodeIndex} [ arrowhead = none, style = "dashed" ]\n`;
+        }
+        walkTree (tree);
+        if (excessCharacters && (displayMode === 'TB'))
+        {
+            data += `    subgraph\n`;
+            data += `    {\n`;
+            let excessNodes = [ ];
+            excessNodes.push (`n${1}`);
+            for (let excessCharacter of excessCharacters)
+            {
+                excessNodes.push (`n${nodeIndex}`);
+                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
+            }
+            data += `        { rank = same; ${excessNodes.join ('; ')} }\n`;
+            data += `    }\n`;
+        }
+        return data;
+    }
+    //
+    function createIDSTable (unihanCharacter, IDSCharacters, IDSSource, showGraph, asList)
     {
         let table = document.createElement ('table');
         table.className = 'wrapper';
+        if (showGraph)
+        {
+            table.classList.add ('graph');
+        }
         let sourceRow = document.createElement ('tr');
         sourceRow.className = 'source-row';
         let sourceLabel = document.createElement ('td');
         sourceLabel.className = 'source-label';
-        sourceLabel.textContent = "Source:";
+        sourceLabel.textContent = (asList) ? "●\xA0Source:" : "Source:";
         sourceRow.appendChild (sourceLabel);
         let sourceGap = document.createElement ('td');
         sourceGap.className = 'source-gap';
@@ -515,54 +699,92 @@ module.exports.start = function (context)
         let rowGap = document.createElement ('tr');
         rowGap.className = 'row-gap';
         table.appendChild (rowGap);
-        let characters = document.createElement ('tr');
-        characters.className = 'characters';
-        let character = document.createElement ('td');
-        character.className = 'character';
-        character.title = getTooltip (unihanCharacter);
-        character.textContent = unihanCharacter;
-        characters.appendChild (character);
-        let characterGap = document.createElement ('td');
-        characterGap.className = 'gap';
-        characters.appendChild (characterGap);
-        let idsCharacters = document.createElement ('td');
-        idsCharacters.className = 'ids-characters';
-        if (IDSCharacters)
+        if (!showGraph)
         {
-            for (let IDScharacter of IDSCharacters)
+            let characters = document.createElement ('tr');
+            characters.className = 'characters';
+            let character = document.createElement ('td');
+            character.className = 'character';
+            character.title = getTooltip (unihanCharacter);
+            character.textContent = unihanCharacter;
+            characters.appendChild (character);
+            let characterGap = document.createElement ('td');
+            characterGap.className = 'gap';
+            characters.appendChild (characterGap);
+            let idsCharacters = document.createElement ('td');
+            idsCharacters.className = 'ids-characters';
+            if (IDSCharacters)
             {
-                let symbol = document.createElement ('span');
-                symbol.className = 'symbol';
-                if (IDScharacter in unencodedCharacters)
+                for (let IDScharacter of IDSCharacters)
                 {
-                    symbol.classList.add ('unencoded');
+                    let symbol = document.createElement ('span');
+                    symbol.className = 'symbol';
+                    if (IDScharacter in unencodedCharacters)
+                    {
+                        symbol.classList.add ('unencoded');
+                    }
+                    symbol.title = getTooltip (IDScharacter);
+                    symbol.textContent = IDScharacter;
+                    idsCharacters.appendChild (symbol);
                 }
-                symbol.title = getTooltip (IDScharacter);
-                symbol.textContent = IDScharacter;
-                idsCharacters.appendChild (symbol);
             }
+            characters.appendChild (idsCharacters);
+            table.appendChild (characters);
+            table.appendChild (rowGap.cloneNode ());
+            let codePoints = document.createElement ('tr');
+            codePoints.className = 'code-points';
+            let codePoint = document.createElement ('td');
+            codePoint.className = 'code-point';
+            codePoint.title = getCodePointTooltip (unihanCharacter);
+            codePoint.textContent = unicode.characterToCodePoint (unihanCharacter);
+            codePoints.appendChild (codePoint);
+            codepointGap = document.createElement ('td');
+            codepointGap.className = 'gap';
+            codePoints.appendChild (codepointGap);
+            let idsCodePoints = document.createElement ('td');
+            idsCodePoints.className = 'ids-code-points';
+            if (IDSCharacters)
+            {
+                idsCodePoints.textContent = unicode.charactersToCodePoints (IDSCharacters);
+            }
+            codePoints.appendChild (idsCodePoints);
+            table.appendChild (codePoints);
         }
-        characters.appendChild (idsCharacters);
-        table.appendChild (characters);
-        table.appendChild (rowGap.cloneNode ());
-        let codePoints = document.createElement ('tr');
-        codePoints.className = 'code-points';
-        let codePoint = document.createElement ('td');
-        codePoint.className = 'code-point';
-        codePoint.title = getCodePointTooltip (unihanCharacter);
-        codePoint.textContent = unicode.characterToCodePoint (unihanCharacter);
-        codePoints.appendChild (codePoint);
-        codepointGap = document.createElement ('td');
-        codepointGap.className = 'gap';
-        codePoints.appendChild (codepointGap);
-        let idsCodePoints = document.createElement ('td');
-        idsCodePoints.className = 'ids-code-points';
-        if (IDSCharacters)
+        else
         {
-            idsCodePoints.textContent = unicode.charactersToCodePoints (IDSCharacters);
+            let graphRow = document.createElement ('tr');
+            graphRow.className = 'graph-row';
+            let graphData = document.createElement ('td');
+            graphData.className = 'graph-data';
+            graphData.colSpan = 3;
+            let graphContainer = document.createElement ('div');
+            graphContainer.className = 'graph-container';
+            let data = treeToGraphData (unihanCharacter, ids.getTree (IDSCharacters), null, 'LR');
+            let dotString =
+                dotTemplate
+                .replace ('{{rankdir}}', 'LR')
+                .replace ('{{fontname}}', idsFamilyString)
+                .replace ('{{data}}', data);
+            // console.log (dotString);
+            try
+            {
+                viz.renderString (dotString, { engine: 'dot', format: 'svg' })
+                .then
+                (
+                    result =>
+                    {
+                        svgResult = postProcessSVG (result);
+                        graphContainer.innerHTML = svgResult;
+                    }
+                );
+            }
+            catch (e)
+            {
+            }
+            graphData.appendChild (graphContainer);
+            graphRow.appendChild (graphData);
+            table.appendChild (graphRow);
         }
-        codePoints.appendChild (idsCodePoints);
-        table.appendChild (codePoints);
         return table;
     }
     //
@@ -595,7 +817,7 @@ module.exports.start = function (context)
             {
                 for (let sequence of data.sequences)
                 {
-                    lookUpIdsContainer.appendChild (createIDSTable (unihanCharacter, sequence.ids, sequence.source));
+                    lookUpIdsContainer.appendChild (createIDSTable (unihanCharacter, sequence.ids, sequence.source, lookUpShowGraphsCheckbox.checked, data.sequences.length > 1));
                 }
             }
         }
@@ -778,10 +1000,15 @@ module.exports.start = function (context)
         }
     );
     //
+    lookUpShowGraphsCheckbox.checked = prefs.lookUpShowGraphsCheckbox;
+    lookUpShowGraphsCheckbox.addEventListener
+    (
+        'input',
+        (event) => updateLookUpUnihanData (currentLookUpUnihanCharacter)
+    );
+    //
     currentLookUpUnihanCharacter = prefs.lookupUnihanCharacter;
     updateLookUpUnihanData (currentLookUpUnihanCharacter);
-    //
-    lookUpShowGraphsCheckbox.checked = prefs.lookUpShowGraphsCheckbox;
     //
     lookUpInstructions.open = prefs.lookupInstructions;
     //
@@ -920,186 +1147,6 @@ module.exports.start = function (context)
             parseIdsCharacters.dispatchEvent (new Event ('input'));
         }
     );
-    //
-    // https://github.com/mdaines/viz.js/wiki/Usage
-    // https://github.com/mdaines/viz.js/wiki/Caveats
-    //
-    const Viz = require ('viz.js');
-    const { Module, render } = require ('viz.js/full.render.js');
-    //
-    let viz = new Viz ({ Module, render });
-    //
-    const dotTemplate = fs.readFileSync (path.join (__dirname, 'template.dot'), { encoding: 'utf8' });
-    //
-    function getFontFamily (fontFamily)
-    {
-        return getComputedStyle (document.body).getPropertyValue (fontFamily).replaceAll ("\"", "").trim ();
-    }
-    function getFontFamilyString (fontFamily)
-    {
-        return JSON.stringify (getFontFamily (fontFamily));
-    }
-    const idsFamilyString = getFontFamilyString ('--ids-family');
-    //
-    function postProcessSVG (svg)
-    {
-        let doc = parser.parseFromString (svg, 'text/xml');
-        // Fix incorrect centering of text in ellipses (circles)
-        let ellipses = doc.documentElement.querySelectorAll ('.node ellipse');
-        for (let ellipse of ellipses)
-        {
-            let cx = ellipse.getAttribute ('cx');
-            let texts = ellipse.parentNode.querySelectorAll ('text');
-            for (let text of texts)
-            {
-                let textAnchor = text.getAttribute ('text-anchor');
-                if (textAnchor !== "middle")
-                {
-                    text.setAttribute ('text-anchor', "middle");
-                    text.setAttribute ('x', cx);
-                }
-            }
-            if (texts.length === 1)
-            {
-                let text = texts[0];
-                let y = parseFloat (text.getAttribute ('y'));
-                text.setAttribute ('y', y + 2); // Empirical adjustment
-            }
-        }
-        // Fix incorrect centering of text in polygons (squares)
-        let polygons = doc.documentElement.querySelectorAll ('.node polygon');
-        for (let polygon of polygons)
-        {
-            let texts = polygon.parentNode.querySelectorAll ('text');
-            if (texts.length === 1)
-            {
-                let text = texts[0];
-                let y = parseFloat (text.getAttribute ('y'));
-                text.setAttribute ('y', y + 2); // Empirical adjustment
-           }
-        }
-        // Remove unwanted tooltips
-        let tooltips = doc.documentElement.querySelectorAll ('.edge title, .node title');
-        for (let tooltip of tooltips)
-        {
-            let lineBreak = tooltip.nextSibling;
-            if (lineBreak && (lineBreak.nodeType === 3) && (lineBreak.nodeValue.match (/\r?\n/)))
-            {
-                lineBreak.remove ();
-            }
-            tooltip.remove ();
-        }
-        return serializer.serializeToString (doc);
-    }
-    //
-    let parser = new DOMParser ();
-    let serializer = new XMLSerializer ();
-    //
-    function treeToGraphData (entry, tree, excessCharacters, displayMode)
-    {
-        let defaultFontColor = '#000000';
-        let dummy = document.createElement ('span');
-        dummy.style.setProperty ('color', getComputedStyle(document.body).getPropertyValue ('--color-accent'));
-        let rgbColor = dummy.style.getPropertyValue ('color');
-        dummy.remove ();
-        let unencodedFontColor = '#' + rgbColor.match (/\b\d+\b/gui).map (component => parseInt (component).toString (16).padStart (2, "0")).join ('');
-        // console.log (require ('../../lib/json2.js').stringify (tree, null, 4));
-        let data = "";
-        let nodeIndex = 0;
-        if (entry)
-        {
-            data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.6, fillcolor = "#F7F7F7", style = "filled, bold", tooltip = ${JSON.stringify (getTooltip (entry))} ]\n`;
-        }
-        else
-        {
-            nodeIndex++;
-        }
-        if (excessCharacters && (displayMode === 'LR'))
-        {
-            data += `    subgraph\n`;
-            data += `    {\n`;
-            let excessNodes = [ ];
-            excessNodes.push (`n${nodeIndex + excessCharacters.length}`);
-            data += `        n${nodeIndex + excessCharacters.length} -> n${nodeIndex} [ style = "invis" ]\n`;
-            for (let index = nodeIndex; index <= excessCharacters.length ; index++)
-            {
-                excessNodes.push (`n${index}`);
-            }
-            data += `        { rank = same; ${excessNodes.join ('; ')} }\n`;
-            for (let excessCharacter of excessCharacters)
-            {
-                let currentNodeIndex = nodeIndex;
-                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
-                if (nodeIndex <= excessCharacters.length)
-                {
-                    data += `        n${currentNodeIndex} -> n${nodeIndex} [ style = "invis" ]\n`;
-                }
-            }
-            data += `    }\n`;
-        }
-        function walkTree (tree)
-        {
-            if ((typeof tree === 'string') && (Array.from (tree).length === 1))
-            {
-                if (ids.isValidOperand (tree))
-                {
-                    let fontColor = (tree in unencodedCharacters) ? unencodedFontColor : defaultFontColor;
-                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, fillcolor = "#F7F7F7", fontcolor = "${fontColor}", tooltip = ${JSON.stringify (getTooltip (tree))} ]\n`;
-                }
-                else
-                {
-                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, color = "#CC0000", fontcolor = "#CC0000", style = dashed, tooltip = ${JSON.stringify (getTooltip (tree, true))} ]\n`;
-                }
-            }
-            else if (typeof tree === 'object')
-            {
-                if (tree === null)
-                {
-                    data += `    n${nodeIndex++} [ style = invis ]\n`;
-                }
-                else
-                {
-                    if ('operator' in tree)
-                    {
-                        let currentNodeIndex = nodeIndex;
-                        data += `    n${nodeIndex++} [ label = "${tree.operator}", tooltip = ${JSON.stringify (getTooltip (tree.operator))} ]\n`;
-                        for (let index = 0; index < tree.operands.length; index++)
-                        {
-                            if (tree.operands[index])
-                            {
-                                data += `    n${currentNodeIndex} -> n${nodeIndex}\n`;
-                            }
-                            else
-                            {
-                                data += `    n${currentNodeIndex} -> n${nodeIndex} [ color = "#CC0000" ]\n`;
-                            }
-                            walkTree (tree.operands[index]);
-                        }
-                    }
-                }
-            }
-        }
-        if (entry)
-        {
-            data += `    n${0} -> n${nodeIndex} [ arrowhead = none, style = "dashed" ]\n`;
-        }
-        walkTree (tree);
-        if (excessCharacters && (displayMode === 'TB'))
-        {
-            data += `    subgraph\n`;
-            data += `    {\n`;
-            let excessNodes = [ ];
-            excessNodes.push (`n${1}`);
-            for (let excessCharacter of excessCharacters)
-            {
-                excessNodes.push (`n${nodeIndex}`);
-                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
-            }
-            data += `        { rank = same; ${excessNodes.join ('; ')} }\n`;
-            data += `    }\n`;
-        }
-        return data;
-    }
     //
     function displayParseData (entry, idsString)
     {
