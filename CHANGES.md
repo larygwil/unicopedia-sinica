@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.4.1
+
+- Added components linking in graph view of the **Look Up IDS** feature of the **CJK Components** utility.
+- Updated `Electron` to version `15.3.1`.
+
 ## 1.4.0
 
 - Added a `Show Graphs` checkbox to the **Look Up IDS** feature of the **CJK Components** utility.

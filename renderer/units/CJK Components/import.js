@@ -775,6 +775,15 @@ module.exports.start = function (context)
                     {
                         svgResult = postProcessSVG (result);
                         graphContainer.innerHTML = svgResult;
+                        let aTags = graphContainer.querySelectorAll ('a');
+                        for (let aTag of aTags)
+                        {
+                            let character = aTag.querySelector ('text').textContent;
+                            if (!(isSupported (character) && (character!== unihanCharacter)))
+                            {
+                                aTag.classList.add ('no-link');
+                            }
+                        }
                     }
                 );
             }
@@ -782,6 +791,23 @@ module.exports.start = function (context)
             {
             }
             graphData.appendChild (graphContainer);
+            graphContainer.addEventListener
+            (
+                'click',
+                (event) =>
+                {
+                    let aTag = event.target.closest ('a');
+                    if (aTag)
+                    {
+                        event.preventDefault ();
+                        let character = aTag.querySelector ('text').textContent;
+                        if (isSupported (character) && (character!== unihanCharacter))
+                        {
+                            updateLookUpUnihanData (character);
+                        }
+                    }
+                }
+            );
             graphRow.appendChild (graphData);
             table.appendChild (graphRow);
         }
@@ -825,6 +851,12 @@ module.exports.start = function (context)
     //
     const characterOrCodePointRegex = /^\s*(?:(.)\p{Variation_Selector}?|(?:U\+?)?([0-9a-fA-F]{4,5}))\s*$/u;
     //
+    function isSupported (character)
+    {
+        // return regexp.isUnified (character);
+        return (regexp.isUnihan (character) && regexp.isUnified (character));
+    }
+    //
     function parseUnihanCharacter (inputString)
     {
         let character = "";
@@ -839,7 +871,7 @@ module.exports.start = function (context)
             {
                 character = String.fromCodePoint (parseInt (match[2], 16));
             }
-            if (!(regexp.isUnihan (character) && regexp.isUnified (character)))
+            if (!isSupported (character))
             {
                 character = "";
             }
@@ -1004,7 +1036,7 @@ module.exports.start = function (context)
     lookUpShowGraphsCheckbox.addEventListener
     (
         'input',
-        (event) => updateLookUpUnihanData (currentLookUpUnihanCharacter)
+        (event) => displayLookUpData (currentLookUpUnihanCharacter)
     );
     //
     currentLookUpUnihanCharacter = prefs.lookupUnihanCharacter;

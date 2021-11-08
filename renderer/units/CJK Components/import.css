@@ -291,7 +291,7 @@
     /* max-width: 100%; */
 }
 
-#cjk-components-unit .look-up-ids .ids-container .graph-data .graph-container svg g a
+#cjk-components-unit .look-up-ids .ids-container .graph-data .graph-container svg g a.no-link
 {
     cursor: default;
 }
