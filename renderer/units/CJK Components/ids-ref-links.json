@@ -65,6 +65,10 @@
         {
             "name": "Proposal to redefine the scope of Ideographic Description Sequences and to encode four additional Ideographic Description Characters (WG2 N3643) - 09171-n3643-ideo-desc.pdf",
             "href": "https://www.unicode.org/L2/L2009/09171-n3643-ideo-desc.pdf"
+        },
+        {
+            "name": "Proposal to add Ideographic Description Characters to the UCS - 02221-cdp-idc.pdf",
+            "href": "https://www.unicode.org/L2/L2002/02221-cdp-idc.pdf"
         }
     ],
     [

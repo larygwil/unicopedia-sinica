@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.4.2
+
+- Improved the Glyphs Statistics table of the **CJK Sources** utility.
+- Updated samples and reference links of the **CJK Sources** utility.
+
 ## 1.4.1
 
 - Added components linking in graph view of the **Look Up IDS** feature of the **CJK Components** utility.

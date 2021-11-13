@@ -630,7 +630,7 @@ module.exports.start = function (context)
     //
     statistics.open = prefs.statistics;
     //
-    let statisticsHeader = [ "Block Name", ...Object.keys (sources).map ((prefix) => `${prefix}-Source`) ];
+    let statisticsHeader = [ "Block Name", ...Object.keys (sources).map ((prefix) => `${prefix}-Source`), "All Sources" ];
     let statisticsData = [ ];
     for (let range in simpleBlockNames)
     {
@@ -664,7 +664,7 @@ module.exports.start = function (context)
             }
             counts.push (count);
         }
-        statisticsData.push ([ simpleBlockNames[range], ...counts ]);
+        statisticsData.push ([ simpleBlockNames[range], ...counts, counts.reduce ((a, b) => a + b) ]);
     }
     let glyphsStatisticsTable = require ('./glyphs-statistics-table.js');
     statisticsTable.appendChild (glyphsStatisticsTable.create (statisticsHeader, statisticsData));

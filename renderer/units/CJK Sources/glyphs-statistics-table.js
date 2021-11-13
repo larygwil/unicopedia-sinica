@@ -25,7 +25,7 @@ module.exports.create = function (statisticsHeader, statisticsData)
         for (let dataElement of row)
         {
             let data = document.createElement ('td');
-            data.className = (index > 0) ? 'count-data' : 'block-data';
+            data.className = (index > 0) ? ((index <= (row.length - 1 - 1)) ? 'count-data' : 'total-data') : 'block-data';
             data.textContent = dataElement;
             dataRow.appendChild (data);
             if (index > 0) totals[index] += dataElement;
