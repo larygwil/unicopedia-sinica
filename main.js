@@ -102,7 +102,7 @@ else
                 }
                 licenseWindow.loadFile (path.join (__dirname, 'license-index.html'));
                 licenseWindow.once ('ready-to-show', () => { licenseWindow.show (); });
-                licenseWindow.on ('close', () => { licenseWindow = null; });
+                licenseWindow.once ('closed', () => { licenseWindow = null; });
             }
             else
             {
@@ -195,7 +195,7 @@ else
                 const script = `document.body.querySelector ('.system-info').value = ${JSON.stringify (getSystemInfo ())};`;
                 systemInfoWindow.webContents.on ('dom-ready', () => { systemInfoWindow.webContents.executeJavaScript (script); });
                 systemInfoWindow.once ('ready-to-show', () => { systemInfoWindow.show (); });
-                systemInfoWindow.on ('close', () => { systemInfoWindow = null; });
+                systemInfoWindow.once ('closed', () => { systemInfoWindow = null; });
             }
             else
             {

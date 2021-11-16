@@ -536,6 +536,8 @@ module.exports.start = function (context)
     let parser = new DOMParser ();
     let serializer = new XMLSerializer ();
     //
+    const largerEntry = true;
+    //
     function treeToGraphData (entry, tree, excessCharacters, displayMode)
     {
         let defaultFontColor = '#000000';
@@ -549,7 +551,14 @@ module.exports.start = function (context)
         let nodeIndex = 0;
         if (entry)
         {
-            data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.6, fillcolor = "#F7F7F7", style = "filled, bold", tooltip = ${JSON.stringify (getTooltip (entry))} ]\n`;
+            if (largerEntry)
+            {
+                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.75, fontsize = 36, fillcolor = "#F7F7F7", style = "filled", tooltip = ${JSON.stringify (getTooltip (entry))} ]\n`;
+            }
+            else
+            {
+                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.6, fillcolor = "#F7F7F7", style = "filled, bold", tooltip = ${JSON.stringify (getTooltip (entry))} ]\n`;
+            }
         }
         else
         {
