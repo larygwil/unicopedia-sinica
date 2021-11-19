@@ -1,7 +1,7 @@
 {
     "name": "unicopedia-sinica",
     "productName": "Unicopedia Sinica",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "description": "Developer-oriented set of Unicode utilities related to ideographs.",
     "main": "main.js",
     "scripts": {
@@ -83,7 +83,7 @@
         "viz.js": "^2.1.2"
     },
     "devDependencies": {
-        "electron": "^16.0.0",
+        "electron": "^16.0.1",
         "electron-builder": "22.10.5",
         "electron-packager": "^15.4.0"
     }

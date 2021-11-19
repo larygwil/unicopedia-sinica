@@ -1,4 +1,4 @@
-// Unzip SVG Glyphs Data File to User Data Directory
+// Unzip SVG Glyphs Data Files to User Data Directory
 const path = require ('path');
 const extract = require ('extract-zip');
 // Note: the relevant zip file is assumed to be in the Downloads directory

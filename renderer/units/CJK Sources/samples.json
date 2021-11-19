@@ -1,6 +1,6 @@
 [
     {
-        "label": "New in 14.0",
+        "label": "New in Unicode 14.0",
         "items":
         [
             {
@@ -14,7 +14,7 @@
             },
             {
                 "label": "Changes (Undocumented)",
-                "string": "𦍉"
+                "string": "𥂭𦍉"
             },
             null,
             {

@@ -651,6 +651,23 @@ module.exports.start = function (context)
         return data;
     }
     //
+    function isCharacterInIDSData (character, IDSData)
+    {
+        let result = false;
+        for (let sequence of IDSData.sequences)
+        {
+            let ids = sequence.ids;
+            if ((ids.indexOf ("⊖") === -1) && (ids.indexOf (character) !== -1)) // Hack!!
+            {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+    //
+    const doubleClickNavigation = false;
+    //
     function createIDSTable (unihanCharacter, IDSCharacters, IDSSource, showGraph, asList)
     {
         let table = document.createElement ('table');
@@ -787,10 +804,17 @@ module.exports.start = function (context)
                         let aTags = graphContainer.querySelectorAll ('a');
                         for (let aTag of aTags)
                         {
-                            let character = aTag.querySelector ('text').textContent;
-                            if (!(isSupported (character) && (character!== unihanCharacter)))
+                            if (doubleClickNavigation)
                             {
                                 aTag.classList.add ('no-link');
+                            }
+                            else
+                            {
+                                let character = aTag.querySelector ('text').textContent;
+                                if (!isSupported (character))
+                                {
+                                    aTag.classList.add ('no-link');
+                                }
                             }
                         }
                     }
@@ -802,7 +826,7 @@ module.exports.start = function (context)
             graphData.appendChild (graphContainer);
             graphContainer.addEventListener
             (
-                'click',
+                doubleClickNavigation ? 'dblclick' : 'click',
                 (event) =>
                 {
                     let aTag = event.target.closest ('a');
@@ -810,7 +834,23 @@ module.exports.start = function (context)
                     {
                         event.preventDefault ();
                         let character = aTag.querySelector ('text').textContent;
-                        if (isSupported (character) && (character!== unihanCharacter))
+                        if (character === unihanCharacter)
+                        {
+                            let historyLength = lookUpUnihanHistory.length;
+                            if (historyLength > 1)
+                            {
+                                for (let index = 1; index < historyLength; index++)
+                                {
+                                    let historyCharacter = lookUpUnihanHistory[index];
+                                    if (isCharacterInIDSData (unihanCharacter, characters[historyCharacter]))
+                                    {
+                                        updateLookUpUnihanData (historyCharacter);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        else if (isSupported (character))
                         {
                             updateLookUpUnihanData (character);
                         }

@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.5.1
+
+- Added "backtracking" link to current entry in graph view of the **Look Up IDS** feature of the **CJK Components** utility.
+- Updated `IDS.TXT` data file.
+- Updated `Electron` to version `16.0.1`.
+
 ## 1.5.0
 
 - Used larger entries for graphs in the **CJK Components** utility.
