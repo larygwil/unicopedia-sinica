@@ -19,6 +19,10 @@
     ],
     [
         {
+            "name": "L2/21-173R (CJK & Unihan Group Recommendations for UTC #169 Meeting) - 21173r-cjk-unihan-group-utc169.pdf",
+            "href": "https://www.unicode.org/L2/L2021/21173r-cjk-unihan-group-utc169.pdf"
+        },
+        {
             "name": "Proposal to add one ideograph to UAX #45 and to change the status of an existing UAX #45 ideograph - 21149-uax45-addition.pdf",
             "href": "https://www.unicode.org/L2/L2021/21149-uax45-addition.pdf"
         },

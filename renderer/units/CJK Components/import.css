@@ -63,13 +63,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     margin: 1em 0 -0.5em 0;
 }
 
 #cjk-components-unit .look-up-ids .interface .action-group + .action-group
 {
-    margin-left: 0.75em;
+    margin-left: 2em;
 }
 
 #cjk-components-unit .look-up-ids .interface .action-group

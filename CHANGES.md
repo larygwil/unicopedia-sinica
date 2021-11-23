@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.5.2
+
+- Improved user interface of the **Look Up IDS** feature of the **CJK Components** utility.
+- Updated reference links.
+- Updated screenshots.
+
 ## 1.5.1
 
 - Added "backtracking" link to current entry in graph view of the **Look Up IDS** feature of the **CJK Components** utility.
