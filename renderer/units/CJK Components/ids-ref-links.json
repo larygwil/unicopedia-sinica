@@ -110,11 +110,11 @@
     [
         {
             "name": "CHaracter Information Service Environment",
-            "href": "http://www.chise.org/ids/"
+            "href": "https://www.chise.org/ids/"
         },
         {
             "name": "CHISE IDS Find",
-            "href": "http://www.chise.org/ids-find/"
+            "href": "https://www.chise.org/ids-find/"
         }
     ],
     [
@@ -142,7 +142,7 @@
     [
         {
             "name": "A Structural Query System for Han Characters - 25.2.4_Skala.pdf",
-            "href": "http://www.colips.org/journals/volume25/25.2.4_Skala.pdf"
+            "href": "https://www.colips.org/journals/volume25/25.2.4_Skala.pdf"
         },
         {
             "name": "Tsukurimashou - A Japanese-language font meta-family - tb108skala.pdf",
@@ -234,13 +234,13 @@
     [
         {
             "name": "Infix, Postfix and Prefix",
-            "href": "http://www.cs.man.ac.uk/~pjj/cs212/fix.html"
+            "href": "https://www.cs.man.ac.uk/~pjj/cs212/fix.html"
         }
     ],
     [
         {
             "name": "The Writing Order of Modern Chinese Character Components - lixiaotong.pdf",
-            "href": "http://xuebao.eblcu.com/xuebao/essay/lixiaotong.pdf"
+            "href": "https://xuebao.eblcu.com/xuebao/essay/lixiaotong.pdf"
         }
     ],
     [
@@ -267,15 +267,15 @@
         {
             "lang": "zh-Hans",
             "name": "800 Most Common Chinese Character Components | 一步一个脚印 - Blog of Carl Gene Fordham",
-            "href": "http://carlgene.com/blog/2015/11/800-most-common-chinese-character-components/"
+            "href": "https://carlgene.com/blog/2015/11/800-most-common-chinese-character-components/"
         },
         {
             "name": "800_Most_Common_Chinese_Character_Components_Traditional_Chinese_carlgene.pdf",
-            "href": "http://www.carlgene.com/800_Most_Common_Chinese_Character_Components_Traditional_Chinese_carlgene.pdf"
+            "href": "https://www.carlgene.com/800_Most_Common_Chinese_Character_Components_Traditional_Chinese_carlgene.pdf"
         },
         {
             "name": "800_Most_Common_Chinese_Character_Components_Simplified_Chinese_carlgene.pdf",
-            "href": "http://www.carlgene.com/800_Most_Common_Chinese_Character_Components_Simplified_Chinese_carlgene.pdf"
+            "href": "https://www.carlgene.com/800_Most_Common_Chinese_Character_Components_Simplified_Chinese_carlgene.pdf"
         }
     ]
 ]

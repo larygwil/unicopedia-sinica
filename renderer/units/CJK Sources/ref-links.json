@@ -21,6 +21,12 @@
     ],
     [
         {
+            "name": "L2/20-080 (Proposal to remove the UCS2003 representative glyphs from the Extension B code charts—Redux - 20080-remove-ucs2003-ext-b.pdf",
+            "href": "https://www.unicode.org/L2/L2020/20080-remove-ucs2003-ext-b.pdf"
+        }
+    ],
+    [
+        {
             "name": "Unicode 14.0 Versioned Charts Index",
             "href": "https://www.unicode.org/charts/PDF/Unicode-14.0/"
         }
@@ -77,6 +83,16 @@
         {
             "name": "Your Code Displays Japanese Wrong",
             "href": "https://heistak.github.io/your-code-displays-japanese-wrong/"
+        }
+    ],
+    [
+        {
+            "name": "<symbol> - SVG: Scalable Vector Graphics | MDN",
+            "href": "https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol"
+        },
+        {
+            "name": "SVG symbol viewer",
+            "href": "https://svgsymbolviewer.io/"
         }
     ],
     [

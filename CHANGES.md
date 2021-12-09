@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.5.3
+
+- Updated reference links.
+- Updated `IDS.TXT` data file.
+- Updated `Electron` to version `16.0.4`.
+
 ## 1.5.2
 
 - Improved user interface of the **Look Up IDS** feature of the **CJK Components** utility.
