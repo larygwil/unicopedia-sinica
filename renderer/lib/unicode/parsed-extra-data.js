@@ -10,7 +10,7 @@ let lines;
 let versions = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/DerivedAge.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'DerivedAge.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'DerivedAge.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -26,7 +26,7 @@ for (let line of lines)
 let blocks = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/Blocks.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'Blocks.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'Blocks.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -42,7 +42,7 @@ for (let line of lines)
 let extendedProperties = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/PropList.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'PropList.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'PropList.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -58,7 +58,7 @@ for (let line of lines)
 let coreProperties = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/DerivedCoreProperties.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'DerivedCoreProperties.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'DerivedCoreProperties.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -74,7 +74,7 @@ for (let line of lines)
 let emojiProperties = [ ];
 //
 // Copy of https://www.unicode.org/Public/14.0.0/ucd/emoji/emoji-data.txt
-lines = fs.readFileSync (path.join (__dirname, 'emoji', 'emoji-data.txt'), { encoding: 'utf8' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'emoji', 'emoji-data.txt'), { encoding: 'utf8' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -90,7 +90,7 @@ for (let line of lines)
 let scripts = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/Scripts.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'Scripts.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'Scripts.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -106,7 +106,7 @@ for (let line of lines)
 let scriptExtensions = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/ScriptExtensions.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'ScriptExtensions.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'ScriptExtensions.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -122,7 +122,7 @@ for (let line of lines)
 let equivalentUnifiedIdeographs = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/EquivalentUnifiedIdeograph.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'EquivalentUnifiedIdeograph.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'EquivalentUnifiedIdeograph.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -138,7 +138,7 @@ for (let line of lines)
 let eastAsianWidths = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/EastAsianWidth.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'EastAsianWidth.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'EastAsianWidth.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -154,7 +154,7 @@ for (let line of lines)
 let verticalOrientations = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/VerticalOrientation.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'VerticalOrientation.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'VerticalOrientation.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -170,7 +170,7 @@ for (let line of lines)
 let lineBreaks = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/LineBreak.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'LineBreak.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'LineBreak.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -185,7 +185,7 @@ for (let line of lines)
 let indicPositionalCategories = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/IndicPositionalCategory.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'IndicPositionalCategory.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'IndicPositionalCategory.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -201,7 +201,7 @@ for (let line of lines)
 let indicSyllabicCategories = [ ];
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/IndicSyllabicCategory.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'IndicSyllabicCategory.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'IndicSyllabicCategory.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))

@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.5.4
+
+- Used Windows-compatible end-of-line markers when parsing data text files (BUG FIX).
+- Reduced letter spacing of alphanumeric source codes in the **CJK Sources** utility.
+
 ## 1.5.3
 
 - Updated reference links.

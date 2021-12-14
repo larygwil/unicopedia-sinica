@@ -201,16 +201,16 @@
     cursor: default;
 }
 
-#cjk-sources-unit .sheet .table .code
+#cjk-sources-unit .sheet .table .source-code
 {
     color: var(--color);
     font-family: var(--sans-serif-family);
     font-size: 12px;
     line-height: 1.2em;
-    /* margin: -8px 0 6px 0; */
+    letter-spacing: -0.5px;
 }
 
-#cjk-sources-unit .sheet .table .compatibility .code
+#cjk-sources-unit .sheet .table .compatibility .source-code
 {
     font-style: italic;
 }

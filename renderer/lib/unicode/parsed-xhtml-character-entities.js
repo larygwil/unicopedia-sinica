@@ -12,7 +12,7 @@ let filenames = [ 'xhtml-lat1.ent', 'xhtml-special.ent', 'xhtml-symbol.ent' ];
 //
 for (let filename of filenames)
 {
-    let lines = fs.readFileSync (path.join (__dirname, 'DTD', filename), { encoding: 'utf8' }).split ("\n");
+    let lines = fs.readFileSync (path.join (__dirname, 'DTD', filename), { encoding: 'utf8' }).split (/\r?\n/);
     for (let line of lines)
     {
         if (line)

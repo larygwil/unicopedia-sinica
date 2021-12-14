@@ -14,7 +14,7 @@ const path = require ('path');
 //
 let radicalsData = { };
 //
-let lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'CJKRadicals.txt'), { encoding: 'ascii' }).split ("\n");
+let lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'CJKRadicals.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))

@@ -888,7 +888,7 @@ const codePoints = { };
 //
 for (let filename of filenames)
 {
-    let lines = fs.readFileSync (path.join (__dirname, 'Unihan', filename), { encoding: 'utf8' }).split ("\n");
+    let lines = fs.readFileSync (path.join (__dirname, 'Unihan', filename), { encoding: 'utf8' }).split (/\r?\n/);
     for (let line of lines)
     {
         if (line && (line[0] !== "#"))

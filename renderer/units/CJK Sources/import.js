@@ -474,7 +474,7 @@ module.exports.start = function (context)
                         let glyph = document.createElement ('div');
                         glyph.className = 'glyph';
                         let code = document.createElement ('div');
-                        code.className = 'code';
+                        code.className = 'source-code';
                         let codePoint = unicode.characterToCodePoint (character);
                         let sourceReference = null;
                         if (source.property in codePoints[codePoint])

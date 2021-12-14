@@ -43,7 +43,7 @@ let lastIndex;
 let rangeName;
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/UnicodeData.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'UnicodeData.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'UnicodeData.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line)
@@ -168,7 +168,7 @@ for (let line of lines)
 }
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/NameAliases.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'NameAliases.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'NameAliases.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -202,7 +202,7 @@ let foldingStatus =
 };
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/CaseFolding.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'CaseFolding.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'CaseFolding.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -236,7 +236,7 @@ function snakeCasify (string)
 }
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/ArabicShaping.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'ArabicShaping.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'ArabicShaping.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
@@ -253,7 +253,7 @@ for (let line of lines)
 }
 //
 // Copy of https://www.unicode.org/Public/UNIDATA/StandardizedVariants.txt
-lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'StandardizedVariants.txt'), { encoding: 'ascii' }).split ("\n");
+lines = fs.readFileSync (path.join (__dirname, 'UNIDATA', 'StandardizedVariants.txt'), { encoding: 'ascii' }).split (/\r?\n/);
 for (let line of lines)
 {
     if (line && (line[0] !== "#"))
