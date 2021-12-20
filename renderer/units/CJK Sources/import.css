@@ -298,9 +298,9 @@
     margin-top: 0.25em;
     margin-bottom: 1.5em;
     width: unset;
+    font-size: 12px;
     user-select: text;
     cursor: text;
-    font-size: 12px;
 }
 
 #cjk-sources-unit .statistics-table tr:nth-child(even) td

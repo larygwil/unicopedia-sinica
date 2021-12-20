@@ -142,6 +142,8 @@
     line-height: 58px;
     min-height: 64px;
     background-color: white;
+    user-select: text;
+    cursor: text;
 }
 
 #cjk-components-unit .look-up-ids .ids-container .characters .character,
@@ -152,8 +154,6 @@
     vertical-align: middle;
     width: 64px;
     min-width: 64px;
-    user-select: text;
-    cursor: text;
 }
 
 #cjk-components-unit .look-up-ids .ids-container .code-points
@@ -164,6 +164,8 @@
     font-size: 12px;
     font-weight: bold;
     height: 2em;
+    user-select: text;
+    cursor: text;
 }
 
 #cjk-components-unit .look-up-ids .ids-container .source-label,
@@ -236,8 +238,6 @@
     text-align: left;
     vertical-align: middle;
     padding: 2px 6px;
-    user-select: text;
-    cursor: text;
 }
 
 #cjk-components-unit .look-up-ids .ids-container .characters .ids-characters

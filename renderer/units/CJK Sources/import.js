@@ -377,6 +377,8 @@ module.exports.start = function (context)
         }
         if (unihanCharacters.length > 0)
         {
+            let svgDataPath = path.join (userDataPath, 'svg-glyphs-14.0');
+            let svgDataExists = fs.existsSync (svgDataPath);
             for (let prefix in sources)
             {
                 let source = sources[prefix];
@@ -496,14 +498,13 @@ module.exports.start = function (context)
                         {
                             let { block, range, page } = getBlockRange (character);
                             let id = `${character}_${toDesignation (sourceReference)}`;
-                            let svgFilePath = path.join (userDataPath, 'svg-glyphs-14.0', block, `${range}.svg`);
-                            if (fs.existsSync (svgFilePath))
+                            if (svgDataExists)
                             {
                                 const xmlns = "http://www.w3.org/2000/svg";
                                 let svg = document.createElementNS (xmlns, 'svg');
                                 svg.setAttributeNS (null, 'class', 'svg-glyph');
                                 let use = document.createElementNS (xmlns, 'use');
-                                use.setAttributeNS (null, 'href', svgFilePath + `#${id}`);
+                                use.setAttributeNS (null, 'href', path.join (svgDataPath, block, `${range}.svg#${id}`));
                                 svg.appendChild (use);
                                 glyph.appendChild (svg);
                                 glyph.title = `${block}.pdf\n#page=${page}`;

@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.5.5
+
+- Improved performance of table creation in the **CJK Sources** utility.
+- Updated `Electron` to version `16.0.5`.
+
 ## 1.5.4
 
 - Used Windows-compatible end-of-line markers when parsing data text files (BUG FIX).
