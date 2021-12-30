@@ -172,6 +172,8 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
     | UTC    | UTC         | kIRG_USource    |
     | SAT    | SAT         | kIRG_SSource    |
     | UK     | U.K.        | kIRG_UKSource   |
+- UTC stands for *Unicode Technical Committee*, which is responsible for the development and maintenance of the Unicode Standard.
+- SAT (*SAmganikikrtam Taisotripitakam* in Sanskrit) represents a machine-readable text database of the [Taishō Tripiṭaka](https://en.wikipedia.org/wiki/Taish%C5%8D_Tripi%E1%B9%ADaka).
 - A table of glyphs statistics is available for quick reference.
 
 <img src="screenshots/cjk-sources.png" width="1080px" alt="CJK Sources screenshot">
@@ -230,4 +232,4 @@ npm run build-darwin
 
 The MIT License (MIT).
 
-Copyright © 2021 Michel Mariani.
+Copyright © 2021-2022 Michel Mariani.

@@ -14,7 +14,7 @@
             },
             {
                 "label": "Changes (Undocumented)",
-                "string": "𥂭𦍉"
+                "string": "𥂭𦍉𫪢𬳧"
             },
             null,
             {
@@ -86,35 +86,43 @@
             },
             null,
             {
-                "label": "Misc. 1",
+                "label": "Speech Components",
                 "string": "言訁語"
             },
             {
-                "label": "Misc. 2",
+                "label": "Box Partitions",
                 "string": "㲋𭯍𣬋"
             },
             {
-                "label": "Misc. 3",
+                "label": "Despicable Devils",
                 "string": "鬼卑䰦"
             },
             {
-                "label": "Misc. 4",
+                "label": "Ugly Variations",
                 "string": "醜𨢄𥠎𥞷"
             },
             {
-                "label": "Misc. 5",
+                "label": "Subtracted Parts",
+                "string": "𠦇𬺷𬺻𧰧豕𧰨"
+            },
+            {
+                "label": "Unusual Enclosure",
                 "string": "𠥓𠥧𠥩𠥪𠥫𠥬"
             },
             {
-                "label": "Misc. 6",
+                "label": "Glyph Defects",
+                "string": "房𢩊𢩜𪭚阻防𪵦"
+            },
+            {
+                "label": "Affairs & Co.",
                 "string": "事亊𠄙争爭箏𥬁𤔇"
             },
             {
-                "label": "Misc. 7",
+                "label": "Swarm of Locusts",
                 "string": "䘀蛗𧋰𧌓𧌛𧑉𧒂𧒙"
             },
             {
-                "label": "Misc. 8",
+                "label": "KP-Source (Ext. C)",
                 "string": "𪮫𪯩𫃜𫃯𫃵𫊛𫊫𫋾"
             }
         ]

@@ -24,7 +24,7 @@
     "unitsName": "Utilities",
     "noCategoryName": "Other",
     "description": "Developer-oriented set of Unicode utilities related to ideographs.",
-    "copyright": "© 2021 Michel Mariani.",
+    "copyright": "© 2021-2022 Michel Mariani.",
     "electronApp":
     {
         "label": "Unicopedia Sinica | Apps | Electron",

@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.6.0
+
+- Fixed missing text cursor over selectable IDS text in the **CJK Components** utility.
+- Updated CJK source samples and instructions in the **CJK Sources** utility.
+- Updated copyright years.
+
 ## 1.5.5
 
 - Improved performance of table creation in the **CJK Sources** utility.
