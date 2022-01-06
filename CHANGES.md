@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.6.1
+
+- Updated `IDS.TXT` data file.
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `Electron` to version `16.0.6`.
+
 ## 1.6.0
 
 - Fixed missing text cursor over selectable IDS text in the **CJK Components** utility.

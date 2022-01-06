@@ -136,7 +136,7 @@ The following utilities are currently available:
 
 ## CJK Sources
 
-- The **CJK Sources** utility displays in a grid fashion the various sources of a given set of CJK (Chinese/Japanese/Korean) characters, as referenced in their respective **Unicode 14.0** code charts:
+- The **CJK Sources** utility displays in a grid fashion the various sources of a given subset of CJK (Chinese/Japanese/Korean) characters, as referenced in their respective **Unicode 14.0** code charts:
     - [CJK Unified Ideographs - U4E00.pdf](https://www.unicode.org/charts/PDF/U4E00.pdf)
     - [CJK Unified Ideographs Extension A - U3400.pdf](https://www.unicode.org/charts/PDF/U3400.pdf)
     - [CJK Unified Ideographs Extension B - U20000.pdf](https://www.unicode.org/charts/PDF/U20000.pdf)
@@ -148,6 +148,7 @@ The following utilities are currently available:
     - [CJK Compatibility Ideographs - UF900.pdf](https://www.unicode.org/charts/PDF/UF900.pdf)
     - [CJK Compatibility Ideographs Supplement - U2F800.pdf](https://www.unicode.org/charts/PDF/U2F800.pdf)
 - This is especially useful for comparison purposes between relatable character glyphs.
+- These CJK characters belong to the full set of 93,867 Unihan characters defined in **Unicode 14.0**.
 - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
     - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
     - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)

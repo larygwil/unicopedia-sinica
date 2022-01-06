@@ -1337,7 +1337,7 @@ module.exports.start = function (context)
         {
             if (BrowserWindow.getFocusedWindow () === mainWindow)   // Should not be necessary...
             {
-                // event.preventDefault ();
+                event.preventDefault ();
                 smartPasteContextualMenu.popup ({ window: mainWindow });
             }
         }
