@@ -437,7 +437,7 @@
 
 #cjk-components-unit .match-ids .search-string
 {
-    font-family: ASCII, var(--ids-family);
+    font-family: "ASCII Mono", var(--ids-family);
     font-size: 18px;
     letter-spacing: 1px;
     padding: 2px 6px;
@@ -601,7 +601,7 @@
 
 #cjk-components-unit .find-by-components .search-string
 {
-    font-family: ASCII, var(--ids-family);
+    font-family: "ASCII Mono", var(--ids-family);
     font-size: 18px;
     letter-spacing: 1px;
     padding: 2px 6px;

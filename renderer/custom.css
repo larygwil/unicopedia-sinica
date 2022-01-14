@@ -2,11 +2,18 @@
 
 @font-face
 {
-    font-family: "ASCII";
+    font-family: "ASCII Mono";
     src: local("Segoe UI Mono"), local(Monaco), local(Menlo), local("DejaVu Sans Mono"), local("Liberation Mono"), local("Noto Mono"), local("Ubuntu Mono");
-    /* src: local("Segoe UI"), local(Arial), local(Geneva), local(Verdana), local(Tahoma), local("DejaVu Sans"), local("Liberation Sans"), local("Noto Sans"), local("Ubuntu"); */
     font-weight: bold;
-    unicode-range: U+00-7F;
+    unicode-range: U+00-7F, U+2026;
+}
+
+@font-face
+{
+    font-family: "ASCII Sans";
+    src: local("Segoe UI"), local(Arial), local(Geneva), local(Verdana), local(Tahoma), local("DejaVu Sans"), local("Liberation Sans"), local("Noto Sans"), local("Ubuntu");
+    font-weight: bold;
+    unicode-range: U+00-7F, U+2026;
 }
 
 @font-face

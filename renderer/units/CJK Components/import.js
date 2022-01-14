@@ -898,7 +898,7 @@ module.exports.start = function (context)
         }
     }
     //
-    const characterOrCodePointRegex = /^\s*(?:(.)\p{Variation_Selector}?|(?:U\+?)?([0-9a-fA-F]{4,5}))\s*$/u;
+    const characterOrCodePointRegex = /^\s*(?:(.)\p{Variation_Selector}?|(?:[Uu]\+?)?([0-9a-fA-F]{4,5}))\s*$/u;
     //
     function isSupported (character)
     {

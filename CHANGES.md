@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.6.2
+
+- Fixed display of "overshooting" V-source glyphs being slightly cropped at top and bottom in the **CJK Sources** utility.
+- Allowed lowercase 'u' prefix for "relaxed" hex code point formats.
+- Updated `Electron` to version `16.0.7`.
+
 ## 1.6.1
 
 - Updated `IDS.TXT` data file.
