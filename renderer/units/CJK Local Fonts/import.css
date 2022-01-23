@@ -1,0 +1,232 @@
+@charset "utf-8";
+
+#cjk-local-fonts-unit .interface
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5em 0 -1em 0;
+}
+
+#cjk-local-fonts-unit .interface .action-group + .action-group
+{
+    margin-left: 2em;
+}
+
+#cjk-local-fonts-unit .interface .action-group
+{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#cjk-local-fonts-unit .history-button
+{
+    padding: 1px 6px;
+    margin-right: 0.5em;
+    user-select: none;
+}
+
+#cjk-local-fonts-unit .history-button::after
+{
+    top: -2px;
+}
+
+#cjk-local-fonts-unit .history-button svg.history
+{
+    width: 21px;
+    height: 21px;
+    vertical-align: text-bottom;
+    margin-right: -0.25em;
+}
+
+#cjk-local-fonts-unit .unihan-input
+{
+    font-family: var(--sans-serif-family);
+    font-size: 16px;
+    line-height: 1.333em;
+    padding: 2px 6px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25em;
+    width: 7.5em;
+    margin: 0 0.5em 0 0.25em;
+}
+
+#cjk-local-fonts-unit .unihan-input.invalid
+{
+    color: var(--color-error);
+    outline-color: var(--color-error);
+}
+
+#cjk-local-fonts-unit .font-glyphs-container
+{
+    margin-top: 8px;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container .glyph-list
+{
+    margin: 32px 0 -8px 0;
+    display: flex;
+    flex-flow: wrap;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container .card
+{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid gray;
+    width: 120px;
+    height: 120px;
+    padding: 0 2px;
+    gap: 8px;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container .glyph
+{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 72px;
+    line-height: 1em;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container .font-name
+{
+    color: var(--color);
+    font-family: var(--sans-serif-family);
+    font-size: 12px;
+    line-height: 1.2em;
+    letter-spacing: -0.5px;
+    text-align: center;
+    vertical-align: middle;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container.compact .glyph-list
+{
+}
+
+#cjk-local-fonts-unit .font-glyphs-container.compact .card
+{
+    width: 60px;
+    height: 60px;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container.compact .glyph
+{
+    font-size: 48px;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container.compact .font-name
+{
+    display: none;
+}
+
+#cjk-local-fonts-unit .plain-panel
+{
+    padding-bottom: 2em;
+    overflow-x: visible;
+}
+
+#cjk-local-fonts-unit .instructions ul
+{
+    margin: -0.5em 0 1em 0;
+}
+
+#cjk-local-fonts-unit .instructions li
+{
+    margin: 0.25em 0;
+}
+
+#cjk-local-fonts-unit .instructions li > ul
+{
+    margin: 0 0 0.25em 0;
+}
+
+#cjk-local-fonts-unit .instructions code
+{
+    color: inherit;
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
+}
+
+#cjk-local-fonts-unit .instructions kbd
+{
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0 0.333em 1px;
+    border: 1px solid gray;
+    border-radius: 0.2em;
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
+}
+
+#cjk-local-fonts-unit .regex-examples ul
+{
+    margin: -0.5em 0 1em 0;
+}
+
+#cjk-local-fonts-unit .regex-examples li
+{
+    margin: 0.5em 0;
+}
+
+#cjk-local-fonts-unit .regex-examples code
+{
+    color: inherit;
+    white-space: normal;
+    overflow-wrap: break-word;
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
+}
+
+#cjk-local-fonts-unit .regex-examples code.select-all
+{
+    user-select: all;
+    cursor: text;
+}
+
+#cjk-local-fonts-unit .unencoded .glyph-list
+{
+    margin-left: 8px;
+    margin-top: -0.25em;
+}
+
+#cjk-local-fonts-unit .unencoded .glyph-list .glyph
+{
+    display: inline-block;
+    border: 1px solid gray;
+    background-color: white;
+    color: var(--color-accent);
+    font-family: var(--ids-family);
+    font-size: 36px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 4px;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-local-fonts-unit summary
+{
+    font-weight: bold;
+    margin: 1.2em 0 1em 0;
+}

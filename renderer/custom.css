@@ -23,6 +23,12 @@
          url("ids-fonts/BabelStoneHanPUA.woff");
 }
 
+@font-face
+{
+    font-family: "Blank";
+    src: url("blank-font/AdobeBlank2.otf") format("opentype");
+}
+
 :root
 {
     --color:           hsl(0, 0%, 22%);

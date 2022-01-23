@@ -15,6 +15,7 @@ The following utilities are currently available:
     - **Parse IDS**
     - **Match IDS**
     - **Find by Components**
+- **CJK Local Fonts**
 - **CJK Sources**
 - **JavaScript Runner**
 
@@ -133,6 +134,17 @@ The following utilities are currently available:
         - [CJK Unified Ideographs Extension G - U30000.pdf](https://www.unicode.org/charts/PDF/U30000.pdf)
 
 <img src="screenshots/cjk-components-find-by-components.png" width="1080px" alt="CJK Components - Find by Components screenshot">
+
+## CJK Local Fonts
+
+- The <strong>CJK Local Fonts</strong> utility displays all the local font glyphs of a given Unihan character.
+- Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display the IDS.
+- Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
+- Click on the <kbd>Compact Layout</kbd> checkbox to display the local font glyphs in a more compact way: hovering over each glyph frame brings up a tooltip with the local font name.
+
+<img src="screenshots/cjk-local-fonts.png" width="1080px" alt="CJK Local Fonts screenshot">
+
+<img src="screenshots/cjk-local-fonts-compact.png" width="1080px" alt="CJK Local Fonts - Compact Layout screenshot">
 
 ## CJK Sources
 

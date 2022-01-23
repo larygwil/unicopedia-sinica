@@ -1,6 +1,6 @@
 //
 // Temporary until Electron framework adds built-in support for Unicode 14.0
-let rewritePattern = require ('regexpu-core');
+const rewritePattern = require ('regexpu-core');
 //
 // Support for Unicode 14.0 finally added in Electron ??.?.? (2022-??-??)
 // let rewritePattern = null;
@@ -32,7 +32,7 @@ function build (pattern, options)
     }
     if (rewritePattern)
     {
-        pattern = rewritePattern (pattern, flags, { unicodePropertyEscape: true, lookbehind: true, useUnicodeFlag: true });
+        pattern = rewritePattern (pattern, flags, { unicodePropertyEscapes: 'transform' });
     }
     return new RegExp (pattern, flags);
 };

@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.7.0
+
+- Added new **CJK Local Fonts** utility.
+- Updated `IDS.TXT` data file.
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `regexpu-core` module to `5.0.1`.
+
 ## 1.6.2
 
 - Fixed display of "overshooting" V-source glyphs being slightly cropped at top and bottom in the **CJK Sources** utility.
