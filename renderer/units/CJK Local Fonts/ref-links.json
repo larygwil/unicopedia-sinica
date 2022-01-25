@@ -1,14 +1,58 @@
 [
     [
         {
-            "name": "Han unification - Wikipedia",
-            "href": "https://en.wikipedia.org/wiki/Han_unification"
+            "name": "Unicode font - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Unicode_font"
+        },
+        {
+            "name": "List of CJK fonts - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/List_of_CJK_fonts"
+        },
+        {
+            "name": "Ming (typefaces) - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Ming_(typefaces)"
+        },
+        {
+            "name": "East Asian Gothic typeface - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/East_Asian_Gothic_typeface"
         }
     ],
     [
         {
-            "name": "UAX #38: Unicode Han Database (Unihan)",
-            "href": "https://www.unicode.org/reports/tr38/"
+            "name": "FAQ - Chinese and Japanese",
+            "href": "https://www.unicode.org/faq/han_cjk.html"
+        },
+        {
+            "name": "FAQ - Fonts and Keyboards",
+            "href": "https://www.unicode.org/faq/font_keyboard.html"
+        }
+    ],
+    [
+        {
+            "name": "GitHub - adobe-fonts/adobe-blank-2: Adobe Blank 2",
+            "href": "https://github.com/adobe-fonts/adobe-blank-2"
+        }
+    ],
+    [
+        {
+            "name": "Canvas API - Web APIs | MDN",
+            "href": "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"
+        },
+        {
+            "name": "HTMLCanvasElement.getContext() - Web APIs | MDN",
+            "href": "https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext"
+        },
+        {
+            "name": "CanvasRenderingContext2D - Web APIs | MDN",
+            "href": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D"
+        },
+        {
+            "name": "CanvasRenderingContext2D.measureText() - Web APIs | MDN",
+            "href": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText"
+        },
+        {
+            "name": "TextMetrics - Web APIs | MDN",
+            "href": "https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics"
         }
     ]
 ]

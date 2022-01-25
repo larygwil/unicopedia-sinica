@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.7.1
+
+- Improved filtering of "blank" CJK glyphs for some "ill-behaved" fonts in the **CJK Local Fonts** utility.
+- Updated reference links of the **CJK Local Fonts** utility.
+
 ## 1.7.0
 
 - Added new **CJK Local Fonts** utility.

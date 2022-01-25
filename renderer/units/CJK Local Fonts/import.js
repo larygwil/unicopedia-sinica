@@ -50,7 +50,7 @@ module.exports.start = function (context)
     unihanHistory = prefs.unihanHistory;
     //
     // const defaultFontSize = 96; // Apple Character Palette
-    const defaultFontSize = 48; // Application standard small
+    const defaultFontSize = 48;
     //
     let canvas = document.createElement ('canvas');
     canvas.width = defaultFontSize;
@@ -97,15 +97,15 @@ module.exports.start = function (context)
                 for (let localFont of localFonts)
                 {
                     ctx.font = `${defaultFontSize}px ${localFont}, "Blank"`;
-                    let width = Math.round (ctx.measureText (unihanCharacter).width);
-                    if (width > 0)
+                    let textMetrics = ctx.measureText (unihanCharacter);
+                    let actualWidth = textMetrics.actualBoundingBoxRight - textMetrics.actualBoundingBoxLeft;
+                    if (actualWidth > 0)
                     {
                         let localFontName = localFont.replace (/^"|"$/g, "");
                         let card =  document.createElement ('span');
                         card.className = 'card';
                         let glyph = document.createElement ('span');
                         glyph.className = 'glyph';
-                        glyph.dataset.width = width;
                         glyph.textContent = unihanCharacter;
                         glyph.style = `font-family: ${localFont};`;
                         glyph.title = localFontName;
@@ -113,6 +113,7 @@ module.exports.start = function (context)
                         let fontName = document.createElement ('span');
                         fontName.className = 'font-name';
                         fontName.textContent = localFontName;
+                        fontName.title = localFontName;
                         card.appendChild (fontName);
                         list.appendChild (card);
                     }

@@ -87,7 +87,6 @@
     border: 1px solid gray;
     width: 120px;
     height: 120px;
-    padding: 0 2px;
     gap: 8px;
 }
 
@@ -117,6 +116,10 @@
     vertical-align: middle;
     user-select: text;
     cursor: text;
+    width: 100%;
+    padding: 0 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #cjk-local-fonts-unit .font-glyphs-container.compact .glyph-list
