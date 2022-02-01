@@ -228,8 +228,18 @@
     cursor: text;
 }
 
+#cjk-local-fonts-unit details
+{
+    margin: 1.2em 0;
+}
+
+#cjk-local-fonts-unit details[open] summary
+{
+    margin: 1.2em 0;
+}
+
 #cjk-local-fonts-unit summary
 {
     font-weight: bold;
-    margin: 1.2em 0 1em 0;
 }
+

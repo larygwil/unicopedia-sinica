@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.8.0
+
+- Updated `Glyph Defects` samples in the **CJK Sources** utility.
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `@electron/remote` module to `2.0.4`.
+- Updated `Electron` to version `17.0.0`.
+
 ## 1.7.1
 
 - Improved filtering of "blank" CJK glyphs for some "ill-behaved" fonts in the **CJK Local Fonts** utility.

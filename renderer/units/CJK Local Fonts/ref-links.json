@@ -35,6 +35,26 @@
     ],
     [
         {
+            "lang": "zh-Hant",
+            "name": "- 字形資訊 - CNS11643 中文全字庫",
+            "href": "https://www.cns11643.gov.tw/wordView.jsp"
+        }
+    ],
+    [
+        {
+            "lang": "ja",
+            "name": "文字情報基盤検索システム",
+            "href": "https://moji.or.jp/mojikibansearch/basic"
+        }
+    ],
+    [
+        {
+            "name": "GitHub - oldj/node-font-list: Get the list of fonts installed in the system.",
+            "href": "https://github.com/oldj/node-font-list"
+        }
+    ],
+    [
+        {
             "name": "Canvas API - Web APIs | MDN",
             "href": "https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API"
         },

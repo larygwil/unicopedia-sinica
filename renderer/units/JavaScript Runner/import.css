@@ -89,8 +89,18 @@
     padding-bottom: 1.5em;
 }
 
+#javascript-runner-unit details
+{
+    margin: 1.2em 0;
+}
+
+#javascript-runner-unit details[open] summary
+{
+    margin: 1.2em 0;
+}
+
 #javascript-runner-unit summary
 {
     font-weight: bold;
-    margin: 1.2em 0 1em 0;
 }
+

@@ -1,7 +1,7 @@
 {
     "name": "unicopedia-sinica",
     "productName": "Unicopedia Sinica",
-    "version": "1.7.1",
+    "version": "1.8.0",
     "description": "Developer-oriented set of Unicode utilities related to ideographs.",
     "main": "main.js",
     "scripts": {
@@ -77,14 +77,13 @@
     "license": "MIT",
     "private": false,
     "dependencies": {
-        "@electron/remote": "^2.0.1",
+        "@electron/remote": "^2.0.4",
         "extract-zip": "^2.0.1",
         "font-list": "^1.4.5",
-        "regexpu-core": "^5.0.1",
         "viz.js": "^2.1.2"
     },
     "devDependencies": {
-        "electron": "^16.0.7",
+        "electron": "^17.0.0",
         "electron-builder": "22.10.5",
         "electron-packager": "^15.4.0"
     }

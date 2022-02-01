@@ -916,8 +916,18 @@
     cursor: text;
 }
 
+#cjk-components-unit details
+{
+    margin: 1.2em 0;
+}
+
+#cjk-components-unit details[open] summary
+{
+    margin: 1.2em 0;
+}
+
 #cjk-components-unit summary
 {
     font-weight: bold;
-    margin: 1.2em 0 1em 0;
 }
+

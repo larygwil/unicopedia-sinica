@@ -355,8 +355,18 @@
     font-weight: bold;
 }
 
+#cjk-sources-unit details
+{
+    margin: 1.2em 0;
+}
+
+#cjk-sources-unit details[open] summary
+{
+    margin: 1.2em 0;
+}
+
 #cjk-sources-unit summary
 {
     font-weight: bold;
-    margin: 1.2em 0 1em 0;
 }
+

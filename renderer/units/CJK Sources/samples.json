@@ -110,10 +110,6 @@
                 "string": "𠥓𠥧𠥩𠥪𠥫𠥬"
             },
             {
-                "label": "Glyph Defects",
-                "string": "房𢩊𢩜𪭚阻防𪵦"
-            },
-            {
                 "label": "Affairs & Co.",
                 "string": "事亊𠄙争爭箏𥬁𤔇"
             },
@@ -124,6 +120,10 @@
             {
                 "label": "KP-Source (Ext. C)",
                 "string": "𪮫𪯩𫃜𫃯𫃵𫊛𫊫𫋾"
+            },
+            {
+                "label": "Glyph Defects",
+                "string": "㨳槣𦗞𨄾户戾房扁扇淚篇𢩊𢩜𪭚防阻𡨸𪵦𠘺睊䃣𦈨"
             }
         ]
     }
