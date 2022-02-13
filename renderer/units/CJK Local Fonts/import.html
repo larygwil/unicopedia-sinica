@@ -3,11 +3,20 @@
         <div class="interface">
             <span class="action-group">
                 <button class="pull-down-menu history-button" type="button" title="Lookup History"><svg class="history"><use href="/images/actions.svg#history"></use></svg></button>
-                <input class="unihan-input" type="search" maxlength="64" title="Unihan character or code point" placeholder="Unihan…">
+                <input class="unihan-input" type="search" maxlength="64" title="Character(s) or code point(s):&#xA;Unihan base + optional variation selector" placeholder="Unihan (+VS)…">
                 <button class="look-up-button" type="button">Look Up</button>
             </span>
-            <span class="action-group">
+            <span class="action-group compact">
                 <label class="checkbox"><input class="compact-layout-checkbox" type="checkbox">&nbsp;Compact Layout</label>
+            </span>
+        </div>
+        <div class="interface bis">
+            <span class="action-group">
+                <span class="character-reference"></span>
+            </span>
+            <span class="action-group filter">
+                <span><span class="count-info"><span class="filtered-count-number" title="Filtered count">0</span>&nbsp;/&nbsp;<span class="total-count-number" title="Total count">0</span></span>&nbsp;&nbsp;<input class="name-filter-input" type="search" placeholder="Font name filter…"></span>
+                <span class="error-message"></span>
             </span>
         </div>
         <div class="font-glyphs-container"></div>
@@ -18,8 +27,10 @@
             <ul>
                 <li>The <strong>CJK Local Fonts</strong> utility displays all the local font glyphs of a given Unihan character.</li>
                 <li>Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display the IDS.</li>
+                <li>Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly or as a combination of two code points: Unihan base + variation selector (VS1 to VS256).</li>
                 <li>Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.</li>
                 <li>Click on the <kbd>Compact Layout</kbd> checkbox to display the local font glyphs in a more compact way: hovering over each glyph frame brings up a tooltip with the local font name.</li>
+                <li>Use the <kbd>Font Name Filter</kbd> input field to restrict in real time the display of local font glyphs to the font names matching the text string.</li>
             </ul>
         </details>
         <details class="references">

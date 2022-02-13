@@ -5,6 +5,11 @@ const historyButton = unit.querySelector ('.history-button');
 const unihanInput = unit.querySelector ('.unihan-input');
 const lookUpButton = unit.querySelector ('.look-up-button');
 const compactLayoutCheckbox = unit.querySelector ('.compact-layout-checkbox');
+const characterReference = unit.querySelector ('.character-reference');
+const nameFilterInput = unit.querySelector ('.name-filter-input');
+const filteredCountNumber = unit.querySelector ('.filtered-count-number');
+const totalCountNumber = unit.querySelector ('.total-count-number');
+const errorMessage = unit.querySelector ('.error-message');
 const fontGlyphsContainer = unit.querySelector ('.font-glyphs-container');
 const instructions = unit.querySelector ('.instructions');
 const references = unit.querySelector ('.references');
@@ -28,6 +33,7 @@ module.exports.start = function (context)
     //
     const regexp = require ('../../lib/unicode/regexp.js');
     const unicode = require ('../../lib/unicode/unicode.js');
+    const unihan = require ('../../lib/unicode/unihan.js');
     //
     const refLinks = require ('./ref-links.json');
     //
@@ -39,13 +45,12 @@ module.exports.start = function (context)
     {
         unihanHistory: [ ],
         unihanCharacter: "",
+        nameFilterInput: "",
         compactLayout: false,
         instructions: true,
         references: false,
     };
     let prefs = context.getPrefs (defaultPrefs);
-    //
-    let textSeparator = (process.platform === 'darwin') ? "\t" : "\xA0\xA0";
     //
     unihanHistory = prefs.unihanHistory;
     //
@@ -125,9 +130,8 @@ module.exports.start = function (context)
                 }
             }
         }
+        doFilter (nameFilterInput.value);
     }
-    //
-    const characterOrCodePointRegex = /^\s*(?:(.)\p{Variation_Selector}?|(?:[Uu]\+?)?([0-9a-fA-F]{4,5}))\s*$/u;
     //
     function isSupported (character)
     {
@@ -135,26 +139,65 @@ module.exports.start = function (context)
         return regexp.isUnihan (character);
     }
     //
+    const characterRegex = /^(.)(.)?$/u;
+    const codePointRegex = /^(?:[Uu]\+?)?([0-9a-fA-F]{4,5})(?:\s+(?:[Uu]\+?)?([0-9a-fA-F]{4,5}))?$/u;
+    //
+    // Should not include Mongolian Free Variation Selectors...
+    // const selectorRegex = /^\p{Variation_Selector}$/u;
+    const selectorRegex = /^[\u{FE00}-\u{FE0F}\u{E0100}-\u{E01EF}]$/u;
+    //
+    function isValidSelector (character)
+    {
+        return selectorRegex.test (character);
+    }
+    //
     function parseUnihanCharacter (inputString)
     {
-        let character = "";
-        let match = inputString.match (characterOrCodePointRegex);
+        inputString = inputString.replace (/[<,>]/gu, " ").trim ();
+        let base = "";
+        let vs = "";
+        let match = inputString.match (characterRegex);
         if (match)
         {
-            if (match[1])
+            if (isSupported (match[1]))
             {
-                character = match[1];
-            }
-            else if (match[2])
-            {
-                character = String.fromCodePoint (parseInt (match[2], 16));
-            }
-            if (!isSupported (character))
-            {
-                character = "";
+                base = match[1];
+                if (match[2])
+                {
+                    if (isValidSelector (match[2]))
+                    {
+                        vs = match[2];
+                    }
+                    else
+                    {
+                        base = "";
+                    }
+                }
             }
         }
-        return character;
+        else
+        {
+            match = inputString.match (codePointRegex);
+            if (match)
+            {
+                if (isSupported (unicode.codePointsToCharacters (match[1])))
+                {
+                    base = unicode.codePointsToCharacters (match[1]);
+                    if (match[2])
+                    {
+                        if (isValidSelector (unicode.codePointsToCharacters (match[2])))
+                        {
+                            vs = unicode.codePointsToCharacters (match[2]);
+                        }
+                        else
+                        {
+                            base = "";
+                        }
+                    }
+                }
+            }
+        }
+        return `${base}${vs}`;
     }
     //
     unihanInput.addEventListener
@@ -238,6 +281,56 @@ module.exports.start = function (context)
     //
     function updateUnihanData (character)
     {
+        while (characterReference.firstChild)
+        {
+            characterReference.firstChild.remove ();
+        }
+        if (character)
+        {
+            let characterInfo = document.createElement ('span');
+            characterInfo.className = 'character-info';
+            let [ base, vs ] = character;
+            let baseCharacter = document.createElement ('span');
+            baseCharacter.className = 'base-character';
+            let characterGlyph = document.createElement ('span');
+            characterGlyph.className = 'character-glyph';
+            characterGlyph.textContent = base;
+            baseCharacter.appendChild (characterGlyph);
+            let characterCodePoint = document.createElement ('span');
+            characterCodePoint.className = 'character-code-point';
+            if (regexp.isCompatibility (base))
+            {
+                characterCodePoint.classList.add ('compatibility');
+            }
+            characterCodePoint.textContent = unicode.characterToCodePoint (base);
+            baseCharacter.title = unihan.getTooltip (base);
+            baseCharacter.appendChild (characterCodePoint);
+            characterInfo.appendChild (baseCharacter);
+            if (vs)
+            {
+                let plusJoiner = document.createElement ('span');
+                plusJoiner.className = 'plus-joiner';
+                plusJoiner.textContent = "+";
+                characterInfo.appendChild (plusJoiner);
+                let vsCharacter = document.createElement ('span');
+                vsCharacter.className = 'vs-character';
+                let characterGlyph = document.createElement ('span');
+                characterGlyph.className = 'character-glyph';
+                let vsCode = vs.codePointAt (0);
+                let vsNumber = (vsCode >= 0xE0100 ? vsCode - 0xE0100 + 16: vsCode - 0xFE00) + 1;
+                characterGlyph.appendChild (document.createTextNode ("VS"));
+                characterGlyph.appendChild (document.createElement ('br'));
+                characterGlyph.appendChild (document.createTextNode (vsNumber));
+                vsCharacter.appendChild (characterGlyph);
+                let characterCodePoint = document.createElement ('span');
+                characterCodePoint.className = 'character-code-point';
+                characterCodePoint.textContent = unicode.characterToCodePoint (vs);
+                vsCharacter.appendChild (characterCodePoint);
+                vsCharacter.title = `VARIATION SELECTOR-${vsNumber} (VS${vsNumber})`;
+                characterInfo.appendChild (vsCharacter);
+            }
+            characterReference.appendChild (characterInfo);
+        }
         unihanInput.value = "";
         unihanInput.blur ();
         unihanInput.dispatchEvent (new Event ('input'));
@@ -290,12 +383,18 @@ module.exports.start = function (context)
             {
                 for (let unihan of unihanHistory)
                 {
+                    let [ base, vs ] = unihan;
+                    let label = `${base}\xA0\xA0${unicode.characterToCodePoint (base)}`;
+                    if (vs)
+                    {
+                        label += `\xA0\xA0${unicode.characterToCodePoint (vs)}`;
+                    }
                     historyMenuTemplate.push
                     (
                         {
-                            label: `${unihan}${textSeparator}${unicode.characterToCodePoint (unihan)}`,
+                            label: label,
                             id: unihan,
-                            toolTip: unicode.getCharacterBasicData (unihan).name,
+                            toolTip: Array.from (unihan).map (char => unicode.getCharacterBasicData (char).name).join (",\n"),
                             click: insertUnihanCharacter
                         }
                     );
@@ -327,6 +426,47 @@ module.exports.start = function (context)
         }
     );
     //
+    function doFilter (string)
+    {
+        let filteredCount = 0;
+        let totalCount = 0;
+        let cards = unit.querySelectorAll ('.glyph-list .card');
+        if (cards)
+        {
+            for (let card of cards)
+            {
+                card.classList.remove ('is-shown');
+                let fontName = card.querySelector ('.font-name').textContent;
+                if ((!string) || (fontName.toUpperCase ().indexOf (string.toUpperCase ()) > -1))
+                {
+                    card.classList.add ('is-shown');
+                    filteredCount++;
+                }
+                totalCount++;
+            }
+        }
+        filteredCountNumber.textContent = filteredCount;
+        totalCountNumber.textContent = totalCount;
+        fontGlyphsContainer.hidden = (filteredCount === 0);
+        errorMessage.hidden = true;
+        errorMessage.textContent = "";
+        if (currentUnihanCharacter)
+        {
+            errorMessage.hidden = false;
+            if (totalCount === 0)
+            {
+                errorMessage.textContent = "No suitable font available";
+            }
+            else if (filteredCount === 0)
+            {
+                errorMessage.textContent = "No matching font name";
+            }
+        }
+    }
+    //
+    nameFilterInput.value = prefs.nameFilterInput;
+    nameFilterInput.addEventListener ('input', (event) => { doFilter (event.currentTarget.value); });
+    //
     currentUnihanCharacter = prefs.unihanCharacter;
     updateUnihanData (currentUnihanCharacter);
     //
@@ -339,11 +479,11 @@ module.exports.start = function (context)
 //
 module.exports.stop = function (context)
 {
-    //
     let prefs =
     {
         unihanHistory: unihanHistory,
         unihanCharacter: currentUnihanCharacter,
+        nameFilterInput: nameFilterInput.value,
         compactLayout: compactLayoutCheckbox.checked,
         instructions: instructions.open,
         references: references.open

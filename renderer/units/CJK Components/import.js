@@ -94,7 +94,7 @@ module.exports.start = function (context)
     //
     const regexp = require ('../../lib/unicode/regexp.js');
     const unicode = require ('../../lib/unicode/unicode.js');
-    const unihanData = require ('../../lib/unicode/parsed-unihan-data.js');
+    const unihan = require ('../../lib/unicode/unihan.js');
     const kangxiRadicals = require ('../../lib/unicode/kangxi-radicals.json');
     const { fromRadical, fromRadicalStrokes } = require ('../../lib/unicode/get-rs-strings.js');
     const { characters, unencodedCharacters } = require ('../../lib/unicode/parsed-ids-data.js');
@@ -380,7 +380,7 @@ module.exports.start = function (context)
         }
     }
     //
-    function getTooltip (character, isInvalid)
+    function getNameTooltip (character, isInvalid)
     {
         let tooltip;
         let data = unicode.getCharacterBasicData (character);
@@ -395,50 +395,6 @@ module.exports.start = function (context)
             tooltip += `\n(not a valid component)`;
         }
         return tooltip;
-    }
-    //
-    const simpleBlockNames =
-    {
-        "U+4E00..U+9FFF": "CJK Unified (URO)",
-        "U+3400..U+4DBF": "CJK Unified Extension A",
-        "U+20000..U+2A6DF": "CJK Unified Extension B",
-        "U+2A700..U+2B73F": "CJK Unified Extension C",
-        "U+2B740..U+2B81F": "CJK Unified Extension D",
-        "U+2B820..U+2CEAF": "CJK Unified Extension E",
-        "U+2CEB0..U+2EBEF": "CJK Unified Extension F",
-        "U+30000..U+3134F": "CJK Unified Extension G",
-        "U+F900..U+FAFF": "CJK Compatibility",
-        "U+2F800..U+2FA1F": "CJK Compatibility Supplement"
-    };
-    //
-    function getCodePointTooltip (character)
-    {
-        let data = unicode.getCharacterBasicData (character);
-        let status = regexp.isUnified (character) ? "Unified Ideograph" : "Compatibility Ideograph";
-        let source = (!regexp.isUnified (character)) ? getCompatibilitySource (character) : "";
-        let set = "Full Unihan";
-        let tags = unihanData.codePoints[data.codePoint];
-        if ("kIICore" in tags)
-        {
-            set = "IICore";
-        }
-        else if ("kUnihanCore2020" in tags)
-        {
-            set = "Unihan Core (2020)";
-        }
-        let lines =
-        [
-            `Code Point: ${data.codePoint}`,
-            `Block: ${simpleBlockNames[data.blockRange]}`,
-            `Age: Unicode ${data.age} (${data.ageDate})`,
-            `Set: ${set}`,
-            `Status: ${status}`
-        ];
-        if (source)
-        {
-            lines.push (`Source: ${source}`);
-        }
-        return lines.join ("\n");
     }
     //
     const explicitSources =
@@ -553,11 +509,11 @@ module.exports.start = function (context)
         {
             if (largerEntry)
             {
-                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.75, fontsize = 36, fillcolor = "#F7F7F7", style = "filled", tooltip = ${JSON.stringify (getTooltip (entry))} ]\n`;
+                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.75, fontsize = 36, fillcolor = "#F7F7F7", style = "filled", tooltip = ${JSON.stringify (getNameTooltip (entry))} ]\n`;
             }
             else
             {
-                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.6, fillcolor = "#F7F7F7", style = "filled, bold", tooltip = ${JSON.stringify (getTooltip (entry))} ]\n`;
+                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.6, fillcolor = "#F7F7F7", style = "filled, bold", tooltip = ${JSON.stringify (getNameTooltip (entry))} ]\n`;
             }
         }
         else
@@ -579,7 +535,7 @@ module.exports.start = function (context)
             for (let excessCharacter of excessCharacters)
             {
                 let currentNodeIndex = nodeIndex;
-                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
+                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
                 if (nodeIndex <= excessCharacters.length)
                 {
                     data += `        n${currentNodeIndex} -> n${nodeIndex} [ style = "invis" ]\n`;
@@ -594,11 +550,11 @@ module.exports.start = function (context)
                 if (ids.isValidOperand (tree))
                 {
                     let fontColor = (tree in unencodedCharacters) ? unencodedFontColor : defaultFontColor;
-                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, fillcolor = "#F7F7F7", fontcolor = "${fontColor}", tooltip = ${JSON.stringify (getTooltip (tree))} ]\n`;
+                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, fillcolor = "#F7F7F7", fontcolor = "${fontColor}", tooltip = ${JSON.stringify (getNameTooltip (tree))} ]\n`;
                 }
                 else
                 {
-                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, color = "#CC0000", fontcolor = "#CC0000", style = dashed, tooltip = ${JSON.stringify (getTooltip (tree, true))} ]\n`;
+                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, color = "#CC0000", fontcolor = "#CC0000", style = dashed, tooltip = ${JSON.stringify (getNameTooltip (tree, true))} ]\n`;
                 }
             }
             else if (typeof tree === 'object')
@@ -612,7 +568,7 @@ module.exports.start = function (context)
                     if ('operator' in tree)
                     {
                         let currentNodeIndex = nodeIndex;
-                        data += `    n${nodeIndex++} [ label = "${tree.operator}", tooltip = ${JSON.stringify (getTooltip (tree.operator))} ]\n`;
+                        data += `    n${nodeIndex++} [ label = "${tree.operator}", tooltip = ${JSON.stringify (getNameTooltip (tree.operator))} ]\n`;
                         for (let index = 0; index < tree.operands.length; index++)
                         {
                             if (tree.operands[index])
@@ -643,7 +599,7 @@ module.exports.start = function (context)
             for (let excessCharacter of excessCharacters)
             {
                 excessNodes.push (`n${nodeIndex}`);
-                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
+                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
             }
             data += `        { rank = same; ${excessNodes.join ('; ')} }\n`;
             data += `    }\n`;
@@ -731,7 +687,7 @@ module.exports.start = function (context)
             characters.className = 'characters';
             let character = document.createElement ('td');
             character.className = 'character';
-            character.title = getTooltip (unihanCharacter);
+            character.title = getNameTooltip (unihanCharacter);
             character.textContent = unihanCharacter;
             characters.appendChild (character);
             let characterGap = document.createElement ('td');
@@ -749,7 +705,7 @@ module.exports.start = function (context)
                     {
                         symbol.classList.add ('unencoded');
                     }
-                    symbol.title = getTooltip (IDScharacter);
+                    symbol.title = getNameTooltip (IDScharacter);
                     symbol.textContent = IDScharacter;
                     idsCharacters.appendChild (symbol);
                 }
@@ -761,7 +717,7 @@ module.exports.start = function (context)
             codePoints.className = 'code-points';
             let codePoint = document.createElement ('td');
             codePoint.className = 'code-point';
-            codePoint.title = getCodePointTooltip (unihanCharacter);
+            codePoint.title = unihan.getTooltip (unihanCharacter);
             codePoint.textContent = unicode.characterToCodePoint (unihanCharacter);
             codePoints.appendChild (codePoint);
             codepointGap = document.createElement ('td');
@@ -1618,7 +1574,7 @@ module.exports.start = function (context)
                         if (currentCharactersByMatch.length > 0)
                         {
                             matchParams.pageIndex = 0;
-                            matchSearchData.appendChild (resultsDataTable.create (items, matchParams, getCodePointTooltip));
+                            matchSearchData.appendChild (resultsDataTable.create (items, matchParams, unihan.getTooltip));
                         }
                     }
                 }
@@ -1809,7 +1765,7 @@ module.exports.start = function (context)
                     if (currentCharactersByFind.length > 0)
                     {
                         findParams.pageIndex = 0;
-                        findSearchData.appendChild (resultsDataTable.create (items, findParams, getCodePointTooltip));
+                        findSearchData.appendChild (resultsDataTable.create (items, findParams, unihan.getTooltip));
                     }
                 }
             }

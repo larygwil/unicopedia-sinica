@@ -1,7 +1,7 @@
 {
     "name": "unicopedia-sinica",
     "productName": "Unicopedia Sinica",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": "Developer-oriented set of Unicode utilities related to ideographs.",
     "main": "main.js",
     "scripts": {
@@ -53,10 +53,11 @@
     },
     "keywords": [
         "application",
-        "code-points",
         "characters",
         "chinese",
         "cjk",
+        "code-points",
+        "code-charts",
         "components",
         "electron",
         "glyphs",
@@ -65,9 +66,11 @@
         "japanese",
         "javascript",
         "korean",
+        "local-fonts",
         "tangut",
         "unicode",
-        "unihan"
+        "unihan",
+        "vietnamese"
     ],
     "author": {
         "name": "Michel Mariani",

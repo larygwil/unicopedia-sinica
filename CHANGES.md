@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.9.0
+
+- Added font name filter and optional variation selector to the **CJK Local Fonts** utility.
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `IDS.TXT` data file.
+
 ## 1.8.0
 
 - Updated `Glyph Defects` samples in the **CJK Sources** utility.

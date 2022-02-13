@@ -65,6 +65,7 @@
     align-items: center;
     /* justify-content: space-between; */
     margin: 1em 0 -0.5em 0;
+    white-space: nowrap;
 }
 
 #cjk-components-unit .look-up-ids .interface .action-group + .action-group

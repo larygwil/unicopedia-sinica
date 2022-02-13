@@ -13,8 +13,32 @@
             "href": "https://en.wikipedia.org/wiki/Ming_(typefaces)"
         },
         {
+            "name": "Imitation Song - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Imitation_Song"
+        },
+        {
             "name": "East Asian Gothic typeface - Wikipedia",
             "href": "https://en.wikipedia.org/wiki/East_Asian_Gothic_typeface"
+        },
+        {
+            "name": "Regular script - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Regular_script"
+        },
+        {
+            "name": "Clerical script - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Clerical_script"
+        },
+        {
+            "name": "Seal script - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Seal_script"
+        },
+        {
+            "name": "Large seal script - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Large_seal_script"
+        },
+        {
+            "name": "Small seal script - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Small_seal_script"
         }
     ],
     [
@@ -73,6 +97,72 @@
         {
             "name": "TextMetrics - Web APIs | MDN",
             "href": "https://developer.mozilla.org/en-US/docs/Web/API/TextMetrics"
+        }
+    ],
+    [
+        {
+            "name": "StandardizedVariants.txt",
+            "href": "https://www.unicode.org/Public/UNIDATA/StandardizedVariants.txt"
+        }
+    ],
+    [
+        {
+            "name": "IVD_Collections.txt",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Collections.txt"
+        },
+        {
+            "name": "IVD_Sequences.txt",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Sequences.txt"
+        }
+    ],
+    [
+        {
+            "name": "IVD_Charts_Adobe-Japan1.pdf",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Adobe-Japan1.pdf"
+        },
+        {
+            "name": "IVD_Charts_Hanyo-Denshi.pdf",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Hanyo-Denshi.pdf"
+        },
+        {
+            "name": "IVD_Charts_KRName.pdf",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_KRName.pdf"
+        },
+        {
+            "name": "IVD_Charts_MSARG.pdf",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_MSARG.pdf"
+        },
+        {
+            "name": "IVD_Charts_Moji_Joho.pdf",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Moji_Joho.pdf"
+        }
+    ],
+    [
+        {
+            "name": "UTS #37: Unicode Ideographic Variation Database",
+            "href": "https://www.unicode.org/reports/tr37/"
+        },
+        {
+            "name": "Ideographic Variation Database",
+            "href": "https://www.unicode.org/ivd/"
+        }
+    ],
+    [
+        {
+            "name": "BabelStone Blog : The Secret Life of Variation Selectors",
+            "href": "https://www.babelstone.co.uk/Blog/2007/06/secret-life-of-variation-selectors.html"
+        }
+    ],
+    [
+        {
+            "name": "BabelStone Fonts : BabelStone Han Variants",
+            "href": "https://www.babelstone.co.uk/Fonts/BSH_IVS.html"
+        }
+    ],
+    [
+        {
+            "name": "GitHub - adobe-type-tools/pancjkv-ivd-collection: PanCJKV IVD Collection (UNREGISTERED)",
+            "href": "https://github.com/adobe-type-tools/pancjkv-ivd-collection"
         }
     ]
 ]

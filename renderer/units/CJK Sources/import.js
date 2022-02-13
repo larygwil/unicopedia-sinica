@@ -37,8 +37,8 @@ module.exports.start = function (context)
     //
     const regexp = require ('../../lib/unicode/regexp.js');
     const unicode = require ('../../lib/unicode/unicode.js');
+    const unihan = require ('../../lib/unicode/unihan.js');
     const { codePoints } = require ('../../lib/unicode/parsed-unihan-data.js');
-    const getCompatibilitySource = require ('../../lib/unicode/get-cjk-compatibility-source.js');
     //
     const refLinks = require ('./ref-links.json');
     //
@@ -207,50 +207,6 @@ module.exports.start = function (context)
     {
         // return regexp.isUnified (character);
         return regexp.isUnihan (character);
-    }
-    //
-    const simpleBlockNames =
-    {
-        "U+4E00..U+9FFF": "CJK Unified (URO)",
-        "U+3400..U+4DBF": "CJK Unified Extension A",
-        "U+20000..U+2A6DF": "CJK Unified Extension B",
-        "U+2A700..U+2B73F": "CJK Unified Extension C",
-        "U+2B740..U+2B81F": "CJK Unified Extension D",
-        "U+2B820..U+2CEAF": "CJK Unified Extension E",
-        "U+2CEB0..U+2EBEF": "CJK Unified Extension F",
-        "U+30000..U+3134F": "CJK Unified Extension G",
-        "U+F900..U+FAFF": "CJK Compatibility",
-        "U+2F800..U+2FA1F": "CJK Compat. Supplement"
-    };
-    //
-    function getTooltip (character)
-    {
-        let data = unicode.getCharacterBasicData (character);
-        let status = regexp.isCompatibility (character) ? "Compatibility Ideograph" : "Unified Ideograph";
-        let source = regexp.isCompatibility (character) ? getCompatibilitySource (character) : "";
-        let set = "Full Unihan";
-        let tags = codePoints[data.codePoint];
-        if ("kIICore" in tags)
-        {
-            set = "IICore";
-        }
-        else if ("kUnihanCore2020" in tags)
-        {
-            set = "Unihan Core (2020)";
-        }
-        let lines =
-        [
-            `Code Point: ${data.codePoint}`,
-            `Block: ${simpleBlockNames[data.blockRange]}`,
-            `Age: Unicode ${data.age} (${data.ageDate})`,
-            `Set: ${set}`,
-            `Status: ${status}`
-        ];
-        if (source)
-        {
-            lines.push (`Source: ${source}`);
-        }
-        return lines.join ("\n");
     }
     //
     const sources =
@@ -452,7 +408,6 @@ module.exports.start = function (context)
                     let fontGlyph = document.createElement ('div');
                     fontGlyph.className = 'font-glyph';
                     fontGlyph.textContent = character;
-                    fontGlyph.title = getTooltip (character);
                     let code = document.createElement ('div');
                     code.className = 'code-point';
                     let codePoint = unicode.characterToCodePoint (character);
@@ -460,6 +415,7 @@ module.exports.start = function (context)
                     glyph.appendChild (fontGlyph);
                     data.appendChild (glyph);
                     data.appendChild (code);
+                    data.title = unihan.getTooltip (character);
                     dataRow.appendChild (data);
                     let emptyGap = document.createElement ('td');
                     emptyGap.className = 'empty-gap';
@@ -630,6 +586,20 @@ module.exports.start = function (context)
     instructions.open = prefs.instructions;
     //
     statistics.open = prefs.statistics;
+    //
+    const simpleBlockNames =
+    {
+        "U+4E00..U+9FFF": "CJK Unified (URO)",
+        "U+3400..U+4DBF": "CJK Unified Extension A",
+        "U+20000..U+2A6DF": "CJK Unified Extension B",
+        "U+2A700..U+2B73F": "CJK Unified Extension C",
+        "U+2B740..U+2B81F": "CJK Unified Extension D",
+        "U+2B820..U+2CEAF": "CJK Unified Extension E",
+        "U+2CEB0..U+2EBEF": "CJK Unified Extension F",
+        "U+30000..U+3134F": "CJK Unified Extension G",
+        "U+F900..U+FAFF": "CJK Compatibility",
+        "U+2F800..U+2FA1F": "CJK Compat. Supplement"
+    };
     //
     let statisticsHeader = [ "Block Name", ...Object.keys (sources).map ((prefix) => `${prefix}-Source`), "All Sources" ];
     let statisticsData = [ ];

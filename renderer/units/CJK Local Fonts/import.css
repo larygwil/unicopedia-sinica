@@ -4,14 +4,16 @@
 {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    row-gap: normal;
+    align-items: flex-start;
     justify-content: space-between;
-    margin: 0.5em 0 -1em 0;
+    margin: 0.5em 0 0 0;
+    white-space: nowrap;
 }
 
-#cjk-local-fonts-unit .interface .action-group + .action-group
+#cjk-local-fonts-unit .interface.bis
 {
-    margin-left: 2em;
+    margin: 0.75em 0 0 0;
 }
 
 #cjk-local-fonts-unit .interface .action-group
@@ -42,7 +44,8 @@
     margin-right: -0.25em;
 }
 
-#cjk-local-fonts-unit .unihan-input
+#cjk-local-fonts-unit .unihan-input,
+#cjk-local-fonts-unit .name-filter-input
 {
     font-family: var(--sans-serif-family);
     font-size: 16px;
@@ -51,8 +54,112 @@
     background: white;
     border: 1px solid var(--color-border);
     border-radius: 0.25em;
-    width: 7.5em;
+    width: 11em;
     margin: 0 0.5em 0 0.25em;
+}
+
+#cjk-local-fonts-unit .interface .action-group.compact
+{
+    align-self: center;
+    margin-left: 1em;
+}
+
+#cjk-local-fonts-unit .interface .action-group.filter
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-left: 1em;
+}
+
+#cjk-local-fonts-unit .character-info
+{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+#cjk-local-fonts-unit .base-character
+{
+    display: inline-flex;
+    flex-direction: column;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    background-color: white;
+    width: 72px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 0.125em;
+}
+
+#cjk-local-fonts-unit .plus-joiner
+{
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 1px;
+}
+
+#cjk-local-fonts-unit .vs-character
+{
+    display: inline-flex;
+    flex-direction: column;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    background-color: white;
+    width: 72px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 0.125em;
+}
+
+#cjk-local-fonts-unit .base-character .character-glyph
+{
+    display: inline-block;
+    font-family: var(--ids-family);
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+    vertical-align: middle;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-local-fonts-unit .vs-character .character-glyph
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color);
+    height: 42px;
+    margin: 8px 14px 8px 14px;
+    font-family: serif;
+    font-size: 16px;
+    line-height: 1em;
+    font-weight: bold;
+}
+
+#cjk-local-fonts-unit .character-code-point
+{
+    display: inline-block;
+    font-family: var(--monospace-family);
+    font-size: 12px;
+    line-height: 1.2em;
+    padding-bottom: 4px;
+    font-weight: bold;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-local-fonts-unit .character-code-point.compatibility
+{
+    font-style: italic;
+}
+
+#cjk-local-fonts-unit .name-filter-input
+{
+    font-size: 13px;
+    width: 12em;
+    margin: 0 0 0 0.5em;
 }
 
 #cjk-local-fonts-unit .unihan-input.invalid
@@ -61,14 +168,27 @@
     outline-color: var(--color-error);
 }
 
-#cjk-local-fonts-unit .font-glyphs-container
+#cjk-local-fonts-unit .count-info
 {
-    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1em;
+}
+
+#cjk-local-fonts-unit .filtered-count-number
+{
+    font-weight: bold;
+}
+
+#cjk-local-fonts-unit .error-message
+{
+    margin-top: 0.75em;
+    font-style: italic;
+    font-weight: bold;
 }
 
 #cjk-local-fonts-unit .font-glyphs-container .glyph-list
 {
-    margin: 32px 0 -8px 0;
+    margin: 16px 0 0 0;
     display: flex;
     flex-flow: wrap;
     flex-wrap: wrap;
@@ -78,7 +198,7 @@
 
 #cjk-local-fonts-unit .font-glyphs-container .card
 {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -87,7 +207,14 @@
     border: 1px solid gray;
     width: 120px;
     height: 120px;
+    min-width: 120px;
+    min-height: 120px;
     gap: 8px;
+}
+
+#cjk-local-fonts-unit .font-glyphs-container .card.is-shown
+{
+    display: flex;
 }
 
 #cjk-local-fonts-unit .font-glyphs-container .glyph
@@ -130,6 +257,8 @@
 {
     width: 60px;
     height: 60px;
+    min-width: 60px;
+    min-height: 60px;
 }
 
 #cjk-local-fonts-unit .font-glyphs-container.compact .glyph
@@ -144,7 +273,7 @@
 
 #cjk-local-fonts-unit .plain-panel
 {
-    padding-bottom: 2em;
+    padding-bottom: 1.5em;
     overflow-x: visible;
 }
 
