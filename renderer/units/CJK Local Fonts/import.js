@@ -54,13 +54,59 @@ module.exports.start = function (context)
     //
     unihanHistory = prefs.unihanHistory;
     //
-    // const defaultFontSize = 96; // Apple Character Palette
     const defaultFontSize = 48;
+    const defaultCanvasSize = 60;
     //
     let canvas = document.createElement ('canvas');
-    canvas.width = defaultFontSize;
-    canvas.height = defaultFontSize;
-    let ctx = canvas.getContext ('2d');
+    canvas.width = defaultCanvasSize;
+    canvas.height = defaultCanvasSize;
+    let ctx = canvas.getContext ('2d', { alpha: false });
+    //
+    function getTextData (text)
+    {
+        ctx.fillStyle = "white";
+        ctx.fillRect (0, 0, ctx.canvas.width, ctx.canvas.height);
+        if (text)
+        {
+            let textMetrics = ctx.measureText (text);
+            let actualWidth = textMetrics.actualBoundingBoxRight - textMetrics.actualBoundingBoxLeft;
+            let actualHeight = textMetrics.actualBoundingBoxAscent - textMetrics.actualBoundingBoxDescent;
+            ctx.fillStyle = "black";
+            ctx.fillText (text, (ctx.canvas.width - actualWidth) / 2, ctx.canvas.height - ((ctx.canvas.height - actualHeight) / 2));
+        }
+        return ctx.getImageData (0, 0, ctx.canvas.width, ctx.canvas.height).data;
+    }
+    //
+    let currentDiffElement = null;
+    //
+    function showBase (event)
+    {
+        if (!event.button)
+        {
+            if (event.altKey || event.shiftKey)
+            {
+                event.preventDefault ();
+                currentDiffElement = event.currentTarget;
+                let glyph = currentDiffElement.querySelector ('.glyph');
+                let [ base ] = currentUnihanCharacter;
+                glyph.textContent = base;
+                currentDiffElement.classList.remove ('vs-difference');
+                document.addEventListener ('mouseup', hideBase, { once: true });
+            }
+        }
+    }
+    //
+    function hideBase (event)
+    {
+        if (currentDiffElement)
+        {
+            event.preventDefault ();
+            let glyph = currentDiffElement.querySelector ('.glyph');
+            glyph.textContent = currentUnihanCharacter;
+            currentDiffElement.classList.add ('vs-difference');
+            currentDiffElement = null;
+        }
+    }
     //
     async function displayLookUpData (unihanCharacter)
     {
@@ -109,6 +155,15 @@ module.exports.start = function (context)
                         let localFontName = localFont.replace (/^"|"$/g, "");
                         let card =  document.createElement ('span');
                         card.className = 'card';
+                        let [ base, vs ] = unihanCharacter;
+                        if (vs)
+                        {
+                            if (getTextData (unihanCharacter).toString () !== getTextData (base).toString ())
+                            {
+                                card.classList.add ('vs-difference');
+                                card.addEventListener ('mousedown', showBase);
+                            }
+                        }
                         let glyph = document.createElement ('span');
                         glyph.className = 'glyph';
                         glyph.textContent = unihanCharacter;

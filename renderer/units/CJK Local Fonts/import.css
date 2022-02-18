@@ -130,8 +130,8 @@
     align-items: center;
     justify-content: center;
     border: 2px dashed var(--color);
-    height: 42px;
-    margin: 8px 14px 8px 14px;
+    height: 44px;
+    margin: 7px 12px;
     font-family: serif;
     font-size: 16px;
     line-height: 1em;
@@ -217,6 +217,12 @@
     display: flex;
 }
 
+#cjk-local-fonts-unit .font-glyphs-container .card.vs-difference
+{
+    outline: 2.5px dashed var(--color);
+    border: 1px solid transparent;
+}
+
 #cjk-local-fonts-unit .font-glyphs-container .glyph
 {
     display: flex;
@@ -298,6 +304,12 @@
     background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
 }
 
+#cjk-local-fonts-unit .instructions code.select-all
+{
+    user-select: all;
+    cursor: text;
+}
+
 #cjk-local-fonts-unit .instructions kbd
 {
     color: inherit;
@@ -307,54 +319,6 @@
     border: 1px solid gray;
     border-radius: 0.2em;
     background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
-}
-
-#cjk-local-fonts-unit .regex-examples ul
-{
-    margin: -0.5em 0 1em 0;
-}
-
-#cjk-local-fonts-unit .regex-examples li
-{
-    margin: 0.5em 0;
-}
-
-#cjk-local-fonts-unit .regex-examples code
-{
-    color: inherit;
-    white-space: normal;
-    overflow-wrap: break-word;
-    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
-}
-
-#cjk-local-fonts-unit .regex-examples code.select-all
-{
-    user-select: all;
-    cursor: text;
-}
-
-#cjk-local-fonts-unit .unencoded .glyph-list
-{
-    margin-left: 8px;
-    margin-top: -0.25em;
-}
-
-#cjk-local-fonts-unit .unencoded .glyph-list .glyph
-{
-    display: inline-block;
-    border: 1px solid gray;
-    background-color: white;
-    color: var(--color-accent);
-    font-family: var(--ids-family);
-    font-size: 36px;
-    width: 48px;
-    height: 48px;
-    line-height: 48px;
-    text-align: center;
-    vertical-align: middle;
-    margin: 4px;
-    user-select: text;
-    cursor: text;
 }
 
 #cjk-local-fonts-unit details

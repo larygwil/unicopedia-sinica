@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.10.0
+
+- Added a dashed outline to each frame of CJK characters whose glyph is different with or without a VS (Variation Selector) and added momentary diff visualization by alt-click (or shift-click) to the **CJK Local Fonts** utility.
+- Updated `IDS.TXT` data file.
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `Electron` to version `17.0.1`.
+
 ## 1.9.0
 
 - Added font name filter and optional variation selector to the **CJK Local Fonts** utility.

@@ -138,8 +138,9 @@ The following utilities are currently available:
 ## CJK Local Fonts
 
 - The <strong>CJK Local Fonts</strong> utility displays all the local font glyphs of a given Unihan character.
-- Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display the IDS.
-- Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly or as a combination of two code points: Unihan base + variation selector (VS1 to VS256).
+- Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the glyphs.
+- Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., `劍󠄁`, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., `U+6F22 U+FE00` or `U+9F8D U+E0101`; the specific format `<9F8D,E0107>` is also allowed.
+- A dashed outline is added to a character frame whenever the glyph of a Unihan character coming with a variation selector is visually different from the glyph of its base character alone; in such case, alt-clicking (or shift-clicking) inside the character frame displays momentarily the base character glyph; this is especially useful to spot the subtle differences between glyph variations.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
 - Click on the <kbd>Compact Layout</kbd> checkbox to display the local font glyphs in a more compact way: hovering over each glyph frame brings up a tooltip with the local font name.
 - Use the <kbd>Font Name Filter</kbd> input field to restrict in real time the display of local font glyphs to the font names matching the text string.
