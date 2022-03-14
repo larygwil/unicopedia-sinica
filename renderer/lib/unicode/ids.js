@@ -71,7 +71,7 @@ function isValidOperand (token)
     (
         (token === '？') // Fullwidth question mark, indicating an unrepresentable component
         ||
-        (regexp.isUnihan (token) && regexp.isUnified (token))   // CJK Unified Ideographs
+        (regexp.isUnified (token))   // CJK Unified Ideographs
         ||
         (/[\u2E80-\u2EF3]/.test (token))    // CJK Radicals Supplement
         ||
@@ -82,9 +82,27 @@ function isValidOperand (token)
     return isValid;
 }
 //
+const segmenter = new Intl.Segmenter ();    // { granularity: 'grapheme' } by default
+//
+function graphemeSplit (string)
+{
+    let graphemes = [ ];
+    let segments = segmenter.segment (string);
+    for (let { segment } of segments)
+    {
+        graphemes.push (segment);
+    }
+    return graphemes;
+}
+//
+function getEntry (entryString)
+{
+    return graphemeSplit (entryString)[0];
+}
+//
 function getTree (idsString)
 {
-    let idsArray = Array.from (idsString);
+    let idsArray = graphemeSplit (idsString);
     let idsIndex = 0;
     function parseToken ()
     {
@@ -114,7 +132,7 @@ function getTree (idsString)
 //
 function compare (idsString)
 {
-    let idsArray = Array.from (idsString);
+    let idsArray = graphemeSplit (idsString);
     let idsIndex = 0;
     function parseToken ()
     {
@@ -143,5 +161,5 @@ function compare (idsString)
     return idsArray.length - idsIndex;
 };
 //
-module.exports = { operators, isValidOperand, getTree, compare }
+module.exports = { operators, isValidOperand, getEntry, getTree, compare }
 //

@@ -43,6 +43,12 @@
     ],
     [
         {
+            "name": "Variant form (Unicode) - Wikipedia",
+            "href": "https://en.wikipedia.org/wiki/Variant_form_(Unicode)"
+        }
+    ],
+    [
+        {
             "name": "FAQ - Chinese and Japanese",
             "href": "https://www.unicode.org/faq/han_cjk.html"
         },
@@ -107,12 +113,38 @@
     ],
     [
         {
+            "name": "CJK Compatibility Ideographs",
+            "href": "https://ccjktype.fonts.adobe.com/2012/03/cjk-compatibility-ideographs.html"
+        },
+        {
+            "name": "Standardized Variants—Part 1",
+            "href": "https://ccjktype.fonts.adobe.com/2012/12/standardized-variants.html"
+        },
+        {
+            "name": "Standardized Variants—Part 2",
+            "href": "https://ccjktype.fonts.adobe.com/2012/12/standardized-variants-2.html"
+        },
+        {
+            "name": "Standardized Variants—Part 3",
+            "href": "https://ccjktype.fonts.adobe.com/2012/12/standardized-variants-3.html"
+        },
+        {
+            "name": "Standardized Variants—Part 4",
+            "href": "https://ccjktype.fonts.adobe.com/2013/09/standardized-variants-4.html"
+        }
+    ],
+    [
+        {
             "name": "IVD_Collections.txt",
             "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Collections.txt"
         },
         {
             "name": "IVD_Sequences.txt",
             "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Sequences.txt"
+        },
+        {
+            "name": "IVD_Stats.txt",
+            "href": "https://www.unicode.org/ivd/data/2020-11-06/IVD_Stats.txt"
         }
     ],
     [
@@ -149,6 +181,22 @@
     ],
     [
         {
+            "name": "FAQ - Variation Sequences",
+            "href": "https://www.unicode.org/faq/vs.html"
+        }
+    ],
+    [
+        {
+            "name": "L2/16-063 (Proposal to accept the submission to register the “PanCJKV” IVD collection) - 16063-pancjkv-ivd-collection.pdf",
+            "href": "https://www.unicode.org/L2/L2016/16063-pancjkv-ivd-collection.pdf"
+        },
+        {
+            "name": "GitHub - adobe-type-tools/pancjkv-ivd-collection: PanCJKV IVD Collection (UNREGISTERED)",
+            "href": "https://github.com/adobe-type-tools/pancjkv-ivd-collection"
+        }
+    ],
+    [
+        {
             "name": "BabelStone Blog : The Secret Life of Variation Selectors",
             "href": "https://www.babelstone.co.uk/Blog/2007/06/secret-life-of-variation-selectors.html"
         }
@@ -161,8 +209,9 @@
     ],
     [
         {
-            "name": "GitHub - adobe-type-tools/pancjkv-ivd-collection: PanCJKV IVD Collection (UNREGISTERED)",
-            "href": "https://github.com/adobe-type-tools/pancjkv-ivd-collection"
+            "lang": "ja",
+            "name": "異体字セレクタセレクタ",
+            "href": "https://747.github.io/vsselector/"
         }
     ]
 ]

@@ -117,7 +117,7 @@
                     <br>
                     <svg style="width: 128px; height: 128px;"><use href="/images/symbols.svg#under-construction"></use></svg>
                     <br>
-                    <span style="font-weight: bold;">Under Construction</span>
+                    <span style="font-weight: bold; font-style: italic;">** Under Construction **</span>
                     <br>
                 </div>
             </div>
@@ -140,8 +140,8 @@
                                 <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
                                     <ul>
                                         <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li>
                                         <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
-                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
                                     </ul>
                                 </li>
                                 <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
@@ -161,7 +161,7 @@
                     </ul>
                 </details>
                 <details class="unencoded">
-                    <summary>Unencoded Glyphs</summary>
+                    <summary>Unencoded Components</summary>
                     <div class="glyph-list"></div>
                 </details>
                 <details class="references">
@@ -177,18 +177,19 @@
                     <ul>
                         <li>The <strong>Parse IDS</strong> feature of the <strong>CJK Components</strong> utility displays the parsing graph of any well-formed IDS (Ideographic Description Sequence), in accordance with the freely available <a title="https://babelstone.co.uk/CJK/IDS.TXT" href="https://babelstone.co.uk/CJK/IDS.TXT">IDS.TXT</a> data file, maintained by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
                         <li>The IDS string can by directly typed, or pasted from the clipboard into the <kbd>IDS</kbd> input field.</li>
-                        <li>Optionally, a Unihan character can be used as reference in the <kbd>Entry</kbd> input field.</li>
+                        <li>Optionally, a Unihan character can be used as reference in the <kbd>Entry</kbd> input field. Any standardized variant or Ideographic Variation Sequence (IVS) is also accepted, and is displayed in the graph with an outstanding dashed outline.</li>
                         <li>It is possible to input predefined sets of Entry and IDS strings selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.</li>
                         <li>As a convenience, the input fields can be emptied using the <kbd>Clear</kbd> button.</li>
                         <li>The IDS graph can be displayed either vertically or horizontally. Use the <kbd>Display Mode</kbd> drop-down menu to toggle between the two modes.</li>
                         <li>Notes:
                             <ul>
+                                <li>This feature is primarily designed for IDS validation (well-formed <em>syntax</em>), and can even be used as a kind of "playground" for experimentation, without the need to provide any correct <em>semantics</em>.</li>
                                 <li>Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font <a title="https://www.babelstone.co.uk/Fonts/PUA.html" href="https://www.babelstone.co.uk/Fonts/PUA.html">BabelStone Han PUA</a>, created by <a title="https://en.wikipedia.org/wiki/Andrew_West_(linguist)" href="https://en.wikipedia.org/wiki/Andrew_West_(linguist)">Andrew West</a>.</li>
                                 <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
                                     <ul>
                                         <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li>
                                         <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
-                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
                                     </ul>
                                 </li>
                                 <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
@@ -208,7 +209,7 @@
                     </ul>
                 </details>
                 <details class="unencoded">
-                    <summary>Unencoded Glyphs</summary>
+                    <summary>Unencoded Components</summary>
                     <div class="glyph-list"></div>
                 </details>
                 <details class="references">
@@ -243,8 +244,8 @@
                                 <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
                                     <ul>
                                         <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li>
                                         <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
-                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
                                     </ul>
                                 </li>
                                 <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
@@ -285,7 +286,7 @@
                     </ul>
                 </details>
                 <details class="unencoded">
-                    <summary>Unencoded Glyphs</summary>
+                    <summary>Unencoded Components</summary>
                     <div class="glyph-list"></div>
                 </details>
                 <details class="references">
@@ -317,8 +318,8 @@
                                 <li>For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
                                     <ul>
                                         <li><a title="https://www.babelstone.co.uk/Fonts/Han.html" href="https://www.babelstone.co.uk/Fonts/Han.html">BabelStone Han</a> (<code>BabelStoneHan.ttf</code>)</li>
+                                        <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li>
                                         <li><a title="http://cheonhyeong.com/Simplified/download.html" href="http://cheonhyeong.com/Simplified/download.html">TH-Tshyn</a> (<code>TH-Tshyn-P0.ttf</code>, <code>TH-Tshyn-P1.ttf</code>, <code>TH-Tshyn-P2.ttf</code>, <code>TH-Tshyn-P16.ttf</code>)</li>
-                                        <!-- <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li> -->
                                     </ul>
                                 </li>
                                 <li>The IDS are based on the reference character glyphs shown in their respective <strong>Unicode 14.0</strong> code charts:
@@ -338,7 +339,7 @@
                     </ul>
                 </details>
                 <details class="unencoded">
-                    <summary>Unencoded Glyphs</summary>
+                    <summary>Unencoded Components</summary>
                     <div class="glyph-list"></div>
                 </details>
                 <details class="references">

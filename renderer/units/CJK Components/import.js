@@ -97,7 +97,7 @@ module.exports.start = function (context)
     const unihan = require ('../../lib/unicode/unihan.js');
     const kangxiRadicals = require ('../../lib/unicode/kangxi-radicals.json');
     const { fromRadical, fromRadicalStrokes } = require ('../../lib/unicode/get-rs-strings.js');
-    const { characters, unencodedCharacters } = require ('../../lib/unicode/parsed-ids-data.js');
+    const { characters, unencodedComponents } = require ('../../lib/unicode/parsed-ids-data.js');
     const ids = require ('../../lib/unicode/ids.js');
     //
     const idsRefLinks = require ('./ids-ref-links.json');
@@ -308,9 +308,9 @@ module.exports.start = function (context)
     }
     //
     let unencodedSubmenu = insertMenuTemplate[5].submenu;
-    for (let character in unencodedCharacters)
+    for (let character in unencodedComponents)
     {
-        let value = unencodedCharacters[character];
+        let value = unencodedComponents[character];
         unencodedSubmenu.push
         (
             {
@@ -328,9 +328,9 @@ module.exports.start = function (context)
     function createGlyphList ()
     {
         let list = document.createElement ('div');
-        for (let character in unencodedCharacters)
+        for (let character in unencodedComponents)
         {
-            let value = unencodedCharacters[character];
+            let value = unencodedComponents[character];
             let glyph = document.createElement ('span')
             glyph.className = 'glyph';
             glyph.textContent = character;
@@ -380,19 +380,20 @@ module.exports.start = function (context)
         }
     }
     //
-    function getNameTooltip (character, isInvalid)
+    function getNameTooltip (character)
     {
-        let tooltip;
-        let data = unicode.getCharacterBasicData (character);
-        tooltip = `<${data.codePoint}>\xA0${(data.name === "<control>") ? data.alias : data.name}`;
-        if (character in unencodedCharacters)
+        let tooltip = Array.from (character).map
+        (
+            char =>
+            {
+                let data = unicode.getCharacterBasicData (char);
+                return `<${data.codePoint}>\xA0${(data.name === "<control>") ? data.alias : data.name}`;
+            }
+        ).join (",\n");
+        if (character in unencodedComponents)
         {
-            let value = unencodedCharacters[character];
+            let value = unencodedComponents[character];
             tooltip += `\n${value.number}\xA0${value.comment}`;
-        }
-        else if (isInvalid)
-        {
-            tooltip += `\n(not a valid component)`;
         }
         return tooltip;
     }
@@ -441,10 +442,18 @@ module.exports.start = function (context)
     function postProcessSVG (svg)
     {
         let doc = parser.parseFromString (svg, 'text/xml');
-        // Fix incorrect centering of text in ellipses (circles)
         let ellipses = doc.documentElement.querySelectorAll ('.node ellipse');
         for (let ellipse of ellipses)
         {
+            // Customize dashed style
+            let strokeDasharray = ellipse.getAttribute ('stroke-dasharray')
+            if (strokeDasharray === '5,2')  // style = dashed
+            {
+                ellipse.setAttribute ('stroke-dasharray', '3.333,1.667');
+                ellipse.setAttribute ('stroke-dashoffset', '1.667');
+                ellipse.setAttribute ('stroke-width', '1.5');
+            }
+            // Fix incorrect centering of text in ellipses (circles)
             let cx = ellipse.getAttribute ('cx');
             let texts = ellipse.parentNode.querySelectorAll ('text');
             for (let text of texts)
@@ -463,10 +472,18 @@ module.exports.start = function (context)
                 text.setAttribute ('y', y + 2); // Empirical adjustment
             }
         }
-        // Fix incorrect centering of text in polygons (squares)
         let polygons = doc.documentElement.querySelectorAll ('.node polygon');
         for (let polygon of polygons)
         {
+            // Customize dashed style
+            let strokeDasharray = polygon.getAttribute ('stroke-dasharray')
+            if (strokeDasharray === '5,2')  // style = dashed
+            {
+                polygon.setAttribute ('stroke-dasharray', '3.333,1.667');
+                polygon.setAttribute ('stroke-dashoffset', '1.667');
+                polygon.setAttribute ('stroke-width', '1.5');
+            }
+            // Fix incorrect centering of text in polygons (squares)
             let texts = polygon.parentNode.querySelectorAll ('text');
             if (texts.length === 1)
             {
@@ -474,6 +491,17 @@ module.exports.start = function (context)
                 let y = parseFloat (text.getAttribute ('y'));
                 text.setAttribute ('y', y + 2); // Empirical adjustment
            }
+        }
+        let paths = doc.documentElement.querySelectorAll ('.edge path');
+        for (let path of paths)
+        {
+            // Customize dotted style
+            let strokeDasharray = path.getAttribute ('stroke-dasharray')
+            if (strokeDasharray === '1,5')  // style = dotted
+            {
+                path.setAttribute ('stroke-dasharray', '1.5,1.5');
+                path.setAttribute ('stroke-dashoffset', '1');
+            }
         }
         // Remove unwanted tooltips
         let tooltips = doc.documentElement.querySelectorAll ('.edge title, .node title');
@@ -492,11 +520,11 @@ module.exports.start = function (context)
     let parser = new DOMParser ();
     let serializer = new XMLSerializer ();
     //
-    const largerEntry = true;
+    let defaultFontColor = '#000000';
+    let errorFontColor = '#CC0000';
     //
     function treeToGraphData (entry, tree, excessCharacters, displayMode)
     {
-        let defaultFontColor = '#000000';
         let dummy = document.createElement ('span');
         dummy.style.setProperty ('color', getComputedStyle(document.body).getPropertyValue ('--color-accent'));
         let rgbColor = dummy.style.getPropertyValue ('color');
@@ -507,14 +535,9 @@ module.exports.start = function (context)
         let nodeIndex = 0;
         if (entry)
         {
-            if (largerEntry)
-            {
-                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.75, fontsize = 36, fillcolor = "#F7F7F7", style = "filled", tooltip = ${JSON.stringify (getNameTooltip (entry))} ]\n`;
-            }
-            else
-            {
-                data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.6, fillcolor = "#F7F7F7", style = "filled, bold", tooltip = ${JSON.stringify (getNameTooltip (entry))} ]\n`;
-            }
+            let fontColor = (/^\p{Private_Use}$/u.test (entry)) ? unencodedFontColor : defaultFontColor;
+            let style = regexp.isUnihanVariation (entry) ? "filled, dashed": "filled";
+            data += `    n${nodeIndex++} [ label = ${JSON.stringify (entry)}, shape = circle, width = 0.75, fontsize = 36, fillcolor = "#F7F7F7", fontcolor = "${fontColor}", style = "filled", style = "${style}", tooltip = ${JSON.stringify (getNameTooltip (entry))} ]\n`;
         }
         else
         {
@@ -535,7 +558,7 @@ module.exports.start = function (context)
             for (let excessCharacter of excessCharacters)
             {
                 let currentNodeIndex = nodeIndex;
-                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
+                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "${errorFontColor}", fontcolor = "${errorFontColor}", style = "bold" ]\n`;
                 if (nodeIndex <= excessCharacters.length)
                 {
                     data += `        n${currentNodeIndex} -> n${nodeIndex} [ style = "invis" ]\n`;
@@ -545,17 +568,11 @@ module.exports.start = function (context)
         }
         function walkTree (tree)
         {
-            if ((typeof tree === 'string') && (Array.from (tree).length === 1))
+            if (typeof tree === 'string')
             {
-                if (ids.isValidOperand (tree))
-                {
-                    let fontColor = (tree in unencodedCharacters) ? unencodedFontColor : defaultFontColor;
-                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, fillcolor = "#F7F7F7", fontcolor = "${fontColor}", tooltip = ${JSON.stringify (getNameTooltip (tree))} ]\n`;
-                }
-                else
-                {
-                    data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, color = "#CC0000", fontcolor = "#CC0000", style = dashed, tooltip = ${JSON.stringify (getNameTooltip (tree, true))} ]\n`;
-                }
+                let fontColor = (/^\p{Private_Use}$/u.test (tree)) ? unencodedFontColor : defaultFontColor;
+                let style = regexp.isUnihanVariation (tree) ? "filled, dashed": "filled";
+                data += `    n${nodeIndex++} [ label = ${JSON.stringify (tree)}, fillcolor = "#F7F7F7", fontcolor = "${fontColor}", style = "${style}", tooltip = ${JSON.stringify (getNameTooltip (tree))} ]\n`;
             }
             else if (typeof tree === 'object')
             {
@@ -577,7 +594,7 @@ module.exports.start = function (context)
                             }
                             else
                             {
-                                data += `    n${currentNodeIndex} -> n${nodeIndex} [ color = "#CC0000" ]\n`;
+                                data += `    n${currentNodeIndex} -> n${nodeIndex} [ color = "${errorFontColor}" ]\n`;
                             }
                             walkTree (tree.operands[index]);
                         }
@@ -588,6 +605,7 @@ module.exports.start = function (context)
         if (entry)
         {
             data += `    n${0} -> n${nodeIndex} [ arrowhead = none, style = "dashed" ]\n`;
+            // data += `    n${0} -> n${nodeIndex} [ arrowhead = none, style = "dotted" ]\n`;
         }
         walkTree (tree);
         if (excessCharacters && (displayMode === 'TB'))
@@ -599,7 +617,7 @@ module.exports.start = function (context)
             for (let excessCharacter of excessCharacters)
             {
                 excessNodes.push (`n${nodeIndex}`);
-                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "#CC0000", fontcolor = "#CC0000", style = "bold" ]\n`;
+                data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "${errorFontColor}", fontcolor = "${errorFontColor}", style = "bold" ]\n`;
             }
             data += `        { rank = same; ${excessNodes.join ('; ')} }\n`;
             data += `    }\n`;
@@ -701,7 +719,7 @@ module.exports.start = function (context)
                 {
                     let symbol = document.createElement ('span');
                     symbol.className = 'symbol';
-                    if (IDScharacter in unencodedCharacters)
+                    if (IDScharacter in unencodedComponents)
                     {
                         symbol.classList.add ('unencoded');
                     }
@@ -767,7 +785,7 @@ module.exports.start = function (context)
                             else
                             {
                                 let character = aTag.querySelector ('text').textContent;
-                                if (!isSupported (character))
+                                if (!regexp.isUnified (character))
                                 {
                                     aTag.classList.add ('no-link');
                                 }
@@ -806,7 +824,7 @@ module.exports.start = function (context)
                                 }
                             }
                         }
-                        else if (isSupported (character))
+                        else if (regexp.isUnified (character))
                         {
                             updateLookUpUnihanData (character);
                         }
@@ -854,15 +872,9 @@ module.exports.start = function (context)
         }
     }
     //
-    const characterOrCodePointRegex = /^\s*(?:(.)\p{Variation_Selector}?|(?:[Uu]\+?)?([0-9a-fA-F]{4,5}))\s*$/u;
+    const characterOrCodePointRegex = /^\s*(?:(.)[\u{FE00}-\u{FE0F}\u{E0100}-\u{E01EF}]?|(?:[Uu]\+?)?([0-9a-fA-F]{4,5}))\s*$/u;
     //
-    function isSupported (character)
-    {
-        // return regexp.isUnified (character);
-        return (regexp.isUnihan (character) && regexp.isUnified (character));
-    }
-    //
-    function parseUnihanCharacter (inputString)
+    function validateUnihanCharacter (inputString)
     {
         let character = "";
         let match = inputString.match (characterOrCodePointRegex);
@@ -876,7 +888,7 @@ module.exports.start = function (context)
             {
                 character = String.fromCodePoint (parseInt (match[2], 16));
             }
-            if (!isSupported (character))
+            if (!regexp.isUnified (character))
             {
                 character = "";
             }
@@ -892,7 +904,7 @@ module.exports.start = function (context)
             event.currentTarget.classList.remove ('invalid');
             if (event.currentTarget.value)
             {
-                if (!parseUnihanCharacter (event.currentTarget.value))
+                if (!validateUnihanCharacter (event.currentTarget.value))
                 {
                     event.currentTarget.classList.add ('invalid');
                 }
@@ -980,7 +992,7 @@ module.exports.start = function (context)
         {
             if (lookUpUnihanInput.value)
             {
-                let character = parseUnihanCharacter (lookUpUnihanInput.value);
+                let character = validateUnihanCharacter (lookUpUnihanInput.value);
                 if (character)
                 {
                     updateLookUpUnihanData (character);
@@ -1201,7 +1213,7 @@ module.exports.start = function (context)
             {
                 excessCharacters = [...idsString].slice (-delta);
             }
-            let data = treeToGraphData (entry, ids.getTree (idsString), excessCharacters, parseDisplayModeSelect.value);
+            let data = treeToGraphData (ids.getEntry (entry), ids.getTree (idsString), excessCharacters, parseDisplayModeSelect.value);
             dotString =
                 dotTemplate
                 .replace ('{{rankdir}}', parseDisplayModeSelect.value)
@@ -1235,11 +1247,6 @@ module.exports.start = function (context)
         }
     );
     //
-    function smartFilterString (string)
-    {
-        return Array.from (string).filter ((char) => (char in ids.operators) || ids.isValidOperand (char)).join ("");
-    }
-    //
     function smartPaste (menuItem)
     {
         let text = clipboard.readText ();
@@ -1250,13 +1257,13 @@ module.exports.start = function (context)
             let found = text.match (parseEntryIDSpattern);
             if (found)
             {
-                entry = found[1];
-                ids = found[2];
+                entry = found[1].trim ();
+                ids = found[2].replace (/^\^/, "").replace (/\$.*$/, "").trim ();
             }
             else
             {
                 entry = "";
-                ids = text;
+                ids = text.replace (/^\^/, "").replace (/\$.*$/, "").trim ();
             }
             setTimeout
             (
@@ -1264,7 +1271,7 @@ module.exports.start = function (context)
                 {
                     parseEntryCharacter.focus ();
                     webContents.selectAll ();
-                    webContents.replace (smartFilterString (entry));
+                    webContents.replace (entry);
                 }
             );
             setTimeout
@@ -1273,7 +1280,7 @@ module.exports.start = function (context)
                 {
                     parseIdsCharacters.focus ();
                     webContents.selectAll ();
-                    webContents.replace (smartFilterString (ids));
+                    webContents.replace (ids);
                     parseIdsCharacters.dispatchEvent (new Event ('input'));
                 }
             );
@@ -1307,7 +1314,7 @@ module.exports.start = function (context)
             let entry = parseEntryCharacter.value;
             let idsCharacters = event.currentTarget.value;
             parseCountNumber.textContent = Array.from (idsCharacters).length;
-            displayParseData (Array.from (entry)[0], idsCharacters);
+            displayParseData (entry, idsCharacters);
         }
     );
     //

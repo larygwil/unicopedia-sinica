@@ -37,7 +37,7 @@ function build (pattern, options)
     return new RegExp (pattern, flags);
 };
 //
-const assignedPattern = '\\p{Assigned}';
+const assignedPattern = '^\\p{Assigned}$';
 const assignedRegex = build (assignedPattern, { useRegex: true });
 //
 function isAssigned (character)
@@ -45,7 +45,7 @@ function isAssigned (character)
     return assignedRegex.test (character);
 }
 //
-const unihanPattern = '(?:(?=\\p{Script=Han})(?=\\p{Other_Letter}).)';
+const unihanPattern = '^(?:(?=\\p{Script=Han})(?=\\p{Other_Letter}).)$';
 const unihanRegex = build (unihanPattern, { useRegex: true });
 //
 function isUnihan (character)
@@ -53,7 +53,7 @@ function isUnihan (character)
     return unihanRegex.test (character);
 }
 //
-const unifiedPattern = '\\p{Unified_Ideograph}';
+const unifiedPattern = '^\\p{Unified_Ideograph}$';
 const unifiedRegex = build (unifiedPattern, { useRegex: true });
 //
 function isUnified (character)
@@ -66,7 +66,16 @@ function isCompatibility (character)
     return isUnihan (character) && (!isUnified (character));
 }
 //
-const radicalPattern = '\\p{Radical}';
+// Cannot use \p{Variation_Selector} since it also includes Mongolian Free Variation Selectors
+const unihanVariationPattern = '^\\p{Unified_Ideograph}[\\u{FE00}-\\u{FE0F}\\u{E0100}-\\u{E01EF}]$';
+const unihanVariationRegex = build (unihanVariationPattern, { useRegex: true });
+
+function isUnihanVariation (string)
+{
+    return unihanVariationRegex.test (string);
+}
+//
+const radicalPattern = '^\\p{Radical}$';
 const radicalRegex = build (radicalPattern, { useRegex: true });
 //
 function isRadical (character)
@@ -81,6 +90,7 @@ module.exports =
     isUnihan,
     isUnified,
     isCompatibility,
+    isUnihanVariation,
     isRadical
 };
 //

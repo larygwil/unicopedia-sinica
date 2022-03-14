@@ -188,25 +188,10 @@ module.exports.start = function (context)
         doFilter (nameFilterInput.value);
     }
     //
-    function isSupported (character)
-    {
-        // return regexp.isUnified (character);
-        return regexp.isUnihan (character);
-    }
-    //
     const characterRegex = /^(.)(.)?$/u;
     const codePointRegex = /^(?:[Uu]\+?)?([0-9a-fA-F]{4,5})(?:\s+(?:[Uu]\+?)?([0-9a-fA-F]{4,5}))?$/u;
     //
-    // Should not include Mongolian Free Variation Selectors...
-    // const selectorRegex = /^\p{Variation_Selector}$/u;
-    const selectorRegex = /^[\u{FE00}-\u{FE0F}\u{E0100}-\u{E01EF}]$/u;
-    //
-    function isValidSelector (character)
-    {
-        return selectorRegex.test (character);
-    }
-    //
-    function parseUnihanCharacter (inputString)
+    function validateUnihanCharacter (inputString)
     {
         inputString = inputString.replace (/[<,>]/gu, " ").trim ();
         let base = "";
@@ -214,20 +199,14 @@ module.exports.start = function (context)
         let match = inputString.match (characterRegex);
         if (match)
         {
-            if (isSupported (match[1]))
+            if (regexp.isUnihanVariation (inputString))
             {
                 base = match[1];
-                if (match[2])
-                {
-                    if (isValidSelector (match[2]))
-                    {
-                        vs = match[2];
-                    }
-                    else
-                    {
-                        base = "";
-                    }
-                }
+                vs = match[2];
+            }
+            else if (regexp.isUnihan (inputString))
+            {
+                base = match[1];
             }
         }
         else
@@ -235,20 +214,15 @@ module.exports.start = function (context)
             match = inputString.match (codePointRegex);
             if (match)
             {
-                if (isSupported (unicode.codePointsToCharacters (match[1])))
+                let string = unicode.codePointsToCharacters (inputString);
+                if (regexp.isUnihanVariation (string))
                 {
                     base = unicode.codePointsToCharacters (match[1]);
-                    if (match[2])
-                    {
-                        if (isValidSelector (unicode.codePointsToCharacters (match[2])))
-                        {
-                            vs = unicode.codePointsToCharacters (match[2]);
-                        }
-                        else
-                        {
-                            base = "";
-                        }
-                    }
+                    vs = unicode.codePointsToCharacters (match[2]);
+                }
+                else if (regexp.isUnihan (string))
+                {
+                    base = unicode.codePointsToCharacters (match[1]);
                 }
             }
         }
@@ -263,7 +237,7 @@ module.exports.start = function (context)
             event.currentTarget.classList.remove ('invalid');
             if (event.currentTarget.value)
             {
-                if (!parseUnihanCharacter (event.currentTarget.value))
+                if (!validateUnihanCharacter (event.currentTarget.value))
                 {
                     event.currentTarget.classList.add ('invalid');
                 }
@@ -401,7 +375,7 @@ module.exports.start = function (context)
         {
             if (unihanInput.value)
             {
-                let character = parseUnihanCharacter (unihanInput.value);
+                let character = validateUnihanCharacter (unihanInput.value);
                 if (character)
                 {
                     updateUnihanData (character);
@@ -439,7 +413,7 @@ module.exports.start = function (context)
                 for (let unihan of unihanHistory)
                 {
                     let [ base, vs ] = unihan;
-                    let label = `${base}\xA0\xA0${unicode.characterToCodePoint (base)}`;
+                    let label = `${base}${(process.platform === 'darwin') ? "\t" : "\xA0\xA0"}${unicode.characterToCodePoint (base)}`;
                     if (vs)
                     {
                         label += `\xA0\xA0${unicode.characterToCodePoint (vs)}`;

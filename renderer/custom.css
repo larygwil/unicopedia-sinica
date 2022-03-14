@@ -49,7 +49,7 @@
     --monospace-family: "Segoe UI Mono", Monaco, Menlo, "DejaVu Sans Mono", "Liberation Mono", "Noto Mono", "Ubuntu Mono", monospace;
     --system-ui-family: "Segoe UI", system-ui, sans-serif;
     --sans-serif-family: "Segoe UI", Arial, Geneva, Verdana, Tahoma, "DejaVu Sans", "Liberation Sans", "Noto Sans", Ubuntu, sans-serif;
-    --ids-family: "BabelStone Han PUA", "BabelStone Han", "TH-Tshyn-P0", "TH-Tshyn-P1", "TH-Tshyn-P2", "TH-Tshyn-P16", "Hanazono Mincho A", "Hanazono Mincho B", "Hanazono Mincho C", serif;
+    --ids-family: "BabelStone Han PUA", "BabelStone Han", "Hanazono Mincho A", "Hanazono Mincho B", "Hanazono Mincho C", "TH-Tshyn-P0", "TH-Tshyn-P1", "TH-Tshyn-P2", "TH-Tshyn-P16", serif;
 }
 
 div.unicode-version

@@ -27,11 +27,24 @@
             <ul>
                 <li>The <strong>CJK Local Fonts</strong> utility displays all the local font glyphs of a given Unihan character.</li>
                 <li>Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the glyphs.</li>
-                <li>Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., <code class="select-all">劍󠄁</code>, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., <code class="select-all">U+6F22 U+FE00</code> or <code class="select-all">U+9F8D U+E0101</code>; the specific format <code class="select-all">&lt;9F8D,E0107&gt;</code> is also allowed.</li>
-                <li>A dashed outline is added to a character frame whenever the glyph of a Unihan character coming with a variation selector is visually different from the glyph of its base character alone; in such case, alt-clicking (or shift-clicking) inside the character frame displays momentarily the base character glyph; this is especially useful to spot the subtle differences between glyph variations.</li>
+                <li>Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., <code class="select-all">劍󠄁</code>, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., <code class="select-all">U+6F22 U+FE00</code>, or <code class="select-all">U+9F8D U+E0101</code>; the specific format <code class="select-all">&lt;9F8D,E0107&gt;</code> is also allowed.</li>
                 <li>Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.</li>
                 <li>Click on the <kbd>Compact Layout</kbd> checkbox to display the local font glyphs in a more compact way: hovering over each glyph frame brings up a tooltip with the local font name.</li>
                 <li>Use the <kbd>Font Name Filter</kbd> input field to restrict in real time the display of local font glyphs to the font names matching the text string.</li>
+                <li>Notes:
+                    <ul>
+                        <li>A dashed outline is added to a character frame whenever the glyph of a Unihan character coming with a variation selector is visually different from the glyph of its base character alone; in such case, alt-clicking (or shift-clicking) inside the character frame displays momentarily the base character glyph; this is especially useful to spot subtle differences between glyph variations.</li>
+                        <li>For best coverage of Unicode Variation Sequences, some of the following fonts should be downloaded and installed at the OS level:
+                            <ul>
+                                <li><a title="https://github.com/cjkvi/HanaMinAFDKO/releases" href="https://github.com/cjkvi/HanaMinAFDKO/releases">Hanazono Mincho</a> (<code>HanaMinA.otf</code>, <code>HanaMinB.otf</code>, <code>HanaMinC.otf</code>)</li>
+                                <li><a title="https://moji.or.jp/mojikiban/font/" href="https://moji.or.jp/mojikiban/font/">IPA MJ Mincho</a> (<code>ipamjm.ttf</code>)</li>
+                                <li><a title="https://moji.or.jp/ipafont/ipaex00401/" href="https://moji.or.jp/ipafont/ipaex00401/">IPAEx Font Ver.004.01</a> (<code>ipaexm.ttf</code>, <code>ipaexg.ttf</code>)</li>
+                                <li><a title="https://github.com/adobe-fonts/source-han-serif/tree/release" href="https://github.com/adobe-fonts/source-han-serif/tree/release">Source Han Serif</a> (various set formats)</li>
+                                <li><a title="https://github.com/adobe-fonts/source-han-sans/tree/release" href="https://github.com/adobe-fonts/source-han-sans/tree/release">Source Han Sans</a> (various set formats)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </details>
         <details class="references">

@@ -248,9 +248,9 @@ module.exports.start = function (context)
                                 //
                                 getpath: app.getPath,
                                 //
-                                write: (...args) => { outputString.value += args.join (" "); },
+                                write: (...args) => { let end = outputString.value.length; outputString.setRangeText (args.join (" "), end, end, 'end'); },
                                 //
-                                writeln: (...args) => { outputString.value += args.join (" ") + "\n"; },
+                                writeln: (...args) => { let end = outputString.value.length; outputString.setRangeText (args.join (" ") + "\n", end, end, 'end'); },
                                 //
                                 notify:
                                     (message, callback) =>

@@ -203,12 +203,6 @@ module.exports.start = function (context)
         }
     );
     //
-    function isSupported (character)
-    {
-        // return regexp.isUnified (character);
-        return regexp.isUnihan (character);
-    }
-    //
     const sources =
     {
         "G":
@@ -542,7 +536,7 @@ module.exports.start = function (context)
             let characterArray = Array.from (characters);
             totalCountNumber.textContent = characterArray.length;
             codePointsInput.value = unicode.charactersToCodePoints (characters, true);
-            let validCharacterArray = characterArray.filter (character => isSupported (character));
+            let validCharacterArray = characterArray.filter (character => regexp.isUnihan (character));
             countNumber.textContent = validCharacterArray.length;
             let validCharacters = validCharacterArray.join ("");
             if (validCharacters !== currentCharacters)
@@ -564,7 +558,7 @@ module.exports.start = function (context)
             let characterArray = Array.from (characters);
             totalCountNumber.textContent = characterArray.length;
             charactersInput.value = characters;
-            let validCharacterArray = characterArray.filter (character => isSupported (character));
+            let validCharacterArray = characterArray.filter (character => regexp.isUnihan (character));
             countNumber.textContent = validCharacterArray.length;
             let validCharacters = validCharacterArray.join ("");
             if (validCharacters !== currentCharacters)

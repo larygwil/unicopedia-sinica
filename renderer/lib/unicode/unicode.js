@@ -839,6 +839,7 @@ function getCharacterBasicData (character)
         characterBasicData.abbreviation = data.abbreviation;
         characterBasicData.correction = data.correction;
         characterBasicData.category = categories[data.category];
+        characterBasicData.standardizedVariation = data.standardizedVariation && uniHexify (data.standardizedVariation);
     }
     let index = character.codePointAt (0);
     for (let block of extraData.blocks)

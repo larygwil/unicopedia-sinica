@@ -4,6 +4,8 @@
 
 This desktop application works on macOS, Linux and Windows operating systems.
 
+ It is a specialized complement to the [Unicopedia Plus](https://github.com/tonton-pixel/unicopedia-plus) application.
+ 
 <img src="screenshots/US-social-preview.png" alt="Unicopedia Sinica social preview">
 
 ## Utilities
@@ -32,8 +34,8 @@ The following utilities are currently available:
     - Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
     - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
         - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
+        - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
         - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
-        <!-- - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`) -->
     - The IDS are based on the reference character glyphs shown in their respective **Unicode 14.0** code charts:
         - [CJK Unified Ideographs - U4E00.pdf](https://www.unicode.org/charts/PDF/U4E00.pdf)
         - [CJK Unified Ideographs Extension A - U3400.pdf](https://www.unicode.org/charts/PDF/U3400.pdf)
@@ -52,16 +54,17 @@ The following utilities are currently available:
 
 - The **Parse IDS** feature of the **CJK Components** utility displays the parsing graph of any well-formed IDS (Ideographic Description Sequence).
 - The IDS string can by directly typed, or pasted from the clipboard into the <kbd>IDS</kbd> input field.
-- Optionally, a Unihan character can be used as reference in the <kbd>Entry</kbd> input field.
+- Optionally, a Unihan character can be used as reference in the <kbd>Entry</kbd> input field. Any standardized variant or Ideographic Variation Sequence (IVS) is also accepted, and is displayed in the graph with an outstanding dashed outline.
 - It is possible to input predefined sets of Entry and IDS strings selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.
 - As a convenience, the input fields can be emptied using the <kbd>Clear</kbd> button.
 - The IDS graph can be displayed either vertically or horizontally. Use the <kbd>Display Mode</kbd> drop-down menu to toggle between the two modes.
 - Notes:
+    - This feature is primarily designed for IDS validation (well-formed *syntax*), and can even be used as a kind of "playground" for experimentation, without the need to provide any correct *semantics*.
     - Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
     - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
         - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
+        - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
         - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
-        <!-- - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`) -->
     - The IDS are based on the reference character glyphs shown in their respective **Unicode 14.0** code charts:
         - [CJK Unified Ideographs - U4E00.pdf](https://www.unicode.org/charts/PDF/U4E00.pdf)
         - [CJK Unified Ideographs Extension A - U3400.pdf](https://www.unicode.org/charts/PDF/U3400.pdf)
@@ -72,7 +75,9 @@ The following utilities are currently available:
         - [CJK Unified Ideographs Extension F - U2CEB0.pdf](https://www.unicode.org/charts/PDF/U2CEB0.pdf)
         - [CJK Unified Ideographs Extension G - U30000.pdf](https://www.unicode.org/charts/PDF/U30000.pdf)
 
-<img src="screenshots/cjk-components-parse-ids.png" width="1080px" alt="CJK Components - Parse IDS screenshot">
+<img src="screenshots/cjk-components-parse-ids-ivs.png" width="1080px" alt="CJK Components - Parse IDS (IVS) screenshot">
+
+<img src="screenshots/cjk-components-parse-ids-unencoded.png" width="1080px" alt="CJK Components - Parse IDS (Unencoded) screenshot">
 
 ### Match IDS
 
@@ -92,8 +97,8 @@ The following utilities are currently available:
     - Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
     - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
         - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
+        - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
         - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
-        <!-- - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`) -->
     - The IDS are based on the reference character glyphs shown in their respective **Unicode 14.0** code charts:
         - [CJK Unified Ideographs - U4E00.pdf](https://www.unicode.org/charts/PDF/U4E00.pdf)
         - [CJK Unified Ideographs Extension A - U3400.pdf](https://www.unicode.org/charts/PDF/U3400.pdf)
@@ -108,6 +113,8 @@ The following utilities are currently available:
 
 ### Find by Components
 
+<p style="text-align: center;"><strong><em>** Under Construction **</em></strong></p>
+
 - The **Find by Components** feature of the **CJK Components** utility displays a list of Unihan characters matching a set of individual components. It makes use of the IDS (Ideographic Description Sequences) defined in the [IDS.TXT](https://babelstone.co.uk/CJK/IDS.TXT) data file, maintained by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
 - After entering a query, click on the <kbd>Search</kbd> button to display a list of all relevant matches, if any, ordered by code point value.
 - Click on the <kbd>Code Points</kbd> checkbox to display the code point under each matching Unihan character.
@@ -121,8 +128,8 @@ The following utilities are currently available:
     - Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
     - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
         - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
+        - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
         - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
-        <!-- - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`) -->
     - The IDS are based on the reference character glyphs shown in their respective **Unicode 14.0** code charts:
         - [CJK Unified Ideographs - U4E00.pdf](https://www.unicode.org/charts/PDF/U4E00.pdf)
         - [CJK Unified Ideographs Extension A - U3400.pdf](https://www.unicode.org/charts/PDF/U3400.pdf)
@@ -139,11 +146,18 @@ The following utilities are currently available:
 
 - The <strong>CJK Local Fonts</strong> utility displays all the local font glyphs of a given Unihan character.
 - Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the glyphs.
-- Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., `劍󠄁`, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., `U+6F22 U+FE00` or `U+9F8D U+E0101`; the specific format `<9F8D,E0107>` is also allowed.
-- A dashed outline is added to a character frame whenever the glyph of a Unihan character coming with a variation selector is visually different from the glyph of its base character alone; in such case, alt-clicking (or shift-clicking) inside the character frame displays momentarily the base character glyph; this is especially useful to spot the subtle differences between glyph variations.
+- Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., `劍󠄁`, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., `U+6F22 U+FE00`, or `U+9F8D U+E0101`; the specific format `<9F8D,E0107>` is also allowed.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
 - Click on the <kbd>Compact Layout</kbd> checkbox to display the local font glyphs in a more compact way: hovering over each glyph frame brings up a tooltip with the local font name.
 - Use the <kbd>Font Name Filter</kbd> input field to restrict in real time the display of local font glyphs to the font names matching the text string.
+- Notes:
+    - A dashed outline is added to a character frame whenever the glyph of a Unihan character coming with a variation selector is visually different from the glyph of its base character alone; in such case, alt-clicking (or shift-clicking) inside the character frame displays momentarily the base character glyph; this is especially useful to spot subtle differences between glyph variations.
+    - For best coverage of Unicode Variation Sequences, some of the following fonts should be downloaded and installed at the OS level:
+        - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
+        - [IPA MJ Mincho](https://moji.or.jp/mojikiban/font/) (`ipamjm.ttf`)
+        - [IPAEx Font Ver.004.01](https://moji.or.jp/ipafont/ipaex00401/) (`ipaexm.ttf`, `ipaexg.ttf`)
+        - [Source Han Serif](https://github.com/adobe-fonts/source-han-serif/tree/release) (various set formats)
+        - [Source Han Sans](https://github.com/adobe-fonts/source-han-sans/tree/release) (various set formats)
 
 <img src="screenshots/cjk-local-fonts.png" width="1080px" alt="CJK Local Fonts screenshot">
 
@@ -168,8 +182,8 @@ The following utilities are currently available:
 - These CJK characters belong to the full set of 93,867 Unihan characters defined in **Unicode 14.0**.
 - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
     - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
+    - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
     - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
-    <!-- - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`) -->
 - CJK characters can be entered either directly in the "Characters" input field, or using a series of code points in hexadecimal format in the "Code points" input field.
 - It is also possible to input predefined strings of CJK characters selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.</li>
 - As a convenience, the input fields can be emptied using the <kbd>Clear</kbd> button.

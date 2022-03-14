@@ -77,13 +77,13 @@ for (let line of lines)
     }
 }
 //
-let unencodedCharacters = { };
+let unencodedComponents = { };
 //
 for (let number in unencoded)
 {
     let value = unencoded[number];
-    unencodedCharacters[value.character] = { number, comment: value.comment };
+    unencodedComponents[value.character] = { number, comment: value.comment };
 }
 //
-module.exports = { characters, unencodedCharacters };
+module.exports = { characters, unencodedComponents };
 //

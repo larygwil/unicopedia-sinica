@@ -2,6 +2,19 @@
 const { characters } = require ('./lib/unicode/parsed-ids-data.js');
 const { characterToCodePoint } = require ('./lib/unicode/unicode.js');
 const { coreSet, core2020Set } = require ('./lib/unicode/parsed-unihan-data.js');
+function getSet (codePoint)
+{
+    let set = "Full";
+    if (coreSet.includes (codePoint))
+    {
+        set = "IICore";
+    }
+    else if (core2020Set.includes (codePoint))
+    {
+        set = "U-Core";
+    }
+    return set;
+}
 let unrepresentableCharacters = [ ];
 for (let character in characters)
 {
@@ -11,16 +24,7 @@ for (let character in characters)
     {
         if (/？/u.test (sequence.ids))
         {
-            let set = "Full";
-            if (coreSet.includes (codePoint))
-            {
-                set = "IICore";
-            }
-            else if (core2020Set.includes (codePoint))
-            {
-                set = "U-Core";
-            }
-            unrepresentableCharacters.push ({ character, ids: sequence.ids, set } );
+            unrepresentableCharacters.push ({ character, ids: sequence.ids, set: getSet (codePoint) } );
         }
     }
 }

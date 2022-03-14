@@ -7,8 +7,6 @@ const getCompatibilitySource = require ('./get-cjk-compatibility-source.js');
 function getTooltip (character)
 {
     let data = unicode.getCharacterBasicData (character);
-    let status = regexp.isCompatibility (character) ? "Compatibility Ideograph" : "Unified Ideograph";
-    let source = regexp.isCompatibility (character) ? getCompatibilitySource (character) : "";
     let set = "Full Unihan";
     let tags = codePoints[data.codePoint];
     if ("kIICore" in tags)
@@ -19,6 +17,8 @@ function getTooltip (character)
     {
         set = "Unihan Core (2020)";
     }
+    let isCompatibility = regexp.isCompatibility (character);
+    let status = isCompatibility ? "Compatibility Ideograph" : "Unified Ideograph";
     let lines =
     [
         `Code Point: ${data.codePoint}`,
@@ -27,9 +27,10 @@ function getTooltip (character)
         `Set: ${set}`,
         `Status: ${status}`
     ];
-    if (source)
+    if (isCompatibility)
     {
-        lines.push (`Source: ${source}`);
+        lines.push (`Source: ${getCompatibilitySource (character)}`);
+        lines.push (`Standardized Variant: ${data.standardizedVariation}`);
     }
     return lines.join ("\n");
 }

@@ -52,11 +52,11 @@
         "items":
         [
             {
-                "label": "Biangbiang (Simp.)",
+                "label": "Biangbiang (Simplified)",
                 "string": "𰻝\t⿺辶⿳穴⿲月⿱⿲幺言幺⿲长马长刂心"
             },
             {
-                "label": "Biangbiang (Trad.)",
+                "label": "Biangbiang (Traditional)",
                 "string": "𰻞\t⿺辶⿳穴⿲月⿱⿲幺言幺⿲長馬長刂心"
             }
         ]
@@ -116,16 +116,12 @@
         ]
     },
     {
-        "label": "Invalid Sequences",
+        "label": "Ill-formed Sequences",
         "items":
         [
             {
                 "label": "Extra Components",
                 "string": "蛙\t⿰虫圭⿱土土"
-            },
-            {
-                "label": "Invalid Components",
-                "string": "偉\t⿰イ韋"
             },
             {
                 "label": "Missing Components",
@@ -169,6 +165,7 @@
             }
         ]
     },
+    null,
     {
         "label": "Unencoded Components",
         "items":
@@ -180,6 +177,111 @@
             {
                 "label": "Unicorn",
                 "string": "廌\t⿸"
+            }
+        ]
+    },
+    {
+        "label": "Unencoded Entries",
+        "items":
+        [
+            {
+                "label": "Kanji-Latin Hybrid",
+                "string": "\t⿸广⿰KO"
+            },
+            {
+                "label": "Kanji-Hiragana Hybrid",
+                "string": "\t⿸广ふ"
+            },
+            {
+                "label": "Kanji-Katakana Hybrid",
+                "string": "\t⿰魚⿱サバ"
+            },
+            {
+                "label": "Hanja-Hangul Hybrid",
+                "string": "\t⿴囗도"
+            },
+            null,
+            {
+                "label": "Duang (Simplified)",
+                "string": "\t⿱成龙"
+            },
+            {
+                "label": "Duang (Traditional)",
+                "string": "\t⿱成龍"
+            },
+            null,
+            {
+                "label": "UTC-01162",
+                "string": "\t⿰糹⿱𡿧田"
+            },
+            {
+                "label": "UTC-03214",
+                "string": "\t⿺辶⿳⿲日日日⿲日日日⿲日日日"
+            },
+            null,
+            {
+                "label": "L2/20-277",
+                "string": "\t⿱⿱⿴𦥑文冖子"
+            }
+        ]
+    },
+    null,
+    {
+        "label": "Standardized Variant Entries",
+        "items":
+        [
+            {
+                "label": "免 + VS1",
+                "string": "免︀\t⿱刀⿸⿻口丿乚"
+            }
+        ]
+    },
+    {
+        "label": "Registered IVS Entries",
+        "items":
+        [
+            {
+                "label": "圖 + VS19",
+                "string": "圖󠄂\t⿴囗𠷰"
+            }
+        ]
+    },
+    {
+        "label": "Unregistered IVS Entries",
+        "items":
+        [
+            {
+                "label": "嚦 + VS18",
+                "string": "嚦󠄁\t⿰口厯"
+            }
+        ]
+    },
+    null,
+    {
+        "label": "Japanese Square Forms",
+        "items":
+        [
+            {
+                "label": "Square Era Name",
+                "string": "㋿\t⿰令和"
+            },
+            {
+                "label": "Square Jukugo",
+                "string": "㍿\t⿱⿰株式⿰会社"
+            }
+        ]
+    },
+    {
+        "label": "Vietnamese Ligatures (Experimental)",
+        "items":
+        [
+            {
+                "label": "立 + Reading Mark Cá",
+                "string": "立𖿰\t⿰立 𖿰"
+            },
+            {
+                "label": "立 + Reading Mark Nháy",
+                "string": "立𖿱\t⿰立 𖿱"
             }
         ]
     }

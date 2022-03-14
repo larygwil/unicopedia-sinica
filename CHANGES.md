@@ -2,6 +2,16 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.11.0
+
+- Added support for Unicode Variation Sequences to the **CJK Components** utility.
+- Added new samples to the **Parse IDS** feature of the **CJK Components** utility: unencoded entries, standardized variant sequences, ideographic variation sequences (registered and unregistered), Japanese square forms, Vietnamese ligatures (experimental).
+- Added standardized variation sequence to tooltip of Unihan compatibility characters.
+- Improved performance of built-in functions `$.write ()` and `$.writeln ()` in the **JavaScript Runner** utility.
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `Electron` to version `17.1.2`.
+- Updated `@electron/remote` module to version `2.0.7`.
+
 ## 1.10.0
 
 - Added a dashed outline to each frame of CJK characters whose glyph is different with or without a VS (Variation Selector) and added momentary diff visualization by alt-click (or shift-click) to the **CJK Local Fonts** utility.

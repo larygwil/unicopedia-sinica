@@ -185,11 +185,25 @@
     ],
     [
         {
-            "name": "GitHub - yi-bai/ids: Yet another IDS (Ideographic Description Sequences) lists with MIT license",
-            "href": "https://github.com/yi-bai/ids"
+            "name": "BabelStone Fonts : BabelStone Han Variants",
+            "href": "https://www.babelstone.co.uk/Fonts/BSH_IVS.html"
         }
     ],
     [
+        {
+            "name": "Proposal to Encode Two Vietnamese Alternate Reading Marks - 17373r-viet-alt-reading-marks.pdf",
+            "href": "https://www.unicode.org/L2/L2017/17373r-viet-alt-reading-marks.pdf"
+        },
+        {
+            "name": "Vietnamese Reading Marks Test",
+            "href": "https://www.babelstone.co.uk/Fonts/Vietnamese_Test.html"
+        }
+    ],
+    [
+        {
+            "name": "GitHub - yi-bai/ids: Yet another IDS (Ideographic Description Sequences) lists with MIT license",
+            "href": "https://github.com/yi-bai/ids"
+        },
         {
             "name": "zi.tools",
             "href": "https://zi.tools/"
