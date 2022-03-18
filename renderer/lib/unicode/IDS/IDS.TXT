@@ -1,11 +1,13 @@
 ﻿# Ideographic Description Sequences (IDS) for CJK Unified Ideographs
 # URL: https://babelstone.co.uk/CJK/IDS.TXT
 # Maintained by: Andrew West (魏安) <babelstone@gmail.com>
-# Date: 2022-03-17
+# Date: 2022-03-18
 # Unicode Version: 14.0 (92,865 entries)
 #
+# NB five commented-out entries are for Unicode 15.0 changes (https://www.unicode.org/charts/PDF/Unicode-15.0/)
+#
 # Notes
-# 1. This file is compiled from IDS data provided by Kawabata Taichi <https://github.com/kawabata/ids>, John Knightley, and Andrew West, and from data provided in encoding submissions by IRG member bodies. I (Andrew West) have edited the original data and made a large number of changes and corrections. My thanks to Eiso Chan (陈永聪), James Kass, Huáng Jùnliàng (黄俊亮), Jaemin Chung, and Jerry You (游程宇) for providing numerous corrections and improvements to the data; and my especial thanks to Michel Mariani who has provided thousands of corrections and improvements which have immeasurably improved the quality of the IDS data. 
+# 1. This file is compiled from IDS data provided by Kawabata Taichi <https://github.com/kawabata/ids>, John Knightley, and Andrew West, and from data provided in encoding submissions by IRG member bodies. I (Andrew West) have edited the original data and made a large number of changes and corrections. My thanks to Eiso Chan (陈永聪), James Kass, Huáng Jùnliàng (黄俊亮), Jaemin Chung, and Jerry You (游程宇) for providing numerous corrections and improvements to the data; and my especial thanks to Michel Mariani who has provided thousands of corrections and improvements which have immeasurably improved the quality of the IDS data.
 #
 # 2. This file is not copyrighted, and may be used freely for any purpose without asking permission. Anyone is free to fork the file, or use it as the basis for a new IDS data set.
 #
@@ -27745,8 +27747,8 @@ U+4DBA	䶺	^⿰月內$(T)	^⿰月内$(Z)	*U+4DBA≠U+80AD
 U+4DBB	䶻	^⿰月冘$(T)	*U+4DBB≠U+43D9
 U+4DBC	䶼	^⿰月忩$(T)	*U+4DBC≠U+440B
 U+4DBD	䶽	^⿰月㚇$(T)	*U+4DBD≠U+6721
-U+4DBE	䶾	^⿰臾欠$(T)	*U+4DBE(T)=U+238A7(B)
-# U+4DBE	䶾	^⿰臾欠$(TB)	*B added in Unicode 15.0
+U+4DBE	䶾	^⿰臾欠$(T)
+#U+4DBE	䶾	^⿰臾欠$(TB)
 U+4DBF	䶿	^⿰飠儿$(T)
 # CJK Unified Ideographs Extension B (42,711 characters) [Unicode version 3.1]	
 U+20000	𠀀	^𠀀$(GT)
@@ -38709,7 +38711,7 @@ U+22ACC	𢫌	^⿰扌他$(TV)
 U+22ACD	𢫍	^⿰扌匆$(T)
 U+22ACE	𢫎	^⿰扌𮎛$(T)
 U+22ACF	𢫏	^⿰扌⿱冂山$(H)
-# U+22ACF	𢫏	^⿰扌冚$(H)	*U+22ACF(H) was ^⿰扌⿱冂山$ before Unicode 15.0
+#U+22ACF	𢫏	^⿰扌冚$(H)	*U+22ACF(H) was ^⿰扌⿱冂山$ before Unicode 15.0
 U+22AD0	𢫐	^⿰扌⿱小人$(G)
 U+22AD1	𢫑	^⿰扌外$(GV)
 U+22AD2	𢫒	^⿰扌氶$(G)
@@ -42253,8 +42255,8 @@ U+238A3	𣢣	^⿰{18}欠$(T)
 U+238A4	𣢤	^⿰占欠$(G)
 U+238A5	𣢥	^⿰丘欠$(G)
 U+238A6	𣢦	^⿰立欠$(GT)
-U+238A7	𣢧	^⿰㬰欠$(GT)	^⿰臾欠$(B)	*U+238A7(B)=U+4DBE(T); B source (UK-02830) should map to U+4DBE!
-# U+238A7	𣢧	^⿰㬰欠$(GT)	*B removed in Unicode 15.0
+U+238A7	𣢧	^⿰㬰欠$(GTB)
+#U+238A7	𣢧	^⿰㬰欠$(GT)
 U+238A8	𣢨	^⿰后欠$(GT)
 U+238A9	𣢩	^⿰劦欠$(GT)
 U+238AA	𣢪	^⿰危欠$(GT)
@@ -75644,7 +75646,7 @@ U+2BB34	𫬴	^⿳⿴𦥑林冖口$(G)
 U+2BB35	𫬵	^⿰口濟$(U)
 U+2BB36	𫬶	^⿰口擸$(U)
 U+2BB37	𫬷	^⿰口騎$(U)
-# U+2BB37	𫬷	^⿰口騎$(HU)	*H added in Unicode 15.0
+#U+2BB37	𫬷	^⿰口騎$(HU)
 U+2BB38	𫬸	^⿰喜畐$(G)
 U+2BB39	𫬹	^⿰口璽$(T)
 U+2BB3A	𫬺	^⿰口警$(U)
@@ -81558,7 +81560,7 @@ U+2D25A	𭉚	^⿰口埃$(G)
 U+2D25B	𭉛	^⿲口扌𭥐$(S)
 U+2D25C	𭉜	^⿰口捚$(S)
 U+2D25D	𭉝	^⿰口殊$(S)
-# U+2D25D	𭉝	^⿰口殊$(HS)	*H added in Unicode 15.0
+#U+2D25D	𭉝	^⿰口殊$(HS)
 U+2D25E	𭉞	^⿰口郝$(S)
 U+2D25F	𭉟	^⿰口晋$(G)	^⿰口晉$(Z)
 U+2D260	𭉠	^⿱⿳丰丷一吋$(J)
