@@ -52,7 +52,7 @@ The following utilities are currently available:
 
 ### Parse IDS
 
-- The **Parse IDS** feature of the **CJK Components** utility displays the parsing graph of any well-formed IDS (Ideographic Description Sequence).
+- The **Parse IDS** feature of the **CJK Components** utility displays the parsing graph of any well-formed IDS (Ideographic Description Sequence), in accordance with the set of extended IDCs (Ideographic Description Characters) defined in the freely available [IDS.TXT](https://babelstone.co.uk/CJK/IDS.TXT) data file, maintained by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
 - The IDS string can by directly typed, or pasted from the clipboard into the <kbd>IDS</kbd> input field.
 - Optionally, a Unihan character can be used as reference in the <kbd>Entry</kbd> input field. Any standardized variant or Ideographic Variation Sequence (IVS) is also accepted, and is displayed in the graph with an outstanding dashed outline.
 - It is possible to input predefined sets of Entry and IDS strings selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.
@@ -60,20 +60,30 @@ The following utilities are currently available:
 - The IDS graph can be displayed either vertically or horizontally. Use the <kbd>Display Mode</kbd> drop-down menu to toggle between the two modes.
 - Notes:
     - This feature is primarily designed for IDS validation (well-formed *syntax*), and can even be used as a kind of "playground" for experimentation, without the need to provide any correct *semantics*.
+    - The IDS parsing is performed recursively, based on the following set of *prefix* operators:
+        | Operator | Name                            | Arity |
+        | -------- | ------------------------------- | ----- |
+        | ⿰        | IDC Left to Right               | 2     |
+        | ⿱        | IDC Above to Below              | 2     |
+        | ⿲        | IDC Left to Middle and Right    | 3     |
+        | ⿳        | IDC Above to Middle and Below   | 3     |
+        | ⿴        | IDC Full Surround               | 2     |
+        | ⿵        | IDC Surround from Above         | 2     |
+        | ⿶        | IDC Surround from Below         | 2     |
+        | ⿷        | IDC Surround from Left          | 2     |
+        | ⿸        | IDC Surround from Upper Left    | 2     |
+        | ⿹        | IDC Surround from Upper Right   | 2     |
+        | ⿺        | IDC Surround from Lower Left    | 2     |
+        | ⿻        | IDC Overlaid                    | 2     |
+        | 〾        | Ideographic Variation Indicator | 1     |
+        | ↔        | Horizontal Mirror Operator      | 1     |
+        | ↷        | 180° Rotation Operator          | 1     |
+        | ⊖        | Subtraction Operator            | 2     |
     - Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
     - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
         - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
         - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
         - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
-    - The IDS are based on the reference character glyphs shown in their respective **Unicode 14.0** code charts:
-        - [CJK Unified Ideographs - U4E00.pdf](https://www.unicode.org/charts/PDF/U4E00.pdf)
-        - [CJK Unified Ideographs Extension A - U3400.pdf](https://www.unicode.org/charts/PDF/U3400.pdf)
-        - [CJK Unified Ideographs Extension B - U20000.pdf](https://www.unicode.org/charts/PDF/U20000.pdf)
-        - [CJK Unified Ideographs Extension C - U2A700.pdf](https://www.unicode.org/charts/PDF/U2A700.pdf)
-        - [CJK Unified Ideographs Extension D - U2B740.pdf](https://www.unicode.org/charts/PDF/U2B740.pdf)
-        - [CJK Unified Ideographs Extension E - U2B820.pdf](https://www.unicode.org/charts/PDF/U2B820.pdf)
-        - [CJK Unified Ideographs Extension F - U2CEB0.pdf](https://www.unicode.org/charts/PDF/U2CEB0.pdf)
-        - [CJK Unified Ideographs Extension G - U30000.pdf](https://www.unicode.org/charts/PDF/U30000.pdf)
 
 <img src="screenshots/cjk-components-parse-ids-ivs.png" width="1080px" alt="CJK Components - Parse IDS (IVS) screenshot">
 
@@ -113,7 +123,7 @@ The following utilities are currently available:
 
 ### Find by Components
 
-<p style="text-align: center;"><strong><em>** Under Construction **</em></strong></p>
+___\*\* Under Construction \*\*___
 
 - The **Find by Components** feature of the **CJK Components** utility displays a list of Unihan characters matching a set of individual components. It makes use of the IDS (Ideographic Description Sequences) defined in the [IDS.TXT](https://babelstone.co.uk/CJK/IDS.TXT) data file, maintained by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
 - After entering a query, click on the <kbd>Search</kbd> button to display a list of all relevant matches, if any, ordered by code point value.

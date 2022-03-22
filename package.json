@@ -1,12 +1,15 @@
 {
     "name": "unicopedia-sinica",
     "productName": "Unicopedia Sinica",
-    "version": "1.11.0",
+    "version": "1.12.0",
     "description": "Developer-oriented set of Unicode utilities related to ideographs.",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
-        "build:macos": "electron-builder --macos",
+        "build:mac-universal": "electron-builder --mac --universal",
+        "build:mac-arm64": "electron-builder --mac --arm64",
+        "build:mac-x64": "electron-builder --mac --x64",
+        "build:mac": "electron-builder --mac",
         "build:linux": "electron-builder --linux",
         "build:win": "electron-builder --win",
         "build-darwin": "electron-packager . --asar --out=build --platform=darwin --ignore=/~.* --ignore=^/screenshots --icon=icons/icon.icns --overwrite",
@@ -16,7 +19,7 @@
     "build": {
         "appId": "com.tonton-pixel.unicopedia-sinica",
         "copyright": "Copyright © 2021-2022 ${author}.",
-        "artifactName": "${name}-${os}-${version}.${ext}",
+        "artifactName": "${name}-${os}-${arch}-${version}.${ext}",
         "directories": {
             "output": "build",
             "buildResources": "build-res"
@@ -30,16 +33,8 @@
             "icon": "icons/icon.icns",
             "target": [
                 "zip",
-                "dmg",
-                "pkg"
+                "dmg"
             ]
-        },
-        "pkg": {
-            "license": "license-index.html",
-            "installLocation": "/Applications",
-            "allowAnywhere": true,
-            "isRelocatable": false,
-            "isVersionChecked": false
         },
         "linux": {
             "category": "Development",
@@ -81,7 +76,7 @@
     "license": "MIT",
     "private": false,
     "dependencies": {
-        "@electron/remote": "^2.0.7",
+        "@electron/remote": "^2.0.8",
         "extract-zip": "^2.0.1",
         "font-list": "^1.4.5",
         "viz.js": "^2.1.2"

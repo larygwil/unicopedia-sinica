@@ -869,6 +869,52 @@
     background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
 }
 
+#cjk-components-unit .operators-table
+{
+    margin: 0.75em 0;
+    width: unset;
+}
+
+#cjk-components-unit .operators-table tr th,
+#cjk-components-unit .operators-table tr td
+{
+    text-align: center;
+    padding: 0.25em 0.75em;
+    /* white-space: nowrap; */
+}
+
+#cjk-components-unit .operators-table tr th
+{
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8))
+}
+
+#cjk-components-unit .operators-table tr td
+{
+    vertical-align: middle;
+}
+
+#cjk-components-unit .operators-table tr td.operator
+{
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-components-unit .operators-table tr th.name,
+#cjk-components-unit .operators-table tr td.name
+{
+    text-align: left;
+}
+
+#cjk-components-unit .operators-table tr:nth-child(even) td
+{
+    background-color: white;
+}
+
+#cjk-components-unit .operators-table tr:nth-child(odd) td
+{
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
+}
+
 #cjk-components-unit .regex-examples ul
 {
     margin: -0.5em 0 1em 0;

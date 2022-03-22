@@ -2,6 +2,15 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.12.0
+
+- Updated instructions of the **Parse IDS** feature of the **CJK Components** utility.
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `IDS_PUA.TXT` data file.
+- Updated `IDS.TXT` data file.
+- Added support for building macOS universal binaries (`x64` and `arm64`).
+- Updated `@electron/remote` module to version `2.0.8`.
+
 ## 1.11.0
 
 - Added support for Unicode Variation Sequences to the **CJK Components** utility.
