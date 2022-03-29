@@ -144,7 +144,7 @@ module.exports.start = function (context)
     };
     let prefs = context.getPrefs (defaultPrefs);
     //
-    let textSeparator = (process.platform === 'darwin') ? "\t" : "\xA0\xA0";
+    const textSeparator = (process.platform === 'darwin') ? "\t" : "\xA0\xA0";
     //
     let insertCharacter = (menuItem) => { webContents.insertText (menuItem.id); };
     //

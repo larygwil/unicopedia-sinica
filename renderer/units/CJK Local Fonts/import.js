@@ -193,7 +193,7 @@ module.exports.start = function (context)
     //
     function validateUnihanCharacter (inputString)
     {
-        inputString = inputString.replace (/[<,>]/gu, " ").trim ();
+        inputString = inputString.replace (/[<,;>]/gu, " ").trim ();
         let base = "";
         let vs = "";
         let match = inputString.match (characterRegex);

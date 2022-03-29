@@ -2,6 +2,12 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 1.13.0
+
+- Updated `BabelStoneHanPUA.woff2` font file.
+- Updated `IDS.TXT` data file.
+- Updated `Electron` to version `17.3.0`.
+
 ## 1.12.0
 
 - Updated instructions of the **Parse IDS** feature of the **CJK Components** utility.

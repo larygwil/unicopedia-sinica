@@ -79,7 +79,7 @@ The following utilities are currently available:
         | ↔        | Horizontal Mirror Operator      | 1     |
         | ↷        | 180° Rotation Operator          | 1     |
         | ⊖        | Subtraction Operator            | 2     |
-    - Unencoded components of IDS, if any, are assigned code points belonging to the PUA (Private Use Area) block, and are properly displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
+    - Components whose code point belongs to the PUA (Private Use Area) block are displayed by using an embedded copy of the custom font [BabelStone Han PUA](https://www.babelstone.co.uk/Fonts/PUA.html), created by [Andrew West](https://en.wikipedia.org/wiki/Andrew_West_(linguist)).
     - For best display results, most recent versions of the following fonts should be downloaded and installed at the OS level:
         - [BabelStone Han](https://www.babelstone.co.uk/Fonts/Han.html) (`BabelStoneHan.ttf`)
         - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
