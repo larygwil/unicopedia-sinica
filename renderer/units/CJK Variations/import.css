@@ -1,0 +1,352 @@
+@charset "utf-8";
+
+#cjk-variations-unit
+{
+    --color-frame: hsl(0, 0%, 75%);
+    --color-background: hsl(0, 0%, 92.5%);
+}
+
+#cjk-variations-unit .interface
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+    margin: 0.5em 0 0 0;
+}
+
+#cjk-variations-unit .interface.bis
+{
+    margin: 0.75em 0 -0.5em 0;
+}
+
+#cjk-variations-unit .interface .action-group + .action-group
+{
+    margin-left: 2em;
+}
+
+#cjk-variations-unit .interface .action-group
+{
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#cjk-variations-unit .history-button
+{
+    padding: 1px 6px;
+    margin-right: 0.5em;
+    user-select: none;
+}
+
+#cjk-variations-unit .history-button::after
+{
+    top: -2px;
+}
+
+#cjk-variations-unit .history-button svg.history
+{
+    width: 21px;
+    height: 21px;
+    vertical-align: text-bottom;
+    margin-right: -0.25em;
+}
+
+#cjk-variations-unit .unihan-input
+{
+    font-family: var(--sans-serif-family);
+    font-size: 16px;
+    line-height: 1.333em;
+    padding: 2px 6px;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.25em;
+    width: 7.5em;
+    margin: 0 0.5em 0 0.25em;
+}
+
+#cjk-variations-unit .unihan-input.invalid
+{
+    color: var(--color-error);
+    outline-color: var(--color-error);
+}
+
+#cjk-variations-unit .character-info
+{
+    display: inline-flex;
+    flex-direction: row;
+}
+
+#cjk-variations-unit .base-character
+{
+    display: inline-flex;
+    flex-direction: column;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    background-color: white;
+    width: 72px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 0.125em;
+}
+
+#cjk-variations-unit .plus-joiner
+{
+    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    margin: 0 1px;
+}
+
+#cjk-variations-unit .vs-character
+{
+    display: inline-flex;
+    flex-direction: column;
+    border: 2px solid var(--color-border);
+    border-radius: 6px;
+    background-color: white;
+    width: 72px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 0.125em;
+}
+
+#cjk-variations-unit .base-character .character-glyph
+{
+    display: inline-block;
+    font-family: var(--ids-family);
+    font-size: 48px;
+    line-height: 58px;
+    text-align: center;
+    vertical-align: middle;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-variations-unit .vs-character .character-glyph
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--color);
+    height: 44px;
+    margin: 7px 12px;
+    font-family: serif;
+    font-size: 16px;
+    line-height: 1em;
+    font-weight: bold;
+}
+
+#cjk-variations-unit .character-code-point
+{
+    display: inline-block;
+    font-family: var(--monospace-family);
+    font-size: 12px;
+    line-height: 1.2em;
+    padding-bottom: 4px;
+    font-weight: bold;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-variations-unit .character-code-point.compatibility
+{
+    font-style: italic;
+}
+
+#cjk-variations-unit .ivs-glyphs-container
+{
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#cjk-variations-unit .ivs-glyphs-container .message
+{
+    margin-top: 1.25em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#cjk-variations-unit .ivs-glyphs-container .glyph-list
+{
+    margin: 24px 0 0 0;
+}
+
+#cjk-variations-unit .table,
+#cjk-variations-unit .table tr,
+#cjk-variations-unit .table th,
+#cjk-variations-unit .table td
+{
+    border-collapse: collapse;
+    border: none;
+    background-color: white;
+}
+
+#cjk-variations-unit .table
+{
+    background-color: transparent;
+}
+
+#cjk-variations-unit .table tr
+{
+    vertical-align: middle;
+}
+
+#cjk-variations-unit .table tr.empty-row
+{
+    height: 12px;
+}
+
+#cjk-variations-unit .table th
+{
+    background-color: var(--color-background);
+    border: 1px solid var(--color-frame);
+    color: var(--color);
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    line-height: 1.5em;
+    width: 96px;
+    min-width: 96px;
+}
+
+#cjk-variations-unit .table .data
+{
+    border: 1px solid var(--color-frame);
+    color: var(--color);
+    width: 96px;
+    min-width: 96px;
+    height: 112px;
+}
+
+#cjk-variations-unit .table .data.two-line-caption
+{
+    height: 128px;
+}
+
+#cjk-variations-unit .table .data.empty
+{
+    user-select: none;
+    cursor: default;
+    background-image: url("crosshatch-1-1.svg");
+    background-size: 8px;
+    background-position: center;
+    color: var(--color-dimmed);
+}
+
+#cjk-variations-unit .table .glyph
+{
+    display: inline-block;
+}
+
+#cjk-variations-unit .table .pdf-info
+{
+    width: 88px;
+    height: 72px;
+    font-family: var(--system-ui-family);
+    font-size: 11.5px;
+    font-weight: bold;
+    line-height: 1.333em;
+    /* overflow: hidden;
+    text-overflow: ellipsis; */
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-variations-unit .table .data .svg-glyph
+{
+    width: 72px;
+    height: 72px;
+    user-select: none;
+    cursor: default;
+}
+
+#cjk-variations-unit .table .data .sequence-code
+{
+    color: var(--color);
+    font-family: var(--sans-serif-family);
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: -0.5px;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-variations-unit .table .data .caption
+{
+    color: var(--color);
+    font-family: var(--monospace-family);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: bold;
+    user-select: text;
+    cursor: text;
+}
+
+#cjk-variations-unit .table .data.empty
+{
+    user-select: none;
+    cursor: default;
+    background-image: url("crosshatch-1-1.svg");
+    background-size: 8px;
+    background-position: center;
+    color: var(--color-dimmed);
+}
+
+#cjk-variations-unit .plain-panel
+{
+    padding-bottom: 1.5em;
+    overflow-x: visible;
+}
+
+#cjk-variations-unit .instructions ul
+{
+    margin: -0.5em 0 1em 0;
+}
+
+#cjk-variations-unit .instructions li
+{
+    margin: 0.25em 0;
+}
+
+#cjk-variations-unit .instructions li > ul
+{
+    margin: 0 0 0.25em 0;
+}
+
+#cjk-variations-unit .instructions code
+{
+    color: inherit;
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0.8));
+}
+
+#cjk-variations-unit .instructions kbd
+{
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0 0.333em 1px;
+    border: 1px solid gray;
+    border-radius: 0.2em;
+    background: var(--color-accent) linear-gradient(hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.95));
+}
+
+#cjk-variations-unit details
+{
+    margin: 1.2em 0;
+}
+
+#cjk-variations-unit details[open] summary
+{
+    margin: 1.2em 0;
+}
+
+#cjk-variations-unit summary
+{
+    font-weight: bold;
+}
+

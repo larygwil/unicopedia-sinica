@@ -19,6 +19,7 @@ The following utilities are currently available:
     - **Find by Components**
 - **CJK Local Fonts**
 - **CJK Sources**
+- **CJK Variations**
 - **JavaScript Runner**
 
 ## CJK Components
@@ -154,7 +155,7 @@ ___\*\* Under Construction \*\*___
 
 ## CJK Local Fonts
 
-- The <strong>CJK Local Fonts</strong> utility displays all the local font glyphs of a given Unihan character.
+- The **CJK Local Fonts** utility displays all the local font glyphs of a given Unihan character.
 - Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the glyphs.
 - Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., `劍󠄁`, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., `U+6F22 U+FE00`, or `U+9F8D U+E0101`; the specific format `<9F8D,E0107>` is also allowed.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
@@ -195,11 +196,11 @@ ___\*\* Under Construction \*\*___
     - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
     - [TH-Tshyn](http://cheonhyeong.com/Simplified/download.html) (`TH-Tshyn-P0.ttf`, `TH-Tshyn-P1.ttf`, `TH-Tshyn-P2.ttf`, `TH-Tshyn-P16.ttf`)
 - CJK characters can be entered either directly in the "Characters" input field, or using a series of code points in hexadecimal format in the "Code points" input field.
-- It is also possible to input predefined strings of CJK characters selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.</li>
+- It is also possible to input predefined strings of CJK characters selected from the <kbd>Samples&nbsp;▾</kbd> pop-up menu.
 - As a convenience, the input fields can be emptied using the <kbd>Clear</kbd> button.
 In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" directly followed by 4 or 5 hex digits.
 - In input, more hexadecimal formats are allowed, including Unicode escape sequences, such as `\u6E7E` or `\u{21FE7}`. Moving out of the field or typing the Enter key converts all valid codes to standard Unicode code point format.
-- Code point and alphanumeric source references of CJK *compatibility* characters are systematically displayed in *italics*.</li>
+- Code point and alphanumeric source references of CJK *compatibility* characters are systematically displayed in *italics*.
 - Whereas the original code charts are making use of mutually incompatible, block-specific source orderings, this utility displays the relevant sources always sorted in the same order, discarding any empty column for the sake of clarity:
     | Prefix | Source      | Unihan Property |
     | ------ | ----------- | --------------- |
@@ -220,9 +221,22 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
 
 <img src="screenshots/cjk-sources.png" width="1080px" alt="CJK Sources screenshot">
 
+## CJK Variations
+
+- The **CJK Variations** utility displays all the registered Ideographic Variation Sequences (IVS) of a given Unihan character, as referenced in their respective **IVD 2020** charts:
+    - [Adobe-Japan1 collection - IVD_Charts_Adobe-Japan1.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Adobe-Japan1.pdf)
+    - [Hanyo-Denshi collection - IVD_Charts_Hanyo-Denshi.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Hanyo-Denshi.pdf)
+    - [KRName collection - IVD_Charts_KRName.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_KRName.pdf)
+    - [Moji_Joho collection - IVD_Charts_Moji_Joho.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Moji_Joho.pdf)
+    - [MSARG collection - IVD_Charts_MSARG.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_MSARG.pdf)
+- Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the IVS glyphs along with their code points and sequence identifiers.
+- Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
+
+<img src="screenshots/cjk-variations.png" width="1080px" alt="CJK Variations screenshot">
+
 ## JavaScript Runner
 
-- The **JavaScript Runner** utility lets you execute JavaScript code, and comes with several sample scripts related to CJK and IDS; it is useful for quick testing/prototyping or data processing.
+- The **JavaScript Runner** utility lets you execute JavaScript code, and comes with several sample scripts related to CJK, IDS, and IVD; it is useful for quick testing/prototyping or data processing.
 
 <img src="screenshots/javascript-runner.png" width="1080px" alt="JavaScript Runner screenshot">
 

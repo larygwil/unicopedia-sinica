@@ -82,27 +82,8 @@ function isValidOperand (token)
     return isValid;
 }
 //
-const segmenter = new Intl.Segmenter ();    // { granularity: 'grapheme' } by default
-//
-function graphemeSplit (string)
+function getTree (idsArray)
 {
-    let graphemes = [ ];
-    let segments = segmenter.segment (string);
-    for (let { segment } of segments)
-    {
-        graphemes.push (segment);
-    }
-    return graphemes;
-}
-//
-function getEntry (entryString)
-{
-    return graphemeSplit (entryString)[0];
-}
-//
-function getTree (idsString)
-{
-    let idsArray = graphemeSplit (idsString);
     let idsIndex = 0;
     function parseToken ()
     {
@@ -130,9 +111,8 @@ function getTree (idsString)
     return parseToken ();
 };
 //
-function compare (idsString)
+function compare (idsArray)
 {
-    let idsArray = graphemeSplit (idsString);
     let idsIndex = 0;
     function parseToken ()
     {
@@ -161,5 +141,5 @@ function compare (idsString)
     return idsArray.length - idsIndex;
 };
 //
-module.exports = { operators, isValidOperand, getEntry, getTree, compare }
+module.exports = { operators, isValidOperand, getTree, compare }
 //

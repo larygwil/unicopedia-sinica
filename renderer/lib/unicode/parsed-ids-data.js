@@ -60,7 +60,7 @@ for (let line of lines)
                             console.log (`Missing source: ${codePoint}\t${character}`);
                         }
                         sequences.push ({ ids, source });
-                        if (compare (ids) !== 0)
+                        if (compare (Array.from (ids)) !== 0)
                         {
                             console.log (`Non well-formed IDS: ${codePoint}\t${character}\t${ids}`);
                         }

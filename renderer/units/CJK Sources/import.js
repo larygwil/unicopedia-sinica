@@ -465,12 +465,12 @@ module.exports.start = function (context)
                                 let pdfInfo = document.createElement ('div');
                                 pdfInfo.className = 'pdf-info';
                                 let pdfName = document.createElement ('span');
-                                pdfName.textContent = `${block}.pdf`
+                                pdfName.textContent = `${block}.pdf`;
                                 pdfInfo.appendChild (pdfName);
                                 let wbr = document.createElement ('wbr');
                                 pdfInfo.appendChild (wbr);
                                 let pdfPage = document.createElement ('span');
-                                pdfPage.textContent = `#page=${page}`
+                                pdfPage.textContent = `#page=${page}`;
                                 pdfInfo.appendChild (pdfPage);
                                 glyph.appendChild (pdfInfo);
                             }

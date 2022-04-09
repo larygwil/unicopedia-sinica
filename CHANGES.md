@@ -2,6 +2,14 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.0.0
+
+- Added new **CJK Variations** utility.
+- Added new IVD sample script and updated CJK sample scripts in the **JavaScript Runner** utility.
+- Fixed excess graphemes issue in the **Parse IDS** feature of the **CJK Components** utility.
+- Updated `IDS.TXT` data file.
+- Updated `Electron` to version `17.4.0`.
+
 ## 1.13.0
 
 - Updated `BabelStoneHanPUA.woff2` font file.

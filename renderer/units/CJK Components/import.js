@@ -523,7 +523,7 @@ module.exports.start = function (context)
     let defaultFontColor = '#000000';
     let errorFontColor = '#CC0000';
     //
-    function treeToGraphData (entry, tree, excessCharacters, displayMode)
+    function treeToGraphData (entry, tree, excessGraphemes, displayMode)
     {
         let dummy = document.createElement ('span');
         dummy.style.setProperty ('color', getComputedStyle(document.body).getPropertyValue ('--color-accent'));
@@ -543,23 +543,23 @@ module.exports.start = function (context)
         {
             nodeIndex++;
         }
-        if (excessCharacters && (displayMode === 'LR'))
+        if (excessGraphemes && (displayMode === 'LR'))
         {
             data += `    subgraph\n`;
             data += `    {\n`;
             let excessNodes = [ ];
-            excessNodes.push (`n${nodeIndex + excessCharacters.length}`);
-            data += `        n${nodeIndex + excessCharacters.length} -> n${nodeIndex} [ style = "invis" ]\n`;
-            for (let index = nodeIndex; index <= excessCharacters.length ; index++)
+            excessNodes.push (`n${nodeIndex + excessGraphemes.length}`);
+            data += `        n${nodeIndex + excessGraphemes.length} -> n${nodeIndex} [ style = "invis" ]\n`;
+            for (let index = nodeIndex; index <= excessGraphemes.length ; index++)
             {
                 excessNodes.push (`n${index}`);
             }
             data += `        { rank = same; ${excessNodes.join ('; ')} }\n`;
-            for (let excessCharacter of excessCharacters)
+            for (let excessCharacter of excessGraphemes)
             {
                 let currentNodeIndex = nodeIndex;
                 data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "${errorFontColor}", fontcolor = "${errorFontColor}", style = "bold" ]\n`;
-                if (nodeIndex <= excessCharacters.length)
+                if (nodeIndex <= excessGraphemes.length)
                 {
                     data += `        n${currentNodeIndex} -> n${nodeIndex} [ style = "invis" ]\n`;
                 }
@@ -608,13 +608,13 @@ module.exports.start = function (context)
             // data += `    n${0} -> n${nodeIndex} [ arrowhead = none, style = "dotted" ]\n`;
         }
         walkTree (tree);
-        if (excessCharacters && (displayMode === 'TB'))
+        if (excessGraphemes && (displayMode === 'TB'))
         {
             data += `    subgraph\n`;
             data += `    {\n`;
             let excessNodes = [ ];
             excessNodes.push (`n${1}`);
-            for (let excessCharacter of excessCharacters)
+            for (let excessCharacter of excessGraphemes)
             {
                 excessNodes.push (`n${nodeIndex}`);
                 data += `        n${nodeIndex++} [ label = ${JSON.stringify (excessCharacter)}, tooltip = ${JSON.stringify (getNameTooltip (excessCharacter))}, color = "${errorFontColor}", fontcolor = "${errorFontColor}", style = "bold" ]\n`;
@@ -759,7 +759,7 @@ module.exports.start = function (context)
             graphData.colSpan = 3;
             let graphContainer = document.createElement ('div');
             graphContainer.className = 'graph-container';
-            let data = treeToGraphData (unihanCharacter, ids.getTree (IDSCharacters), null, 'LR');
+            let data = treeToGraphData (unihanCharacter, ids.getTree (Array.from (IDSCharacters)), null, 'LR');
             let dotString =
                 dotTemplate
                 .replace ('{{rankdir}}', 'LR')
@@ -1197,6 +1197,19 @@ module.exports.start = function (context)
         }
     );
     //
+    const segmenter = new Intl.Segmenter ();    // { granularity: 'grapheme' } by default
+    //
+    function graphemeSplit (string)
+    {
+        let graphemes = [ ];
+        let segments = segmenter.segment (string);
+        for (let { segment } of segments)
+        {
+            graphemes.push (segment);
+        }
+        return graphemes;
+    }
+    //
     function displayParseData (entry, idsString)
     {
         dotString = "";
@@ -1207,13 +1220,14 @@ module.exports.start = function (context)
         }
         if (idsString)
         {
-            let excessCharacters = null;
-            let delta = ids.compare (idsString);
+            let idsArray = graphemeSplit (idsString)
+            let excessGraphemes = null;
+            let delta = ids.compare (idsArray);
             if (delta > 0)
             {
-                excessCharacters = [...idsString].slice (-delta);
+                excessGraphemes = idsArray.slice (-delta);
             }
-            let data = treeToGraphData (ids.getEntry (entry), ids.getTree (idsString), excessCharacters, parseDisplayModeSelect.value);
+            let data = treeToGraphData (graphemeSplit (entry)[0], ids.getTree (idsArray), excessGraphemes, parseDisplayModeSelect.value);
             dotString =
                 dotTemplate
                 .replace ('{{rankdir}}', parseDisplayModeSelect.value)

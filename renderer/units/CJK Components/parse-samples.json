@@ -116,20 +116,6 @@
         ]
     },
     {
-        "label": "Ill-formed Sequences",
-        "items":
-        [
-            {
-                "label": "Extra Components",
-                "string": "蛙\t⿰虫圭⿱土土"
-            },
-            {
-                "label": "Missing Components",
-                "string": "𫤆\t⿰⿳⿱⿵𠆢一米口𠬶"
-            }
-        ]
-    },
-    {
         "label": "Mirrored Components",
         "items":
         [
@@ -162,6 +148,21 @@
             {
                 "label": "Strange 3",
                 "string": "𧹂\t⿱⿰虎↷虎貝"
+            }
+        ]
+    },
+    null,
+    {
+        "label": "Ill-formed Sequences",
+        "items":
+        [
+            {
+                "label": "Extra Components",
+                "string": "蛙\t⿰虫圭⿱土土"
+            },
+            {
+                "label": "Missing Components",
+                "string": "𫤆\t⿰⿳⿱⿵𠆢一米口𠬶"
             }
         ]
     },
