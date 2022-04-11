@@ -229,7 +229,7 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
     - [KRName collection - IVD_Charts_KRName.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_KRName.pdf)
     - [Moji_Joho collection - IVD_Charts_Moji_Joho.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Moji_Joho.pdf)
     - [MSARG collection - IVD_Charts_MSARG.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_MSARG.pdf)
-- Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the IVS glyphs along with their code points and sequence identifiers.
+- Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the IVS glyphs along with their VS (Variation Selector) code points.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
 
 <img src="screenshots/cjk-variations.png" width="1080px" alt="CJK Variations screenshot">
