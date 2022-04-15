@@ -214,6 +214,11 @@
     min-width: 96px;
 }
 
+#cjk-variations-unit .table th .unregistered
+{
+    font-size: 10px;
+}
+
 #cjk-variations-unit .table .data
 {
     border: 1px solid var(--color-frame);

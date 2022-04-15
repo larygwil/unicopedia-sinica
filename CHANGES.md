@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.1.0
+
+- Added **unregistered** `BabelStone Collection` as an *experimental* feature to the **CJK Variations** utility.
+- Updated `IDS.TXT` data file.
+
 ## 2.0.0
 
 - Added new **CJK Variations** utility.

@@ -50,18 +50,37 @@ module.exports.start = function (context)
     //
     unihanHistory = prefs.unihanHistory;
     //
-    const { collections, sequences } = require ('../../lib/unicode/parsed-ivd-sequences.js');
+    let { collections, sequences } = require ('../../lib/unicode/parsed-ivd-sequences.js');
+    //
+    const { collections: bsCollections, sequences: bsSequences } = require ('./unregistered/ivd-data-bs.json');
+    //
+    collections = Object.assign (collections, bsCollections);
+    //
+    for (let bsSequence in bsSequences)
+    {
+        if (bsSequence in sequences)
+        {
+            sequences[bsSequence] = [...sequences[bsSequence], ...bsSequences[bsSequence]];
+        }
+        else
+        {
+            sequences[bsSequence] = bsSequences[bsSequence];
+        }
+    }
     //
     const collectionNames = Object.keys (collections).sort ((a, b) => a.localeCompare (b));
     //
     const pages = require ('./svg-pages-2020.json');
+    //
+    const bsPages = require ('./unregistered/svg-pages-bs.json');
     //
     function getSequenceRange (collection, sequence)
     {
         let result = null;
         let [ base, vs ] = sequence;
         let value = (base.codePointAt (0) * (2**24)) + vs.codePointAt (0);
-        for (let page of pages[collection])
+        let collectionPages = (collection === "BabelStone") ? bsPages : pages[collection];
+        for (let page of collectionPages)
         {
             let firstValue = (page.first[0] * (2**24)) + page.first[1];
             let lastValue = (page.last[0] * (2**24)) + page.last[1];
@@ -129,6 +148,13 @@ module.exports.start = function (context)
                     let collectionHeader = document.createElement ('th');
                     collectionHeader.className = 'collection-header';
                     collectionHeader.textContent = `${collection} Collection`;
+                    if (collection === "BabelStone")
+                    {
+                        let unregistered = document.createElement ('div');
+                        unregistered.className = 'unregistered';
+                        unregistered.textContent = "(UNREGISTERED)";
+                        collectionHeader.appendChild (unregistered);
+                    }
                     row.appendChild (collectionHeader);
                     for (let collectionSequence of collectionSequences)
                     {
@@ -139,31 +165,45 @@ module.exports.start = function (context)
                         let ivs = collectionSequence.ivs;
                         glyph.dataset.ivs = ivs;
                         glyph.addEventListener ('contextmenu', ivsMenuListener);
-                        let range = getSequenceRange (collection, ivs);
-                        if (svgDataExists)
+                        if (collection === "BabelStone")
                         {
+                            let range = getSequenceRange (collection, ivs);
                             const xmlns = "http://www.w3.org/2000/svg";
                             let svg = document.createElementNS (xmlns, 'svg');
                             svg.setAttributeNS (null, 'class', 'svg-glyph');
                             let use = document.createElementNS (xmlns, 'use');
-                            use.setAttributeNS (null, 'href', path.join (svgDataPath, collection, `${range.range}.svg#${ivs}`));
+                            use.setAttributeNS (null, 'href', path.join (__dirname, 'unregistered', collection, `${range.range}.svg#${ivs}`));
                             svg.appendChild (use);
                             glyph.appendChild (svg);
-                            glyph.title = `IVD_Charts_${collection}.pdf\n#page=${range.page}`;
                         }
                         else
                         {
-                            // Display PDF chart file name followed by page number (URL-like)
-                            let pdfInfo = document.createElement ('div');
-                            pdfInfo.className = 'pdf-info';
-                            pdfInfo.appendChild (document.createTextNode ("IVD_Charts_"));
-                            let wbr = document.createElement ('wbr');
-                            pdfInfo.appendChild (wbr);
-                            pdfInfo.appendChild (document.createTextNode (`${collection}.pdf`));
-                            let wbr2 = document.createElement ('wbr');
-                            pdfInfo.appendChild (wbr2);
-                            pdfInfo.appendChild (document.createTextNode (`#page=${range.page}`));
-                            glyph.appendChild (pdfInfo);
+                            let range = getSequenceRange (collection, ivs);
+                            if (svgDataExists)
+                            {
+                                const xmlns = "http://www.w3.org/2000/svg";
+                                let svg = document.createElementNS (xmlns, 'svg');
+                                svg.setAttributeNS (null, 'class', 'svg-glyph');
+                                let use = document.createElementNS (xmlns, 'use');
+                                use.setAttributeNS (null, 'href', path.join (svgDataPath, collection, `${range.range}.svg#${ivs}`));
+                                svg.appendChild (use);
+                                glyph.appendChild (svg);
+                                glyph.title = `IVD_Charts_${collection}.pdf\n#page=${range.page}`;
+                            }
+                            else
+                            {
+                                // Display PDF chart file name followed by page number (URL-like)
+                                let pdfInfo = document.createElement ('div');
+                                pdfInfo.className = 'pdf-info';
+                                pdfInfo.appendChild (document.createTextNode ("IVD_Charts_"));
+                                let wbr = document.createElement ('wbr');
+                                pdfInfo.appendChild (wbr);
+                                pdfInfo.appendChild (document.createTextNode (`${collection}.pdf`));
+                                let wbr2 = document.createElement ('wbr');
+                                pdfInfo.appendChild (wbr2);
+                                pdfInfo.appendChild (document.createTextNode (`#page=${range.page}`));
+                                glyph.appendChild (pdfInfo);
+                            }
                         }
                         data.appendChild (glyph);
                         let caption = document.createElement ('div');
@@ -179,6 +219,7 @@ module.exports.start = function (context)
                                 break;
                             case 'vs-code-point':
                                 caption.textContent = unicode.characterToCodePoint (vs);
+                                caption.title = `VARIATION SELECTOR-${vsNumber} (VS${vsNumber})`;
                                 break;
                             case 'vs-number':
                                 caption.textContent = `(VS${vsNumber})`;

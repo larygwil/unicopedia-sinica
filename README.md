@@ -166,7 +166,7 @@ ___\*\* Under Construction \*\*___
     - For best coverage of Unicode Variation Sequences, some of the following fonts should be downloaded and installed at the OS level:
         - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
         - [IPA MJ Mincho](https://moji.or.jp/mojikiban/font/) (`ipamjm.ttf`)
-        - [IPAEx Font Ver.004.01](https://moji.or.jp/ipafont/ipaex00401/) (`ipaexm.ttf`, `ipaexg.ttf`)
+        <!-- - [IPAEx Font Ver.004.01](https://moji.or.jp/ipafont/ipaex00401/) (`ipaexm.ttf`, `ipaexg.ttf`) -->
         - [Source Han Serif](https://github.com/adobe-fonts/source-han-serif/tree/release) (various set formats)
         - [Source Han Sans](https://github.com/adobe-fonts/source-han-sans/tree/release) (various set formats)
 
@@ -229,10 +229,13 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
     - [KRName collection - IVD_Charts_KRName.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_KRName.pdf)
     - [Moji_Joho collection - IVD_Charts_Moji_Joho.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Moji_Joho.pdf)
     - [MSARG collection - IVD_Charts_MSARG.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_MSARG.pdf)
+- In addition, as an *experimental* feature, an **unregistered** set of [BabelStone Han Variation Sequences](https://www.babelstone.co.uk/Fonts/BSH_IVS.html) is also supported, intended to be registered in the [Ideographic Variation Database](https://unicode.org/ivd/) as a future `BabelStone Collection`.
 - Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the IVS glyphs along with their VS (Variation Selector) code points.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
 
 <img src="screenshots/cjk-variations.png" width="1080px" alt="CJK Variations screenshot">
+
+<img src="screenshots/cjk-variations-unregistered.png" width="1080px" alt="CJK Variations (Unregistered) screenshot">
 
 ## JavaScript Runner
 
