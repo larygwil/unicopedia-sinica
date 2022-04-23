@@ -25,10 +25,11 @@ module.exports.start = function (context)
     //
     const currentWindow = getCurrentWindow ();
     //
-    const userDataPath = app.getPath ('userData');
-    //
     const fs = require ('fs');
     const path = require ('path');
+    //
+    const userDataPath = app.getPath ('userData');
+    const svgDataPath = path.join (userDataPath, 'svg-glyphs-2020');
     //
     const pullDownMenus = require ('../../lib/pull-down-menus.js');
     const linksList = require ('../../lib/links-list.js');
@@ -74,10 +75,10 @@ module.exports.start = function (context)
     //
     const bsPages = require ('./unregistered/svg-pages-bs.json');
     //
-    function getSequenceRange (collection, sequence)
+    function getSequenceRange (collection, ivs)
     {
         let result = null;
-        let [ base, vs ] = sequence;
+        let [ base, vs ] = ivs;
         let value = (base.codePointAt (0) * (2**24)) + vs.codePointAt (0);
         let collectionPages = (collection === "BabelStone") ? bsPages : pages[collection];
         for (let page of collectionPages)
@@ -92,6 +93,100 @@ module.exports.start = function (context)
         }
         return result;
     }
+    //
+    let parser = new DOMParser ();
+    //
+    function getIvsDataURL (svgFilePath, ivs)
+    {
+        let svg = fs.readFileSync (svgFilePath, 'utf8');
+        let doc = parser.parseFromString (svg, 'text/xml');
+        let dataURL = doc.getElementById (ivs).querySelector ('image').getAttribute ('href');
+        return dataURL;
+    }
+    //
+    let currentDiffElement = null;
+    let currentAlternateDiff;
+    //
+    function showDifferences (event)
+    {
+        if (!(event.button || event.ctrlKey || event.metaKey))
+        {
+            event.preventDefault ();
+            let diffElement = event.currentTarget;
+            if (diffElement.dataset.svgPath && fs.existsSync (diffElement.dataset.svgPath))
+            {
+                let alternateDiff = event.altKey || event.shiftKey;
+                let glyphs;
+                if (alternateDiff)
+                {
+                    glyphs = diffElement.closest ('.table').querySelectorAll (`.glyph[data-ivs="${diffElement.dataset.ivs}"]`);
+                }
+                else
+                {
+                    glyphs = diffElement.closest ('.row').querySelectorAll ('.glyph');
+                }
+                if (glyphs.length > 1) // Diff needs at least two elements to compare
+                {
+                    let currentBackground = diffElement.querySelector ('.background');
+                    for (let glyph of glyphs)
+                    {
+                        let background = glyph.querySelector ('.background');
+                        let overlay = glyph.querySelector ('.overlay');
+                        if (background !== currentBackground)
+                        {
+                            let img = new Image ();
+                            img.className = 'img-glyph';
+                            img.src = getIvsDataURL (diffElement.dataset.svgPath, diffElement.dataset.ivs);
+                            overlay.appendChild (img);
+                            background.classList.remove ('shown');
+                            overlay.classList.add ('shown');
+                        }
+                    }
+                    currentDiffElement = diffElement;
+                    currentAlternateDiff = alternateDiff;
+                    document.addEventListener ('mouseup', hideDifferences, { once: true });
+                }
+                else
+                {
+                    currentDiffElement = null;
+                }
+            }
+        }
+    }
+    //
+    function hideDifferences (event)
+    {
+        if (currentDiffElement)
+        {
+            event.preventDefault ();
+            let glyphs;
+            let currentBackground = currentDiffElement.querySelector ('.background');
+            if (currentAlternateDiff)
+            {
+                glyphs = currentDiffElement.closest ('.table').querySelectorAll (`.glyph[data-ivs="${currentDiffElement.dataset.ivs}"]`);
+            }
+            else
+            {
+                glyphs = currentDiffElement.closest ('.row').querySelectorAll ('.glyph');
+            }
+            for (let glyph of glyphs)
+            {
+                let background = glyph.querySelector ('.background');
+                let overlay = glyph.querySelector ('.overlay');
+                if (background !== currentBackground)
+                {
+                    background.classList.add ('shown');
+                    overlay.classList.remove ('shown');
+                    while (overlay.firstChild)
+                    {
+                        overlay.firstChild.remove ();
+                    }
+                }
+            }
+            currentDiffElement = null;
+        }
+    }
+    //
     let currentIvs;
     //
     let ivsMenuTemplate =
@@ -100,7 +195,7 @@ module.exports.start = function (context)
     ];
     let ivsContextualMenu = Menu.buildFromTemplate (ivsMenuTemplate);
     //
-    function ivsMenuListener (event)
+    function showIVSMenu (event)
     {
         event.preventDefault ();
         currentIvs = event.currentTarget.dataset.ivs;
@@ -113,14 +208,26 @@ module.exports.start = function (context)
     const hideIdentifiers = true;   // In header?
     const captionStyle = 'vs-code-point';    // 'full-code-point', 'vs-code-point', 'vs-number', 'vs-both'
     //
+    function getSvgPath (collection, range)
+    {
+        let svgPath = "";
+        if (collection === "BabelStone")
+        {
+            svgPath = path.join (__dirname, 'unregistered', collection, `${range}.svg`);
+        }
+        else if (fs.existsSync (svgDataPath))
+        {
+            svgPath = path.join (svgDataPath, collection, `${range}.svg`);
+        }
+        return svgPath;
+    }
+
     function createGlyphsList (unihanCharacter)
     {
         let list = document.createElement ('div');
         list.className = 'glyph-list';
         if (unihanCharacter in sequences)
         {
-            let svgDataPath = path.join (userDataPath, 'svg-glyphs-2020');
-            let svgDataExists = fs.existsSync (svgDataPath);
             let table = document.createElement ('table');
             table.className = 'table';
             let first = true;
@@ -148,6 +255,7 @@ module.exports.start = function (context)
                     let collectionHeader = document.createElement ('th');
                     collectionHeader.className = 'collection-header';
                     collectionHeader.textContent = `${collection} Collection`;
+                    collectionHeader.title = `Count: ${collectionSequences.length}`;
                     if (collection === "BabelStone")
                     {
                         let unregistered = document.createElement ('div');
@@ -164,47 +272,50 @@ module.exports.start = function (context)
                         glyph.className = 'glyph';
                         let ivs = collectionSequence.ivs;
                         glyph.dataset.ivs = ivs;
-                        glyph.addEventListener ('contextmenu', ivsMenuListener);
-                        if (collection === "BabelStone")
+                        glyph.addEventListener ('contextmenu', showIVSMenu);
+                        let background = document.createElement ('div');
+                        background.className = 'background';
+                        background.classList.add ('shown');
+                        let range = getSequenceRange (collection, ivs);
+                        let svgPath = getSvgPath (collection, range.range);
+                        if (svgPath)
                         {
-                            let range = getSequenceRange (collection, ivs);
+                            glyph.dataset.svgPath = svgPath;
+                            glyph.addEventListener ('mousedown', showDifferences);
                             const xmlns = "http://www.w3.org/2000/svg";
                             let svg = document.createElementNS (xmlns, 'svg');
                             svg.setAttributeNS (null, 'class', 'svg-glyph');
                             let use = document.createElementNS (xmlns, 'use');
-                            use.setAttributeNS (null, 'href', path.join (__dirname, 'unregistered', collection, `${range.range}.svg#${ivs}`));
+                            use.setAttributeNS (null, 'href', `${svgPath}#${ivs}`);
                             svg.appendChild (use);
-                            glyph.appendChild (svg);
-                        }
-                        else
-                        {
-                            let range = getSequenceRange (collection, ivs);
-                            if (svgDataExists)
+                            background.appendChild (svg);
+                            if (collection === "BabelStone")
                             {
-                                const xmlns = "http://www.w3.org/2000/svg";
-                                let svg = document.createElementNS (xmlns, 'svg');
-                                svg.setAttributeNS (null, 'class', 'svg-glyph');
-                                let use = document.createElementNS (xmlns, 'use');
-                                use.setAttributeNS (null, 'href', path.join (svgDataPath, collection, `${range.range}.svg#${ivs}`));
-                                svg.appendChild (use);
-                                glyph.appendChild (svg);
-                                glyph.title = `IVD_Charts_${collection}.pdf\n#page=${range.page}`;
+                                glyph.title = `https://www.babelstone.co.uk/Fonts/BSH_IVS.html`;
                             }
                             else
                             {
-                                // Display PDF chart file name followed by page number (URL-like)
-                                let pdfInfo = document.createElement ('div');
-                                pdfInfo.className = 'pdf-info';
-                                pdfInfo.appendChild (document.createTextNode ("IVD_Charts_"));
-                                let wbr = document.createElement ('wbr');
-                                pdfInfo.appendChild (wbr);
-                                pdfInfo.appendChild (document.createTextNode (`${collection}.pdf`));
-                                let wbr2 = document.createElement ('wbr');
-                                pdfInfo.appendChild (wbr2);
-                                pdfInfo.appendChild (document.createTextNode (`#page=${range.page}`));
-                                glyph.appendChild (pdfInfo);
+                                glyph.title = `IVD_Charts_${collection}.pdf\n#page=${range.page}`;
                             }
                         }
+                        else
+                        {
+                            // Display PDF chart file name followed by page number (URL-like)
+                            let pdfInfo = document.createElement ('div');
+                            pdfInfo.className = 'pdf-info';
+                            pdfInfo.appendChild (document.createTextNode ("IVD_Charts_"));
+                            let wbr = document.createElement ('wbr');
+                            pdfInfo.appendChild (wbr);
+                            pdfInfo.appendChild (document.createTextNode (`${collection}.pdf`));
+                            let wbr2 = document.createElement ('wbr');
+                            pdfInfo.appendChild (wbr2);
+                            pdfInfo.appendChild (document.createTextNode (`#page=${range.page}`));
+                            background.appendChild (pdfInfo);
+                        }
+                        glyph.appendChild (background);
+                        let overlay = document.createElement ('div');
+                        overlay.className = 'overlay';
+                        glyph.appendChild (overlay);
                         data.appendChild (glyph);
                         let caption = document.createElement ('div');
                         caption.className = 'caption';

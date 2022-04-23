@@ -60,7 +60,7 @@ module.exports.start = function (context)
     let canvas = document.createElement ('canvas');
     canvas.width = defaultCanvasSize;
     canvas.height = defaultCanvasSize;
-    let ctx = canvas.getContext ('2d', { alpha: false });
+    let ctx = canvas.getContext ('2d', { alpha: false, desynchronized: true });
     //
     function getTextData (text)
     {
@@ -81,7 +81,7 @@ module.exports.start = function (context)
     //
     function showBase (event)
     {
-        if (!event.button)
+        if (!(event.button || event.ctrlKey || event.metaKey))
         {
             if (event.altKey || event.shiftKey)
             {
@@ -136,7 +136,7 @@ module.exports.start = function (context)
             {
                 try
                 {
-                    localFonts = await fontList.getFonts ();
+                    localFonts = await fontList.getFonts ({ disableQuoting: true });
                 }
                 catch (e)
                 {
@@ -147,12 +147,12 @@ module.exports.start = function (context)
             {
                 for (let localFont of localFonts)
                 {
-                    ctx.font = `${defaultFontSize}px ${localFont}, "Blank"`;
+                    ctx.font = `${defaultFontSize}px "${localFont}", "Blank"`;
                     let textMetrics = ctx.measureText (unihanCharacter);
                     let actualWidth = textMetrics.actualBoundingBoxRight - textMetrics.actualBoundingBoxLeft;
                     if (actualWidth > 0)
                     {
-                        let localFontName = localFont.replace (/^"|"$/g, "");
+                        ctx.font = `${defaultFontSize}px "${localFont}"`;
                         let card =  document.createElement ('span');
                         card.className = 'card';
                         let [ base, vs ] = unihanCharacter;
@@ -168,12 +168,12 @@ module.exports.start = function (context)
                         glyph.className = 'glyph';
                         glyph.textContent = unihanCharacter;
                         glyph.style = `font-family: ${localFont};`;
-                        glyph.title = localFontName;
+                        glyph.title = localFont;
                         card.appendChild (glyph);
                         let fontName = document.createElement ('span');
                         fontName.className = 'font-name';
-                        fontName.textContent = localFontName;
-                        fontName.title = localFontName;
+                        fontName.textContent = localFont;
+                        fontName.title = localFont;
                         card.appendChild (fontName);
                         list.appendChild (card);
                     }

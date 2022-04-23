@@ -40,6 +40,11 @@
         "label": "Latest Releases",
         "URL": "https://github.com/tonton-pixel/unicopedia-sinica/releases"
     },
+    "repositories":
+    {
+        "label": "Other Applications",
+        "URL": "https://github.com/tonton-pixel"
+    },
     "defaultFolder": "documents",
     "confirmQuit": true
 }

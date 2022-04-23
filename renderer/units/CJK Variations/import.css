@@ -243,6 +243,18 @@
     color: var(--color-dimmed);
 }
 
+#cjk-variations-unit .table .background,
+#cjk-variations-unit .table .overlay
+{
+    display: none;
+}
+
+#cjk-variations-unit .table .background.shown,
+#cjk-variations-unit .table .overlay.shown
+{
+    display: inline-block;
+}
+
 #cjk-variations-unit .table .glyph
 {
     display: inline-block;
@@ -251,7 +263,7 @@
 #cjk-variations-unit .table .pdf-info
 {
     width: 88px;
-    height: 72px;
+    height: 77px;
     font-family: var(--system-ui-family);
     font-size: 11.5px;
     font-weight: bold;
@@ -262,7 +274,8 @@
     cursor: text;
 }
 
-#cjk-variations-unit .table .data .svg-glyph
+#cjk-variations-unit .table .data .svg-glyph,
+#cjk-variations-unit .table .data .img-glyph
 {
     width: 72px;
     height: 72px;

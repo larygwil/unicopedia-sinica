@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.2.0
+
+- Added new interactive feature to the **CJK Variations** utility: visual feedback on mouse click to spot differences in glyph variations.
+- Added `Other Applications` to `Help` menu.
+- Updated `IDS.TXT` data file.
+- Updated `Electron Packager` to version `15.5.0`.
+
 ## 2.1.0
 
 - Added **unregistered** `BabelStone Collection` as an *experimental* feature to the **CJK Variations** utility.

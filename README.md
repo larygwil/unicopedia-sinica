@@ -230,6 +230,7 @@ In output, the standard Unicode code point format `U+9999` is used, i.e. "U+" di
     - [Moji_Joho collection - IVD_Charts_Moji_Joho.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_Moji_Joho.pdf)
     - [MSARG collection - IVD_Charts_MSARG.pdf](https://www.unicode.org/ivd/data/2020-11-06/IVD_Charts_MSARG.pdf)
 - In addition, as an *experimental* feature, an **unregistered** set of [BabelStone Han Variation Sequences](https://www.babelstone.co.uk/Fonts/BSH_IVS.html) is also supported, intended to be registered in the [Ideographic Variation Database](https://unicode.org/ivd/) as a future `BabelStone Collection`.
+- Clicking inside any character glyph displays momentarily the same glyph for all variations in the same collection, while alt-clicking (or shift-clicking) applies to all characters glyphs sharing the same IVS across different collections. This is especially useful to quickly spot visual differences between glyph variations.
 - Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the IVS glyphs along with their VS (Variation Selector) code points.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
 

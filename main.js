@@ -334,7 +334,9 @@ else
             { label: "System Info...", click: showSystemInfo },
             { type: 'separator' },
             { label: settings.repository.label, click: () => { shell.openExternal (settings.repository.URL); } },
-            { label: settings.releases.label, click: () => { shell.openExternal (settings.releases.URL); } }
+            { label: settings.releases.label, click: () => { shell.openExternal (settings.releases.URL); } },
+            { type: 'separator' },
+            { label: settings.repositories.label, click: () => { shell.openExternal (settings.repositories.URL); } }
         ]
     };
     const helpMenu =
@@ -347,7 +349,9 @@ else
             { label: "System Info...", click: showSystemInfo },
             { type: 'separator' },
             { label: settings.repository.label, click: () => { shell.openExternal (settings.repository.URL); } },
-            { label: settings.releases.label, click: () => { shell.openExternal (settings.releases.URL); } }
+            { label: settings.releases.label, click: () => { shell.openExternal (settings.releases.URL); } },
+            { type: 'separator' },
+            { label: settings.repositories.label, click: () => { shell.openExternal (settings.repositories.URL); } }
         ]
     };
     //
