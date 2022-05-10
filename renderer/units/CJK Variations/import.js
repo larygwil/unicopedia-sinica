@@ -634,7 +634,6 @@ module.exports.start = function (context)
 //
 module.exports.stop = function (context)
 {
-    //
     let prefs =
     {
         unihanHistory: unihanHistory,

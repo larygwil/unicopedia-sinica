@@ -157,7 +157,7 @@ ___\*\* Under Construction \*\*___
 
 - The **CJK Local Fonts** utility displays all the local font glyphs of a given Unihan character.
 - Any Unihan character can be entered in the <kbd>Unihan</kbd> input field either as a character or a code point. Click on the <kbd>Look Up</kbd> button to display all the glyphs.
-- Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., `劍󠄁`, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., `U+6F22 U+FE00`, or `U+9F8D U+E0101`; the specific format `<9F8D,E0107>` is also allowed.
+- Standardized variants and Ideographic Variation Sequences (IVS) are also accepted in input, either directly, e.g., `劍󠄁`, or as a combination of two code points: Unihan base character + variation selector (VS1 to VS256), e.g., `U+6F22 U+FE00`, or `U+9F8D U+E0101`; the specific formats `<9F8D,E0107>` *(IVD)* or `u9f8d-ue010e` *(GlyphWiki)* are also allowed.
 - Previously looked up characters are kept in a history stack; use the <kbd>Alt</kbd>+<kbd>↑</kbd> and <kbd>Alt</kbd>+<kbd>↓</kbd> keyboard shortcuts to navigate through them up and down inside the input field. Alternatively, you can also use the <kbd>Lookup&nbsp;History&nbsp;▾</kbd> pop-up menu to automatically look up a specific character.
 - Click on the <kbd>Compact Layout</kbd> checkbox to display the local font glyphs in a more compact way: hovering over each glyph frame brings up a tooltip with the local font name.
 - Use the <kbd>Font Name Filter</kbd> input field to restrict in real time the display of local font glyphs to the font names matching the text string.
@@ -166,7 +166,7 @@ ___\*\* Under Construction \*\*___
     - For best coverage of Unicode Variation Sequences, some of the following fonts should be downloaded and installed at the OS level:
         - [Hanazono Mincho](https://github.com/cjkvi/HanaMinAFDKO/releases) (`HanaMinA.otf`, `HanaMinB.otf`, `HanaMinC.otf`)
         - [IPA MJ Mincho](https://moji.or.jp/mojikiban/font/) (`ipamjm.ttf`)
-        <!-- - [IPAEx Font Ver.004.01](https://moji.or.jp/ipafont/ipaex00401/) (`ipaexm.ttf`, `ipaexg.ttf`) -->
+        - [IPAEx Font Ver.004.01](https://moji.or.jp/ipafont/ipaex00401/) (`ipaexm.ttf`, `ipaexg.ttf`)
         - [Source Han Serif](https://github.com/adobe-fonts/source-han-serif/tree/release) (various set formats)
         - [Source Han Sans](https://github.com/adobe-fonts/source-han-sans/tree/release) (various set formats)
 

@@ -213,5 +213,31 @@
             "name": "異体字セレクタセレクタ",
             "href": "https://747.github.io/vsselector/"
         }
+    ],
+    [
+        {
+            "name": "MainPage - GlyphWiki",
+            "href": "https://en.glyphwiki.org/wiki/GlyphWiki:MainPage"
+        },
+        {
+            "lang": "ja",
+            "name": "メインページ - GlyphWiki",
+            "href": "https://glyphwiki.org/wiki/GlyphWiki:%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%9a%e3%83%bc%e3%82%b8"
+        },
+        {
+            "lang": "ko",
+            "name": "대문 - GlyphWiki",
+            "href": "https://ko.glyphwiki.org/wiki/GlyphWiki:%eb%8c%80%eb%ac%b8"
+        },
+        {
+            "lang": "zh-Hans",
+            "name": "首页 - GlyphWiki",
+            "href": "https://zhs.glyphwiki.org/wiki/GlyphWiki:%e9%a6%96%e9%a1%b5"
+        },
+        {
+            "lang": "zh-Hant",
+            "name": "首頁 - GlyphWiki",
+            "href": "https://zht.glyphwiki.org/wiki/GlyphWiki:%e9%a6%96%e9%a0%81"
+        }
     ]
 ]

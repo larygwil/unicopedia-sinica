@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.3.0
+
+- Allowed `GlyphWiki` hex syntax for IVS input in the **CJK Local Fonts** utility.
+- Updated `IDS.TXT` data file.
+- Updated `Electron` to version `17.4.3`.
+- Updated `Electron Packager` to version `15.5.1`.
+
 ## 2.2.0
 
 - Added new interactive feature to the **CJK Variations** utility: visual feedback on mouse click to spot differences in glyph variations.

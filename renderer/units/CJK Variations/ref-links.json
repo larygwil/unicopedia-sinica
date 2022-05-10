@@ -43,6 +43,19 @@
     ],
     [
         {
+            "name": "BabelStone Fonts : BabelStone Han Variants",
+            "href": "https://www.babelstone.co.uk/Fonts/BSH_IVS.html"
+        }
+    ],
+    [
+        {
+            "lang": "ja",
+            "name": "異体字セレクタセレクタ",
+            "href": "https://747.github.io/vsselector/"
+        }
+    ],
+    [
+        {
             "lang": "ja",
             "name": "文字分類方式の変更が字形に及ぼす影響 - IPSJ-DD12086003.pdf",
             "href": "https://ipsj.ixsq.nii.ac.jp/ej/?action=repository_uri&item_id=82843&file_id=1&file_no=1"
