@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## 2.4.0
+
+- Added new sample script: `Create CJK Glyphs Diff HTML Files` to the **JavaScript Runner** utility.
+- Updated `Changes (Undocumented)` samples in the **CJK Sources** utility.
+- Updated `IDS.TXT` data file.
+- Updated `Electron` to version `17.4.5`.
+
 ## 2.3.0
 
 - Allowed `GlyphWiki` hex syntax for IVS input in the **CJK Local Fonts** utility.

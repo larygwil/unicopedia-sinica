@@ -291,5 +291,18 @@
             "name": "800_Most_Common_Chinese_Character_Components_Simplified_Chinese_carlgene.pdf",
             "href": "https://www.carlgene.com/800_Most_Common_Chinese_Character_Components_Simplified_Chinese_carlgene.pdf"
         }
+    ],
+    [
+        {
+            "lang": "ja",
+            "name": "漢字を構成から検索（読めない漢字を調べる）",
+            "href": "https://kanji.jitenon.jp/kousei/"
+        }
+    ],
+    [
+        {
+            "name": "JEDict Home Page",
+            "href": "https://jedict.com/index2.html"
+        }
     ]
 ]

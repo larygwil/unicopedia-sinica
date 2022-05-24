@@ -74,7 +74,7 @@ module.exports.start = function (context)
             ctx.fillStyle = "black";
             ctx.fillText (text, (ctx.canvas.width - actualWidth) / 2, ctx.canvas.height - ((ctx.canvas.height - actualHeight) / 2));
         }
-        return ctx.getImageData (0, 0, ctx.canvas.width, ctx.canvas.height).data;
+        return ctx.getImageData (0, 0, ctx.canvas.width, ctx.canvas.height).data.toString ();
     }
     //
     let currentDiffElement = null;
@@ -158,7 +158,7 @@ module.exports.start = function (context)
                         let [ base, vs ] = unihanCharacter;
                         if (vs)
                         {
-                            if (getTextData (unihanCharacter).toString () !== getTextData (base).toString ())
+                            if (getTextData (unihanCharacter) !== getTextData (base))
                             {
                                 card.classList.add ('vs-difference');
                                 card.addEventListener ('mousedown', showBase);
@@ -189,7 +189,7 @@ module.exports.start = function (context)
     }
     //
     const characterRegex = /^(.)(.)?$/u;
-    const codePointRegex = /^(?:[Uu]\+?)?([0-9a-fA-F]{4,5})(?:\s+(?:[Uu]\+?)?([0-9a-fA-F]{4,5}))?$/u;
+    const codePointRegex = /^(?:[Uu]\+?)?([0-9a-fA-F]{4,8})(?:\s+(?:[Uu]\+?)?([0-9a-fA-F]{4,8}))?$/u;
     //
     function validateUnihanCharacter (inputString)
     {
